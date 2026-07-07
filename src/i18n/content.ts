@@ -2,14 +2,15 @@
  * All human-facing copy for the three locales. Structure is identical across
  * locales so a single set of components renders any language. Section and
  * feature `id`s are stable across locales (used to attach the right screenshot
- * and icon). Copy authored/refined by the trilingual content workflow.
+ * and icon).
  *
- * Product: "معارف سجادية" (Maarif Sajjadiya) — a companion app for the ziyarat
- * walk: an ordered route of stations pinned to numbered poles + GPS, with
- * adhkar/du'as (read + audio) at each station, a per-station progress tracker,
- * roadside services (medical / sanitary / landmarks), a recitations library, and
- * a knowledge competition (quizzes + points). Offline-capable, trilingual, free.
- * Published by the Imam Zayn al-Abidin (as) Foundation. PRE-LAUNCH (see soonHint).
+ * Product: "معارف سجادية" (Maarif Sajjadiya) — "walk and learn". A companion for
+ * the ziyarat walk to Karbala: an interactive route map divided into stations
+ * pinned to the road's numbered poles; at each station a set of rights from
+ * Imam Sajjad's Treatise on Rights (رسالة الحقوق) to read + hear + self-test;
+ * an audio library (Qur'an, the Sahifa, Arbaeen elegies by named reciters); a
+ * per-station quiz competition with prizes; progress tracking; offline; push +
+ * inbox. Published by the Imam Zayn al-Abidin (as) Foundation. PRE-LAUNCH.
  */
 import type { Locale } from '@/site.config';
 
@@ -37,9 +38,9 @@ export interface Content {
   };
   trust: { items: { value: string; label: string }[] };
   showcase: { eyebrow: string; title: string; lead: string; bullets: string[] };
-  sections: { id: 'amenities' | 'recitations' | 'competition' | 'journey'; eyebrow: string; title: string; body: string }[];
+  sections: { id: 'rights' | 'recitations' | 'competition' | 'journey'; eyebrow: string; title: string; body: string }[];
   featuresHeading: { title: string; subtitle: string };
-  features: { id: 'offline' | 'gps' | 'audio' | 'notifications' | 'trilingual' | 'progress'; title: string; description: string }[];
+  features: { id: 'offline' | 'gps' | 'progress' | 'selftest' | 'notifications' | 'trilingual'; title: string; description: string }[];
   faqHeading: string;
   faq: { q: string; a: string }[];
   finalCta: { title: string; subtitle: string };
@@ -47,7 +48,7 @@ export interface Content {
   alt: {
     heroPhone: string;
     stationsPhone: string;
-    amenitiesPhone: string;
+    rightsPhone: string;
     recitationsPhone: string;
     competitionPhone: string;
     appIcon: string;
@@ -58,28 +59,28 @@ const ar: Content = {
   locale: 'ar',
   dir: 'rtl',
   seo: {
-    title: 'معارف سجادية | رفيق الزائر في طريقه، محطةً محطة',
+    title: 'معارف سجادية | امشِ إلى كربلاء وتعلّم رسالة الحقوق، محطةً محطة',
     description:
-      'تطبيق معارف سجادية: دليلك في طريق الزيارة محطةً محطة على امتداد الأعمدة المرقّمة، مع أذكار وأدعية كل محطة مقروءةً ومسموعة، وخدمات الطريق الطبية والصحية، ومسابقة معرفية بالنقاط. يعمل دون إنترنت، بثلاث لغات، ومجاناً.',
+      'تطبيق معارف سجادية يرافقك في طريقك إلى كربلاء محطةً محطة على أعمدة الطريق: رسالة الحقوق للإمام السجّاد (ع) مقروءةً ومسموعة عند كل محطة، ومكتبة صوتية من القرآن والصحيفة ولطميات الأربعين، ومسابقة بجوائز. يعمل دون إنترنت، بثلاث لغات، ومجاناً.',
     keywords: [
       'معارف سجادية',
-      'تطبيق الزيارة',
-      'طريق الزيارة',
-      'مسير الزيارة',
+      'امشِ وتعلّم',
+      'رسالة الحقوق',
+      'الإمام زين العابدين',
+      'الإمام السجاد',
       'المشي إلى كربلاء',
       'زيارة الأربعين',
-      'خدمات الزائرين',
-      'أذكار المحطات',
-      'أدعية الزيارة',
-      'تلاوات ومدائح',
-      'مسابقة سجادية',
+      'محطات الطريق',
+      'أعمدة الطريق',
+      'الصحيفة السجادية',
+      'لطميات الأربعين',
+      'مسابقة حسينية',
+      'تطبيق الزيارة',
       'مؤسسة الإمام زين العابدين',
-      'دليل طريق الزيارة',
-      'محطات المشي',
     ],
-    ogTitle: 'معارف سجادية | رفيقك في طريق الزيارة، من أوّل عمود إلى المقصد',
+    ogTitle: 'معارف سجادية | رفيقك إلى كربلاء: رسالة الحقوق محطةً محطة',
     ogDescription:
-      'محطات الطريق وأعمدته، وأذكار كل محطة وأدعيتها الصوتية، وخدمات الطريق الطبية والصحية، ومكتبة تلاوات، ومسابقة معرفية بالنقاط — كلها في تطبيق واحد يعمل دون إنترنت، بثلاث لغات، ومجاناً. من مؤسسة الإمام زين العابدين (عليه السلام).',
+      'خارطة الطريق إلى الحرم الحسيني ومحطاته على الأعمدة، ورسالة الحقوق مقروءةً ومسموعة عند كل محطة، ومكتبة صوتية من القرآن والصحيفة واللطميات، ومسابقة بجوائز — في تطبيق واحد يعمل دون إنترنت، بثلاث لغات، ومجاناً. من مؤسسة الإمام زين العابدين (عليه السلام).',
   },
   brand: {
     name: 'معارف سجادية',
@@ -88,10 +89,10 @@ const ar: Content = {
   },
   nav: { features: 'المزايا', content: 'المحطات', faq: 'الأسئلة الشائعة', download: 'حمّل التطبيق' },
   hero: {
-    eyebrow: 'من مؤسسة الإمام زين العابدين (عليه السلام)',
-    title: 'في طريق الزيارة، لا تمشِ وحدك',
+    eyebrow: 'امشِ… وتعلّم',
+    title: 'في طريقك إلى كربلاء، لا تمشِ وحدك',
     subtitle:
-      'معارف سجادية يرافقك محطةً محطة على امتداد أعمدة الطريق: أذكار كل محطة وأدعيتها مقروءةً ومسموعة، وخدمات الطريق الطبية والصحية على مقربة منك، ومسابقة معرفية ترافق خطاك — يعمل دون إنترنت، بثلاث لغات، ومجاناً.',
+      'معارف سجادية يرافقك على خارطة الطريق محطةً محطة عند كل عمود: يفتح لك في كل محطة باباً من رسالة الحقوق للإمام السجّاد (عليه السلام) مقروءاً ومسموعاً، ويختبر حفظك، ويصحبك بمكتبة صوتية من القرآن والصحيفة ولطميات الأربعين — يعمل دون إنترنت، بثلاث لغات، ومجاناً.',
     ctaHint: 'حمّل التطبيق مجاناً الآن',
     soonHint: 'يصل قريباً بإذن الله إلى App Store وGoogle Play',
     scanHint: 'امسح الرمز لتحميل التطبيق على جهازك',
@@ -102,89 +103,89 @@ const ar: Content = {
     items: [
       { value: 'مجاني بالكامل', label: 'بلا رسوم ولا اشتراكات ولا إعلانات' },
       { value: 'يعمل دون إنترنت', label: 'محتواك محفوظ معك في زحام الطريق' },
-      { value: 'مواقع دقيقة', label: 'محطات وخدمات محدّدة على الخريطة' },
+      { value: 'خارطة بالأعمدة', label: 'محطاتك محدّدة على الطريق بموقعها' },
       { value: 'بثلاث لغات', label: 'العربية والإنجليزية والفارسية' },
     ],
   },
   showcase: {
-    eyebrow: 'المحطات والأذكار',
-    title: 'طريقك مقسّمٌ إلى محطات، ولكل محطة ذِكرها',
+    eyebrow: 'خارطة الرحلة',
+    title: 'طريقك إلى كربلاء، محطةً محطة على الأعمدة',
     lead:
-      'قسّمنا لك المسير إلى محطات مرتّبة على امتداد أعمدة الطريق المرقّمة، فلا تحتار أين أنت ولا ما تقرأ؛ لكل محطة أذكارها وأدعيتها بين يديك، وموقعها على الخريطة يدلّك متى بلغتها.',
+      'خارطة تفاعلية ترسم لك الطريق إلى مولانا الحسين (عليه السلام)، مقسوماً إلى محطات مثبّتة على أعمدة الطريق المرقّمة؛ تعرف عند أي عمود أنت، وكم حقّاً في محطتك، وكم بقي من الطريق.',
     bullets: [
-      'المسير مقسوم إلى محطات مرتّبة على امتداد أعمدة الطريق المرقّمة',
-      'لكل محطة أذكارها وأدعيتها، مقروءةً ومسموعةً بصوت القرّاء',
-      'يتعرّف التطبيق على وصولك إلى المحطة من موقعك على الخريطة',
-      'مؤشّر تقدّم يسجّل ما أتممته من أذكار كل محطة، خطوةً خطوة',
-      'كل ذلك محفوظ ليعمل دون إنترنت حين ينقطع الاتصال في الطريق',
+      'طريقك إلى الحرم الحسيني مرسومٌ على الخارطة محطةً محطة',
+      'كل محطة مثبّتة على أعمدة الطريق المرقّمة ومحدّدة بالكيلومترات',
+      'لكل محطة عددٌ من حقوق «رسالة الحقوق» تقرؤها وتستمع إليها',
+      'يحدّد التطبيق موقعك ليعرف المحطة التي بلغتها',
+      'يسجّل تقدّمك محطةً محطة، ويعمل دون إنترنت في الطريق',
     ],
   },
   sections: [
     {
-      id: 'amenities',
-      eyebrow: 'خدمات الطريق',
-      title: 'كل خدمة يحتاجها الزائر، على مقربة منك',
+      id: 'rights',
+      eyebrow: 'رسالة الحقوق',
+      title: 'رسالة الحقوق للإمام السجّاد (عليه السلام)، محطةً محطة',
       body:
-        'مراكز الخدمة الطبية والصحية والمعالم موزّعة على مسارك ومحدّدة على الخريطة عند أقرب عمود إليك، لتصل إليها بأيسر طريق حين تحتاجها، أنت ومن يمشي معك.',
+        'خمسون حقّاً من رسالة الحقوق موزّعة على محطات طريقك — تقرأ حقوق كل محطة وتستمع إليها بصوتٍ واضح، ثم تختبر حفظك قبل أن تمضي إلى المحطة التالية، فتصل ومعك زادٌ من المعرفة.',
     },
     {
       id: 'recitations',
-      eyebrow: 'مكتبة الزيارة الصوتية',
-      title: 'زيارات وأدعية وقصائد، بأصوات قرّائها',
+      eyebrow: 'مكتبة صوتية',
+      title: 'القرآن والصحيفة ولطميات الأربعين، بين سمعك',
       body:
-        'مكتبة تجمع نصوص الزيارات والأدعية العامة والقصائد، مقروءةً ومسموعةً بأصوات القرّاء، تصحبك في طريقك وفي مقامك، وتعمل دون إنترنت متى حمّلتها.',
+        'مكتبة صوتية تصحبك في الطريق: تلاوات من القرآن الكريم، والصحيفة السجادية، ولطميات الأربعين بكلمات شعرائها وأصوات قرّائها، مع مشغّلٍ كامل يعمل دون إنترنت.',
     },
     {
       id: 'competition',
-      eyebrow: 'مسابقة معارف',
-      title: 'اجعل من طريقك معرفةً تُثاب عليها',
+      eyebrow: 'المسابقة والجوائز',
+      title: 'اختبر نفسك في كل محطة، وتنافس على الجوائز',
       body:
-        'أسئلة معرفية مرتبطة بمحطات الطريق تجيب عنها فتجمع النقاط، مع دليل واضح للمسابقة يبيّن لك شروطها ومعاييرها — لتكون خطواتك علماً ومعرفة، لا مشياً فحسب.',
+        'أسئلة مرتبطة بحقوق كل محطة تجيب عنها فتُحسب درجتك وتجمع نقاطك، مع دليلٍ واضح للمسابقة وجوائز قيّمة للمتقدّمين — لتكون خطواتك علماً يُثاب ويُكافأ.',
     },
     {
       id: 'journey',
-      eyebrow: 'معارف سجادية',
-      title: 'كل خطوة معرفة، وكل محطة قُربة',
+      eyebrow: 'امشِ… وتعلّم',
+      title: 'طريقٌ إلى الحسين (عليه السلام)، ومعرفةٌ في كل خطوة',
       body:
-        'من مؤسسة الإمام زين العابدين (عليه السلام)، ليكون الطريق إلى مولانا أنساً ومعرفة؛ رفيقٌ في يدك يذكّرك ويرشدك ويقرّبك، من أوّل عمود إلى حيث تقرّ عينك بالمقصد.',
+        'من مؤسسة الإمام زين العابدين (عليه السلام)، ليكون مشيك إلى مولاك أُنساً وعلماً؛ رفيقٌ في يدك يذكّرك بحقوقك، ويصحبك بذكره، ويقرّبك خطوةً خطوة حتى يقرّ طرفك بالحرم.',
     },
   ],
   featuresHeading: {
     title: 'مزايا تجعله رفيقك في كل خطوة',
-    subtitle: 'أدواتٌ صُمّمت لطريق الزيارة الطويل، تعينك حين ينقطع الاتصال ويطول المسير.',
+    subtitle: 'أدواتٌ صُمّمت لطريقٍ طويل قد ينقطع فيه الاتصال ويطول فيه المسير.',
   },
   features: [
-    { id: 'offline', title: 'يعمل دون إنترنت', description: 'يحفظ المحطات والأذكار والخدمات على جهازك، فيبقى معك حين ينقطع الاتصال في زحام الطريق.' },
-    { id: 'gps', title: 'يرشدك بموقعك', description: 'يتعرّف على وصولك إلى المحطة ويعرض لك أقرب الخدمات إليك على الخريطة بموقعك الحيّ.' },
-    { id: 'audio', title: 'تلاوات صوتية', description: 'أذكار المحطات والزيارات والأدعية مسموعةً بأصوات القرّاء، لتردّدها ولسانك مشغول بالخطى.' },
-    { id: 'notifications', title: 'تنبيهات وصندوق وارد', description: 'تنبيهات المسير المهمة تصلك أوّلاً بأوّل، وتُحفظ في صندوق وارد داخل التطبيق لتعود إليها.' },
-    { id: 'trilingual', title: 'بثلاث لغات', description: 'واجهة ومحتوى بالعربية والإنجليزية والفارسية، ليرافق الزائر أينما كان لسانه.' },
-    { id: 'progress', title: 'تتبّع تقدّمك ونقاطك', description: 'مؤشّر يسجّل ما أتممته من أذكار كل محطة، ونقاطٌ تجمعها في المسابقة مع تقدّمك.' },
+    { id: 'offline', title: 'يعمل دون إنترنت', description: 'يحفظ الخارطة والحقوق والصوتيات على جهازك، فيبقى معك حين ينقطع الاتصال في زحام الطريق.' },
+    { id: 'gps', title: 'يرشدك إلى محطتك', description: 'يحدّد موقعك على الخارطة والعمود الذي بلغته، ليدلّك على محطتك وما حولها من الطريق.' },
+    { id: 'progress', title: 'يسجّل تقدّمك', description: 'مؤشّرٌ يحفظ ما أتممته من حقوق كل محطة، فتعرف أين وصلت وكم بقي أمامك.' },
+    { id: 'selftest', title: 'اختبر نفسك', description: 'بعد حقوق كل محطة، اختبر حفظك بأسئلة قصيرة قبل أن تمضي إلى ما بعدها.' },
+    { id: 'notifications', title: 'تنبيهات وصندوق وارد', description: 'تنبيهات الطريق المهمة تصلك أوّلاً بأوّل، وتُحفظ في صندوق وارد داخل التطبيق لتعود إليها.' },
+    { id: 'trilingual', title: 'بثلاث لغات', description: 'بالعربية والإنجليزية والفارسية، ليرافق الزائر بأيّ لسانٍ جاء.' },
   ],
   faqHeading: 'أسئلة يتكرر طرحها قبل التحميل',
   faq: [
-    { q: 'ما هو تطبيق معارف سجادية؟', a: 'هو رفيق الزائر في طريقه: يقسّم لك المسير إلى محطات على امتداد أعمدة الطريق، ويهيّئ لكل محطة أذكارها وأدعيتها مقروءةً ومسموعة، ويرشدك إلى الخدمات الطبية والصحية على مسارك، مع مسابقة معرفية بالنقاط. من مؤسسة الإمام زين العابدين (عليه السلام).' },
+    { q: 'ما هو تطبيق معارف سجادية؟', a: 'هو رفيقك في طريقك إلى كربلاء: خارطة تقسّم المسير إلى محطات على أعمدة الطريق، وعند كل محطة حقوقٌ من «رسالة الحقوق» للإمام السجّاد (عليه السلام) مقروءةً ومسموعة، مع مكتبة صوتية ومسابقة بجوائز. شعاره: امشِ وتعلّم. من مؤسسة الإمام زين العابدين (عليه السلام).' },
     { q: 'هل التطبيق مجاني؟', a: 'نعم، معارف سجادية مجاني بالكامل بلا رسوم ولا اشتراكات ولا إعلانات.' },
-    { q: 'هل يعمل التطبيق دون إنترنت؟', a: 'نعم، بعد تحميل محتواه تعمل المحطات والأذكار والزيارات وأكثر الخدمات دون حاجة إلى اتصال، وهو ما يعينك حين ينقطع الإنترنت في الطريق. ويزامن التطبيق الجديد في الخلفية متى توفّر الاتصال.' },
-    { q: 'كيف يرشدني التطبيق إلى المحطات والخدمات؟', a: 'ترتّب المحطات على امتداد أعمدة الطريق المرقّمة، ويحدّد التطبيق موقعك على الخريطة ليتعرّف على وصولك إلى المحطة ويعرض أقرب الخدمات إليك.' },
+    { q: 'هل يعمل التطبيق دون إنترنت؟', a: 'نعم، بعد تحميل محتواه تعمل الخارطة والحقوق والصوتيات دون حاجة إلى اتصال، وهو ما يعينك حين ينقطع الإنترنت في الطريق، ويزامن الجديد في الخلفية متى توفّر الاتصال.' },
+    { q: 'ما علاقة المحطات برسالة الحقوق؟', a: 'قُسّمت رسالة الحقوق (خمسون حقّاً) على محطات الطريق المثبّتة على الأعمدة؛ تقرأ حقوق كل محطة وتستمع إليها وتختبر حفظك، فتصل ومعك زادٌ من المعرفة.' },
     { q: 'متى يتوفّر التطبيق للتحميل؟', a: 'التطبيق قيد الإطلاق، وسيتوفّر قريباً بإذن الله على App Store وGoogle Play. تابِع هذه الصفحة لتكون أوّل من يحمّله فور صدوره.' },
     { q: 'على أي الأجهزة يعمل؟', a: 'يُطلَق التطبيق لأجهزة iOS من App Store ولأجهزة Android من Google Play، بواجهة كاملة بالعربية والإنجليزية والفارسية.' },
   ],
   finalCta: {
     title: 'كن أوّل من يبدأ الطريق مع معارف سجادية',
-    subtitle: 'التطبيق يصل قريباً بإذن الله إلى App Store وGoogle Play — هيّئ جهازك، واجعل معارف سجادية رفيقك من أوّل عمود إلى حيث تقرّ عينك بالمقصد.',
+    subtitle: 'التطبيق يصل قريباً بإذن الله إلى App Store وGoogle Play — هيّئ جهازك، واجعل «معارف سجادية» رفيقك من أوّل عمود إلى الحرم الحسيني الشريف.',
   },
   footer: {
-    tagline: 'معارف سجادية — رفيق الزائر في طريقه، من إصدار مؤسسة الإمام زين العابدين (عليه السلام).',
+    tagline: 'معارف سجادية — رفيق الزائر في طريقه إلى كربلاء، من إصدار مؤسسة الإمام زين العابدين (عليه السلام).',
     rights: 'جميع الحقوق محفوظة لمؤسسة الإمام زين العابدين (عليه السلام).',
     comingSoon: 'قريباً',
   },
   alt: {
-    heroPhone: 'الشاشة الرئيسية لتطبيق معارف سجادية تعرض محطات طريق الزيارة',
-    stationsPhone: 'شاشة المحطات في تطبيق معارف سجادية تعرض محطة على الطريق مع أذكارها وأدعيتها',
-    amenitiesPhone: 'شاشة خدمات الطريق تعرض المراكز الطبية والصحية على الخريطة عند أقرب عمود',
-    recitationsPhone: 'شاشة المكتبة الصوتية تعرض زيارة أو دعاءً مع مشغّل صوتي بصوت القارئ',
-    competitionPhone: 'شاشة المسابقة تعرض سؤالاً معرفياً مرتبطاً بإحدى المحطات مع النقاط',
+    heroPhone: 'الشاشة الرئيسية لتطبيق معارف سجادية: زائرٌ يمشي في طريقه إلى كربلاء ولوحةٌ تشير إلى العمود القادم',
+    stationsPhone: 'خارطة الرحلة تعرض الطريق إلى الحرم الحسيني مع محطاته المثبّتة على الأعمدة المرقّمة',
+    rightsPhone: 'شاشة قراءة حقوق المحطة من رسالة الحقوق للإمام زين العابدين (عليه السلام) مع مشغّل صوتي',
+    recitationsPhone: 'شاشة المكتبة الصوتية تعرض تلاوات القرآن والصحيفة ولطميات الأربعين مع مشغّل صوتي',
+    competitionPhone: 'شاشة الاختبار تعرض سؤالاً مرتبطاً بحقوق إحدى المحطات مع خيارات الإجابة',
     appIcon: 'أيقونة تطبيق معارف سجادية باللونين الأخضر والذهبي',
   },
 };
@@ -193,38 +194,40 @@ const en: Content = {
   locale: 'en',
   dir: 'ltr',
   seo: {
-    title: 'Maarif Sajjadiya | Your Companion on the Ziyarat Walk, Station by Station',
+    title: 'Maarif Sajjadiya | Walk to Karbala and Learn the Treatise on Rights, Station by Station',
     description:
-      'The Maarif Sajjadiya app: your guide along the ziyarat walk, station by station down the numbered poles, with each station’s adhkar and du’as (read and recited), roadside medical & sanitary services, and a knowledge competition. Works offline, in three languages, free.',
+      'The Maarif Sajjadiya app walks with you toward Karbala station by station along the route’s numbered poles: Imam Sajjad’s Treatise on Rights (Risalat al-Huquq) read and recited at each station, an audio library of Qur’an, the Sahifa and Arbaeen elegies, and a prize competition. Works offline, in three languages, free.',
     keywords: [
       'Maarif Sajjadiya',
-      'ziyarat walk app',
-      'Arbaeen walk',
+      'walk and learn',
+      'Risalat al-Huquq',
+      'Treatise on Rights',
+      'Imam Zayn al-Abidin',
+      'Imam Sajjad',
       'walk to Karbala',
-      'pilgrimage companion app',
+      'Arbaeen walk',
       'ziyarat route stations',
-      'ziyarat supplications',
-      'adhkar and du’a app',
-      'pilgrim services',
-      'audio recitations',
+      'Sahifa Sajjadiyya',
+      'Arbaeen elegies',
+      'Husayni competition',
+      'ziyarat companion app',
       'Imam Zayn al-Abidin Foundation',
-      'offline ziyarat app',
     ],
-    ogTitle: 'Maarif Sajjadiya | Your Companion on the Ziyarat Walk, From the First Pole to the Shrine',
+    ogTitle: 'Maarif Sajjadiya | Your Companion to Karbala: the Treatise on Rights, Station by Station',
     ogDescription:
-      'The route’s stations and poles, each station’s adhkar and audio du’as, roadside medical & sanitary services, a recitations library, and a points-based knowledge competition — all in one app that works offline, in three languages, free. From the Imam Zayn al-Abidin (as) Foundation.',
+      'The route map to the Husayni shrine and its stations on the poles, the Treatise on Rights read and recited at each station, an audio library of Qur’an, the Sahifa and elegies, and a prize competition — in one app that works offline, in three languages, free. From the Imam Zayn al-Abidin (as) Foundation.',
   },
   brand: {
     name: 'Maarif Sajjadiya',
     nameLatin: 'معارف سجادية',
     org: 'The Imam Zayn al-Abidin (peace be upon him) Foundation',
   },
-  nav: { features: 'Features', content: 'Stations', faq: 'FAQ', download: 'Download the App' },
+  nav: { features: 'Features', content: 'The Route', faq: 'FAQ', download: 'Download the App' },
   hero: {
-    eyebrow: 'From the Imam Zayn al-Abidin (peace be upon him) Foundation',
-    title: 'On the Ziyarat Walk, You Don’t Walk Alone',
+    eyebrow: 'Walk… and learn',
+    title: 'On Your Way to Karbala, You Don’t Walk Alone',
     subtitle:
-      'Maarif Sajjadiya walks with you station by station down the route’s numbered poles: each station’s adhkar and du’as — read and recited aloud — the roadside medical and sanitary services nearest to you, and a knowledge competition to accompany your steps. Works offline, in three languages, free.',
+      'Maarif Sajjadiya walks with you on the route map, station by station at every pole: at each station it opens a chapter of Imam Sajjad’s Treatise on Rights — read and recited — tests what you’ve learned, and keeps you company with an audio library of Qur’an, the Sahifa, and Arbaeen elegies. Works offline, in three languages, free.',
     ctaHint: 'Download the app for free now',
     soonHint: 'Coming soon, God willing, to the App Store and Google Play',
     scanHint: 'Scan the code to download the app to your device',
@@ -233,91 +236,91 @@ const en: Content = {
   },
   trust: {
     items: [
-      { value: 'Completely Free', label: 'No fees, no subscriptions, no ads' },
+      { value: 'Completely Free', label: 'No fees, subscriptions or ads' },
       { value: 'Works Offline', label: 'Your content stays with you on the road' },
-      { value: 'Precise Locations', label: 'Stations and services pinned on the map' },
+      { value: 'Mapped by the Poles', label: 'Your stations pinned along the route' },
       { value: 'Three Languages', label: 'Arabic, English and Persian' },
     ],
   },
   showcase: {
-    eyebrow: 'Stations & Adhkar',
-    title: 'Your Route Is Divided Into Stations — and Each Station Has Its Own Remembrance',
+    eyebrow: 'The Route Map',
+    title: 'Your Path to Karbala, Station by Station Along the Poles',
     lead:
-      'We’ve divided the walk into ordered stations along the route’s numbered poles, so you never wonder where you are or what to read; each station’s adhkar and du’as are in your hand, and its place on the map tells you the moment you’ve arrived.',
+      'An interactive map charts your path to our master al-Husayn (peace be upon him), divided into stations pinned to the route’s numbered poles; you always know which pole you’re at, how many rights are in your station, and how far remains.',
     bullets: [
-      'The walk is split into ordered stations along the route’s numbered poles',
-      'Every station has its adhkar and du’as — read and recited by reciters',
-      'The app recognizes your arrival at a station from your place on the map',
-      'A progress tracker records the adhkar you’ve completed, step by step',
-      'It’s all saved to work offline when the signal drops on the road',
+      'Your path to the Husayni shrine is drawn on the map, station by station',
+      'Each station is pinned to the route’s numbered poles and marked in kilometers',
+      'Every station holds a set of rights from the Treatise on Rights to read and hear',
+      'The app uses your location to know which station you’ve reached',
+      'Your progress is saved station by station, and it works offline on the road',
     ],
   },
   sections: [
     {
-      id: 'amenities',
-      eyebrow: 'Roadside Services',
-      title: 'Every Service a Pilgrim Needs, Close at Hand',
+      id: 'rights',
+      eyebrow: 'The Treatise on Rights',
+      title: 'Imam Sajjad’s Treatise on Rights (peace be upon him), Station by Station',
       body:
-        'Medical stations, sanitary facilities, and landmarks are spread along your route and pinned on the map at the pole nearest you, so you can reach them by the shortest path when you — or those walking with you — need them.',
+        'The fifty rights of Risalat al-Huquq are distributed across the stations of your route — you read each station’s rights and listen to them clearly, then test what you’ve learned before moving on to the next, arriving with knowledge as your provision.',
     },
     {
       id: 'recitations',
-      eyebrow: 'Audio Ziyarat Library',
-      title: 'Ziyarat, Du’as and Elegies — in the Voices of Their Reciters',
+      eyebrow: 'Audio Library',
+      title: 'The Qur’an, the Sahifa, and Arbaeen Elegies, in Your Ears',
       body:
-        'A library gathering the texts of ziyarat, general supplications, and elegies — read and recited aloud in the voices of their reciters — to accompany you on the road and at your destination, working offline once you’ve downloaded it.',
+        'An audio library to accompany you on the road: recitations from the Holy Qur’an, the Sahifa Sajjadiyya, and Arbaeen elegies in the words of their poets and the voices of their reciters, with a full player that works offline.',
     },
     {
       id: 'competition',
-      eyebrow: 'The Knowledge Competition',
-      title: 'Turn Your Walk Into Knowledge You’re Rewarded For',
+      eyebrow: 'Competition & Prizes',
+      title: 'Test Yourself at Every Station, and Compete for Prizes',
       body:
-        'Knowledge questions tied to the stations along your route earn you points as you answer them, with a clear competition guide that lays out its terms and criteria — so your steps become learning, not merely walking.',
+        'Questions tied to each station’s rights are scored as you answer, gathering your points, with a clear competition guide and valuable prizes for the front-runners — so your steps become knowledge that is rewarded.',
     },
     {
       id: 'journey',
-      eyebrow: 'Maarif Sajjadiya',
-      title: 'Every Step a Knowledge, Every Station a Nearness',
+      eyebrow: 'Walk… and learn',
+      title: 'A Road to al-Husayn (peace be upon him), and Knowledge at Every Step',
       body:
-        'From the Imam Zayn al-Abidin (peace be upon him) Foundation, so the road to our master is one of intimacy and knowledge; a companion in your hand that reminds you, guides you, and draws you near — from the first pole to where your eye rests at the destination.',
+        'From the Imam Zayn al-Abidin (peace be upon him) Foundation, so your walk to your master is one of intimacy and learning; a companion in your hand that reminds you of your rights, keeps you in remembrance, and draws you near step by step until your eye rests upon the shrine.',
     },
   ],
   featuresHeading: {
     title: 'Features That Make It Your Companion at Every Step',
-    subtitle: 'Tools built for the long ziyarat walk — there for you when the signal drops and the road grows long.',
+    subtitle: 'Tools built for a long road where the signal may drop and the walk grows long.',
   },
   features: [
-    { id: 'offline', title: 'Works Offline', description: 'Saves stations, adhkar and services to your device, so it stays with you when the connection drops in the crowd of the road.' },
-    { id: 'gps', title: 'Guides You by Location', description: 'Recognizes your arrival at a station and shows the services nearest to you on the map, using your live location.' },
-    { id: 'audio', title: 'Audio Recitations', description: 'Station adhkar, ziyarat and du’as recited aloud by reciters, so you can repeat them while your steps carry you on.' },
+    { id: 'offline', title: 'Works Offline', description: 'Saves the map, the rights and the audio to your device, so it stays with you when the connection drops in the crowd of the road.' },
+    { id: 'gps', title: 'Guides You to Your Station', description: 'Pinpoints your place on the map and the pole you’ve reached, to point you to your station and what’s around it.' },
+    { id: 'progress', title: 'Tracks Your Progress', description: 'A tracker saves the rights you’ve completed at each station, so you know where you’ve reached and how far remains.' },
+    { id: 'selftest', title: 'Test Yourself', description: 'After each station’s rights, test what you’ve learned with short questions before you move on.' },
     { id: 'notifications', title: 'Alerts & Inbox', description: 'Important route alerts reach you first, and are saved to an in-app inbox so you can return to them.' },
-    { id: 'trilingual', title: 'Three Languages', description: 'Interface and content in Arabic, English and Persian, to accompany the pilgrim in whatever tongue is theirs.' },
-    { id: 'progress', title: 'Track Your Progress & Points', description: 'A tracker records the adhkar you’ve completed at each station, and points you gather in the competition as you advance.' },
+    { id: 'trilingual', title: 'Three Languages', description: 'In Arabic, English and Persian, to accompany the pilgrim in whatever tongue they come.' },
   ],
   faqHeading: 'Questions People Often Ask Before Downloading',
   faq: [
-    { q: 'What is the Maarif Sajjadiya app?', a: 'It’s the pilgrim’s companion on the road: it divides the walk into stations along the route’s numbered poles, prepares each station’s adhkar and du’as (read and recited), guides you to the medical and sanitary services on your route, and adds a points-based knowledge competition. From the Imam Zayn al-Abidin (peace be upon him) Foundation.' },
-    { q: 'Is the app free?', a: 'Yes. Maarif Sajjadiya is completely free — no fees, no subscriptions, and no ads.' },
-    { q: 'Does the app work offline?', a: 'Yes. Once its content is downloaded, the stations, adhkar, ziyarat and most services work with no connection needed, which helps when the internet drops on the road. The app also syncs new content in the background whenever a connection is available.' },
-    { q: 'How does the app guide me to stations and services?', a: 'Stations are arranged along the route’s numbered poles, and the app uses your place on the map to recognize your arrival at a station and show the services nearest to you.' },
+    { q: 'What is the Maarif Sajjadiya app?', a: 'It’s your companion on the way to Karbala: a map that divides the route into stations along the numbered poles, and at each station rights from Imam Sajjad’s Treatise on Rights (read and recited), with an audio library and a prize competition. Its motto: walk and learn. From the Imam Zayn al-Abidin (peace be upon him) Foundation.' },
+    { q: 'Is the app free?', a: 'Yes, Maarif Sajjadiya is completely free — no fees, no subscriptions, and no ads.' },
+    { q: 'Does the app work offline?', a: 'Yes. Once its content is downloaded, the map, the rights and the audio work with no connection needed, which helps when the internet drops on the road. New content also syncs in the background whenever a connection is available.' },
+    { q: 'How do the stations relate to the Treatise on Rights?', a: 'The Treatise on Rights (fifty rights) is distributed across the route’s stations pinned to the poles; you read each station’s rights, hear them, and test yourself — arriving with knowledge as your provision.' },
     { q: 'When will the app be available to download?', a: 'The app is launching soon and will be available, God willing, on the App Store and Google Play. Follow this page to be among the first to download it the moment it’s released.' },
     { q: 'Which devices does it work on?', a: 'The app launches for iOS on the App Store and for Android on Google Play, with a full interface in Arabic, English and Persian.' },
   ],
   finalCta: {
     title: 'Be Among the First to Set Out With Maarif Sajjadiya',
-    subtitle: 'The app is coming soon, God willing, to the App Store and Google Play — ready your device, and make Maarif Sajjadiya your companion from the first pole to where your eye rests at the destination.',
+    subtitle: 'The app is coming soon, God willing, to the App Store and Google Play — ready your device, and make Maarif Sajjadiya your companion from the first pole to the noble Husayni shrine.',
   },
   footer: {
-    tagline: 'Maarif Sajjadiya — the pilgrim’s companion on the road, published by the Imam Zayn al-Abidin (peace be upon him) Foundation.',
+    tagline: 'Maarif Sajjadiya — the pilgrim’s companion on the way to Karbala, published by the Imam Zayn al-Abidin (peace be upon him) Foundation.',
     rights: 'All rights reserved to the Imam Zayn al-Abidin (peace be upon him) Foundation.',
     comingSoon: 'Coming soon',
   },
   alt: {
-    heroPhone: 'The home screen of the Maarif Sajjadiya app showing the stations of the ziyarat walk',
-    stationsPhone: 'The stations screen in the Maarif Sajjadiya app showing a station on the route with its adhkar and du’as',
-    amenitiesPhone: 'The roadside services screen showing medical and sanitary facilities on the map at the nearest pole',
-    recitationsPhone: 'The audio library screen showing a ziyarat or du’a with an audio player in the reciter’s voice',
-    competitionPhone: 'The competition screen showing a knowledge question tied to one of the stations, with points',
+    heroPhone: 'The Maarif Sajjadiya home screen: a pilgrim walking the road to Karbala, with a sign pointing to the next pole',
+    stationsPhone: 'The route map showing the road to the Husayni shrine with its stations pinned to the numbered poles',
+    rightsPhone: 'The screen for reading a station’s rights from Imam Zayn al-Abidin’s Treatise on Rights, with an audio player',
+    recitationsPhone: 'The audio library screen showing recitations of the Qur’an, the Sahifa and Arbaeen elegies with a player',
+    competitionPhone: 'The quiz screen showing a question tied to one station’s rights, with answer choices',
     appIcon: 'The Maarif Sajjadiya app icon in green and gold',
   },
 };
@@ -326,26 +329,28 @@ const fa: Content = {
   locale: 'fa',
   dir: 'rtl',
   seo: {
-    title: 'معارف سجادیه | همراه زائر در مسیر، ایستگاه به ایستگاه',
+    title: 'معارف سجادیه | به‌سوی کربلا گام بردار و رساله حقوق را بیاموز، ایستگاه به ایستگاه',
     description:
-      'اپلیکیشن معارف سجادیه: راهنمای شما در مسیر زیارت، ایستگاه به ایستگاه در امتداد ستون‌های شماره‌دار، همراه با اذکار و ادعیهٔ هر ایستگاه به‌صورت متنی و صوتی، خدمات پزشکی و بهداشتی مسیر، و مسابقهٔ معرفتی امتیازی. بدون اینترنت، به سه زبان، و رایگان.',
+      'اپلیکیشن معارف سجادیه در مسیر شما به‌سوی کربلا، ایستگاه به ایستگاه در امتداد ستون‌های شماره‌دار همراهتان است: رساله حقوق امام سجاد (ع) در هر ایستگاه به‌صورت متنی و صوتی، کتابخانه‌ای صوتی از قرآن، صحیفه و لطمیات اربعین، و مسابقه‌ای با جوایز. بدون اینترنت، به سه زبان، و رایگان.',
     keywords: [
       'معارف سجادیه',
-      'اپلیکیشن زیارت',
-      'مسیر زیارت',
-      'پیاده‌روی اربعین',
+      'گام بردار و بیاموز',
+      'رساله حقوق',
+      'امام زین‌العابدین',
+      'امام سجاد',
       'پیاده‌روی کربلا',
-      'خدمات زائران',
-      'اذکار ایستگاه‌ها',
-      'ادعیهٔ زیارت',
-      'زیارات و مداحی صوتی',
-      'مسابقهٔ سجادی',
-      'مؤسسهٔ امام زین‌العابدین',
-      'راهنمای مسیر زیارت',
+      'پیاده‌روی اربعین',
+      'ایستگاه‌های مسیر',
+      'ستون‌های مسیر',
+      'صحیفه سجادیه',
+      'لطمیات اربعین',
+      'مسابقه حسینی',
+      'اپلیکیشن زیارت',
+      'مؤسسه امام زین‌العابدین',
     ],
-    ogTitle: 'معارف سجادیه | همراه شما در مسیر زیارت، از نخستین ستون تا مقصد',
+    ogTitle: 'معارف سجادیه | همراه شما تا کربلا: رساله حقوق، ایستگاه به ایستگاه',
     ogDescription:
-      'ایستگاه‌ها و ستون‌های مسیر، اذکار و ادعیهٔ صوتی هر ایستگاه، خدمات پزشکی و بهداشتی مسیر، کتابخانهٔ تلاوت، و مسابقهٔ معرفتی امتیازی — همه در یک اپلیکیشن که بدون اینترنت، به سه زبان و رایگان کار می‌کند. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).',
+      'نقشهٔ مسیر تا حرم حسینی و ایستگاه‌های آن روی ستون‌ها، رساله حقوق به‌صورت متنی و صوتی در هر ایستگاه، کتابخانه‌ای صوتی از قرآن، صحیفه و لطمیات، و مسابقه‌ای با جوایز — در یک اپلیکیشن که بدون اینترنت، به سه زبان و رایگان کار می‌کند. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).',
   },
   brand: {
     name: 'معارف سجادیه',
@@ -354,10 +359,10 @@ const fa: Content = {
   },
   nav: { features: 'ویژگی‌ها', content: 'ایستگاه‌ها', faq: 'پرسش‌های متداول', download: 'دانلود اپلیکیشن' },
   hero: {
-    eyebrow: 'از مؤسسهٔ امام زین‌العابدین (علیه‌السلام)',
-    title: 'در مسیر زیارت، تنها گام برنمی‌داری',
+    eyebrow: 'گام بردار… و بیاموز',
+    title: 'در مسیرت به‌سوی کربلا، تنها گام برنمی‌داری',
     subtitle:
-      'معارف سجادیه ایستگاه به ایستگاه در امتداد ستون‌های شماره‌دار مسیر همراه شماست: اذکار و ادعیهٔ هر ایستگاه به‌صورت متنی و صوتی، نزدیک‌ترین خدمات پزشکی و بهداشتی مسیر، و مسابقه‌ای معرفتی همراه گام‌هایتان — بدون اینترنت، به سه زبان، و رایگان.',
+      'معارف سجادیه روی نقشهٔ مسیر، ایستگاه به ایستگاه کنار هر ستون همراه شماست: در هر ایستگاه بابی از رساله حقوق امام سجاد (علیه‌السلام) را متنی و صوتی می‌گشاید، آموخته‌تان را می‌آزماید، و با کتابخانه‌ای صوتی از قرآن، صحیفه و لطمیات اربعین همراهی‌تان می‌کند — بدون اینترنت، به سه زبان، و رایگان.',
     ctaHint: 'همین حالا رایگان دانلود کنید',
     soonHint: 'به‌زودی ان‌شاءالله در App Store و Google Play',
     scanHint: 'برای دانلود روی دستگاه خود، کد را اسکن کنید',
@@ -368,89 +373,89 @@ const fa: Content = {
     items: [
       { value: 'کاملاً رایگان', label: 'بدون هزینه، اشتراک و تبلیغات' },
       { value: 'بدون اینترنت', label: 'محتوای شما در شلوغی مسیر همراهتان است' },
-      { value: 'موقعیت دقیق', label: 'ایستگاه‌ها و خدمات روی نقشه مشخص‌اند' },
+      { value: 'نقشه با ستون‌ها', label: 'ایستگاه‌هایتان روی مسیر مشخص‌اند' },
       { value: 'به سه زبان', label: 'عربی، انگلیسی و فارسی' },
     ],
   },
   showcase: {
-    eyebrow: 'ایستگاه‌ها و اذکار',
-    title: 'مسیر شما به ایستگاه‌ها تقسیم شده، و هر ایستگاه ذکر خود را دارد',
+    eyebrow: 'نقشهٔ مسیر',
+    title: 'راه شما به‌سوی کربلا، ایستگاه به ایستگاه در امتداد ستون‌ها',
     lead:
-      'مسیر را برایتان به ایستگاه‌هایی منظم در امتداد ستون‌های شماره‌دار تقسیم کرده‌ایم تا هرگز در نمانید که کجایید و چه بخوانید؛ اذکار و ادعیهٔ هر ایستگاه در دست شماست و جای آن روی نقشه، لحظهٔ رسیدنتان را نشان می‌دهد.',
+      'نقشه‌ای تعاملی راه شما را به‌سوی مولا حسین (علیه‌السلام) ترسیم می‌کند، تقسیم‌شده به ایستگاه‌هایی که بر ستون‌های شماره‌دار مسیر نشانده شده‌اند؛ همیشه می‌دانید کنار کدام ستون هستید، ایستگاهتان چند حق دارد و چه مقدار از راه باقی است.',
     bullets: [
-      'مسیر به ایستگاه‌هایی منظم در امتداد ستون‌های شماره‌دار تقسیم شده است',
-      'هر ایستگاه اذکار و ادعیهٔ خود را دارد، متنی و صوتی با صدای قاریان',
-      'اپلیکیشن رسیدن شما به ایستگاه را از موقعیتتان روی نقشه تشخیص می‌دهد',
-      'نشانگر پیشرفت، اذکاری را که در هر ایستگاه کامل کرده‌اید ثبت می‌کند',
-      'همهٔ اینها ذخیره می‌شود تا هنگام قطع اینترنت در مسیر نیز کار کند',
+      'راه شما به‌سوی حرم حسینی روی نقشه، ایستگاه به ایستگاه ترسیم شده است',
+      'هر ایستگاه بر ستون‌های شماره‌دار مسیر نشانده و با کیلومتر مشخص شده است',
+      'هر ایستگاه چند حق از «رساله حقوق» دارد که می‌خوانید و می‌شنوید',
+      'اپلیکیشن با موقعیت شما ایستگاهی را که رسیده‌اید تشخیص می‌دهد',
+      'پیشرفت شما ایستگاه به ایستگاه ذخیره می‌شود و در مسیر بدون اینترنت کار می‌کند',
     ],
   },
   sections: [
     {
-      id: 'amenities',
-      eyebrow: 'خدمات مسیر',
-      title: 'هر خدمتی که زائر نیاز دارد، در دسترس شما',
+      id: 'rights',
+      eyebrow: 'رساله حقوق',
+      title: 'رساله حقوق امام سجاد (علیه‌السلام)، ایستگاه به ایستگاه',
       body:
-        'مراکز خدمات پزشکی و بهداشتی و نشانه‌های مسیر در طول راه شما پخش شده و روی نقشه نزدیک‌ترین ستون به شما مشخص شده‌اند، تا هنگام نیاز، شما و همراهانتان از کوتاه‌ترین راه به آنها برسید.',
+        'پنجاه حق از رساله حقوق بر ایستگاه‌های مسیر شما تقسیم شده است — حقوق هر ایستگاه را می‌خوانید و با صدایی روشن می‌شنوید، سپس پیش از رفتن به ایستگاه بعد آموخته‌تان را می‌آزمایید، تا با توشه‌ای از معرفت برسید.',
     },
     {
       id: 'recitations',
-      eyebrow: 'کتابخانهٔ صوتی زیارت',
-      title: 'زیارات، ادعیه و اشعار، با صدای قاریانشان',
+      eyebrow: 'کتابخانهٔ صوتی',
+      title: 'قرآن، صحیفه و لطمیات اربعین، در گوش شما',
       body:
-        'کتابخانه‌ای که متن زیارات، ادعیهٔ عمومی و اشعار را گرد آورده — متنی و صوتی با صدای قاریان — تا در مسیر و در مقصد همراه شما باشد، و پس از دانلود بدون اینترنت کار کند.',
+        'کتابخانه‌ای صوتی که در مسیر همراه شماست: تلاوت‌هایی از قرآن کریم، صحیفهٔ سجادیه، و لطمیات اربعین با کلام شاعران و صدای قاریانشان، همراه با پخش‌کننده‌ای کامل که بدون اینترنت کار می‌کند.',
     },
     {
       id: 'competition',
-      eyebrow: 'مسابقهٔ معارف',
-      title: 'مسیرتان را به معرفتی که پاداش دارد بدل کنید',
+      eyebrow: 'مسابقه و جوایز',
+      title: 'در هر ایستگاه خود را بیازما و برای جوایز رقابت کن',
       body:
-        'پرسش‌های معرفتی مرتبط با ایستگاه‌های مسیر که با پاسخ به آنها امتیاز جمع می‌کنید، همراه با راهنمایی روشن که شرایط و معیارهای مسابقه را بیان می‌کند — تا گام‌هایتان علم و معرفت باشد، نه تنها راه‌رفتن.',
+        'پرسش‌هایی مرتبط با حقوق هر ایستگاه که با پاسخ به آنها نمره و امتیاز می‌گیرید، همراه با راهنمایی روشن برای مسابقه و جوایزی ارزشمند برای پیشتازان — تا گام‌هایتان دانشی باشد که پاداش می‌گیرد.',
     },
     {
       id: 'journey',
-      eyebrow: 'معارف سجادیه',
-      title: 'هر گام، معرفتی؛ و هر ایستگاه، قربتی',
+      eyebrow: 'گام بردار… و بیاموز',
+      title: 'راهی به‌سوی حسین (علیه‌السلام)، و معرفتی در هر گام',
       body:
-        'از مؤسسهٔ امام زین‌العابدین (علیه‌السلام)، تا راه به‌سوی مولا اُنس و معرفت باشد؛ همراهی در دست شما که یادآوری می‌کند، راه می‌نماید و نزدیک می‌سازد، از نخستین ستون تا آنجا که چشمتان به مقصد روشن شود.',
+        'از مؤسسهٔ امام زین‌العابدین (علیه‌السلام)، تا پیاده‌رویتان به‌سوی مولا اُنس و دانش باشد؛ همراهی در دست شما که حقوقتان را یادآوری می‌کند، به ذکرش همراهی‌تان می‌کند و گام‌به‌گام نزدیک می‌سازد تا چشمتان به حرم روشن شود.',
     },
   ],
   featuresHeading: {
     title: 'ویژگی‌هایی که آن را همراه هر گام شما می‌کند',
-    subtitle: 'ابزارهایی ساخته‌شده برای مسیر طولانی زیارت — هنگامی که اینترنت قطع می‌شود و راه دراز می‌گردد، در کنار شمایند.',
+    subtitle: 'ابزارهایی ساخته‌شده برای راهی طولانی که ممکن است اتصال در آن قطع و مسیر دراز شود.',
   },
   features: [
-    { id: 'offline', title: 'کار بدون اینترنت', description: 'ایستگاه‌ها، اذکار و خدمات را روی دستگاه شما ذخیره می‌کند تا هنگام قطع اتصال در شلوغی مسیر همراهتان بماند.' },
-    { id: 'gps', title: 'راهنمایی با موقعیت شما', description: 'رسیدن شما به ایستگاه را تشخیص می‌دهد و نزدیک‌ترین خدمات را با موقعیت زندهٔ شما روی نقشه نشان می‌دهد.' },
-    { id: 'audio', title: 'تلاوت‌های صوتی', description: 'اذکار ایستگاه‌ها، زیارات و ادعیه با صدای قاریان، تا در حال گام‌برداشتن آنها را تکرار کنید.' },
-    { id: 'notifications', title: 'اعلان‌ها و صندوق ورودی', description: 'اعلان‌های مهم مسیر زودتر از همه به شما می‌رسد و در صندوق ورودی درون اپلیکیشن ذخیره می‌شود تا بازگردید.' },
-    { id: 'trilingual', title: 'به سه زبان', description: 'رابط و محتوا به عربی، انگلیسی و فارسی، تا با زائر به هر زبانی که دارد همراه شود.' },
-    { id: 'progress', title: 'پیگیری پیشرفت و امتیاز', description: 'نشانگری که اذکار کامل‌شدهٔ هر ایستگاه را ثبت می‌کند، و امتیازهایی که همراه با پیشرفتتان در مسابقه جمع می‌کنید.' },
+    { id: 'offline', title: 'کار بدون اینترنت', description: 'نقشه، حقوق و صوتی‌ها را روی دستگاه شما ذخیره می‌کند تا هنگام قطع اتصال در شلوغی مسیر همراهتان بماند.' },
+    { id: 'gps', title: 'راهنمایی به ایستگاهتان', description: 'موقعیت شما را روی نقشه و ستونی را که رسیده‌اید مشخص می‌کند تا شما را به ایستگاهتان و پیرامون آن راه بنماید.' },
+    { id: 'progress', title: 'ثبت پیشرفت شما', description: 'نشانگری که حقوق کامل‌شدهٔ هر ایستگاه را ذخیره می‌کند تا بدانید کجا رسیده‌اید و چه مقدار باقی است.' },
+    { id: 'selftest', title: 'خود را بیازما', description: 'پس از حقوق هر ایستگاه، آموخته‌تان را با پرسش‌هایی کوتاه پیش از رفتن بیازمایید.' },
+    { id: 'notifications', title: 'اعلان‌ها و صندوق ورودی', description: 'اعلان‌های مهم مسیر زودتر از همه می‌رسد و در صندوق ورودی درون اپلیکیشن ذخیره می‌شود تا بازگردید.' },
+    { id: 'trilingual', title: 'به سه زبان', description: 'به عربی، انگلیسی و فارسی، تا با زائر به هر زبانی که آمده همراه شود.' },
   ],
   faqHeading: 'پرسش‌هایی که پیش از دانلود بارها پرسیده می‌شود',
   faq: [
-    { q: 'اپلیکیشن معارف سجادیه چیست؟', a: 'همراه زائر در مسیر است: راه را به ایستگاه‌هایی در امتداد ستون‌های شماره‌دار تقسیم می‌کند، اذکار و ادعیهٔ هر ایستگاه را متنی و صوتی آماده می‌سازد، شما را به خدمات پزشکی و بهداشتی مسیر راهنمایی می‌کند و مسابقه‌ای معرفتی امتیازی دارد. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).' },
+    { q: 'اپلیکیشن معارف سجادیه چیست؟', a: 'همراه شما در مسیر کربلا است: نقشه‌ای که راه را به ایستگاه‌هایی در امتداد ستون‌های شماره‌دار تقسیم می‌کند و در هر ایستگاه حقوقی از «رساله حقوق» امام سجاد (علیه‌السلام) به‌صورت متنی و صوتی، همراه با کتابخانهٔ صوتی و مسابقه‌ای با جوایز. شعارش: گام بردار و بیاموز. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).' },
     { q: 'آیا اپلیکیشن رایگان است؟', a: 'بله، معارف سجادیه کاملاً رایگان است، بدون هیچ هزینه، اشتراک یا تبلیغات.' },
-    { q: 'آیا اپلیکیشن بدون اینترنت کار می‌کند؟', a: 'بله، پس از دانلود محتوا، ایستگاه‌ها، اذکار، زیارات و بیشتر خدمات بدون نیاز به اتصال کار می‌کنند که هنگام قطع اینترنت در مسیر کمک‌رسان است. اپلیکیشن نیز محتوای تازه را هرگاه اتصال فراهم باشد در پس‌زمینه هماهنگ می‌کند.' },
-    { q: 'اپلیکیشن چگونه مرا به ایستگاه‌ها و خدمات راهنمایی می‌کند؟', a: 'ایستگاه‌ها در امتداد ستون‌های شماره‌دار مسیر چیده شده‌اند و اپلیکیشن با موقعیت شما روی نقشه، رسیدنتان به ایستگاه را تشخیص می‌دهد و نزدیک‌ترین خدمات را نشان می‌دهد.' },
+    { q: 'آیا اپلیکیشن بدون اینترنت کار می‌کند؟', a: 'بله، پس از دانلود محتوا، نقشه، حقوق و صوتی‌ها بدون نیاز به اتصال کار می‌کنند که هنگام قطع اینترنت در مسیر کمک‌رسان است. محتوای تازه نیز هرگاه اتصال فراهم باشد در پس‌زمینه هماهنگ می‌شود.' },
+    { q: 'ارتباط ایستگاه‌ها با رساله حقوق چیست؟', a: 'رساله حقوق (پنجاه حق) بر ایستگاه‌های مسیر که بر ستون‌ها نشانده شده‌اند تقسیم شده است؛ حقوق هر ایستگاه را می‌خوانید، می‌شنوید و خود را می‌آزمایید تا با توشه‌ای از معرفت برسید.' },
     { q: 'اپلیکیشن چه زمانی برای دانلود در دسترس است؟', a: 'اپلیکیشن در آستانهٔ انتشار است و به‌زودی ان‌شاءالله در App Store و Google Play در دسترس خواهد بود. این صفحه را دنبال کنید تا از نخستین کسانی باشید که آن را هنگام انتشار دانلود می‌کنند.' },
     { q: 'روی چه دستگاه‌هایی کار می‌کند؟', a: 'اپلیکیشن برای iOS از App Store و برای Android از Google Play منتشر می‌شود، با رابط کامل به عربی، انگلیسی و فارسی.' },
   ],
   finalCta: {
     title: 'از نخستین کسانی باشید که با معارف سجادیه راه می‌افتند',
-    subtitle: 'اپلیکیشن به‌زودی ان‌شاءالله در App Store و Google Play می‌آید — دستگاهتان را آماده کنید و معارف سجادیه را از نخستین ستون تا آنجا که چشمتان به مقصد روشن شود همراه خود سازید.',
+    subtitle: 'اپلیکیشن به‌زودی ان‌شاءالله در App Store و Google Play می‌آید — دستگاهتان را آماده کنید و «معارف سجادیه» را از نخستین ستون تا حرم شریف حسینی همراه خود سازید.',
   },
   footer: {
-    tagline: 'معارف سجادیه — همراه زائر در مسیر، منتشرشده توسط مؤسسهٔ امام زین‌العابدین (علیه‌السلام).',
+    tagline: 'معارف سجادیه — همراه زائر در مسیر کربلا، منتشرشده توسط مؤسسهٔ امام زین‌العابدین (علیه‌السلام).',
     rights: 'تمامی حقوق برای مؤسسهٔ امام زین‌العابدین (علیه‌السلام) محفوظ است.',
     comingSoon: 'به‌زودی',
   },
   alt: {
-    heroPhone: 'صفحهٔ اصلی اپلیکیشن معارف سجادیه که ایستگاه‌های مسیر زیارت را نمایش می‌دهد',
-    stationsPhone: 'صفحهٔ ایستگاه‌ها در اپلیکیشن معارف سجادیه که یک ایستگاه مسیر را همراه با اذکار و ادعیهٔ آن نشان می‌دهد',
-    amenitiesPhone: 'صفحهٔ خدمات مسیر که مراکز پزشکی و بهداشتی را روی نقشه نزدیک‌ترین ستون نمایش می‌دهد',
-    recitationsPhone: 'صفحهٔ کتابخانهٔ صوتی که یک زیارت یا دعا را همراه با پخش‌کنندهٔ صوتی با صدای قاری نشان می‌دهد',
-    competitionPhone: 'صفحهٔ مسابقه که پرسشی معرفتی مرتبط با یکی از ایستگاه‌ها را همراه با امتیاز نمایش می‌دهد',
+    heroPhone: 'صفحهٔ اصلی اپلیکیشن معارف سجادیه: زائری که راه کربلا را می‌پیماید و تابلویی که ستون بعدی را نشان می‌دهد',
+    stationsPhone: 'نقشهٔ مسیر که راه به‌سوی حرم حسینی را با ایستگاه‌هایش که بر ستون‌های شماره‌دار نشانده شده‌اند نمایش می‌دهد',
+    rightsPhone: 'صفحهٔ خواندن حقوق یک ایستگاه از رساله حقوق امام زین‌العابدین (علیه‌السلام) همراه با پخش‌کنندهٔ صوتی',
+    recitationsPhone: 'صفحهٔ کتابخانهٔ صوتی که تلاوت‌های قرآن، صحیفه و لطمیات اربعین را همراه با پخش‌کننده نمایش می‌دهد',
+    competitionPhone: 'صفحهٔ آزمون که پرسشی مرتبط با حقوق یکی از ایستگاه‌ها را همراه با گزینه‌های پاسخ نمایش می‌دهد',
     appIcon: 'آیکون اپلیکیشن معارف سجادیه به رنگ سبز و طلایی',
   },
 };

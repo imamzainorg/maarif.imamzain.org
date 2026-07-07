@@ -20,7 +20,7 @@ interface Props {
 const { locale } = Astro.props;
 const c = CONTENT[locale];
 const byId = Object.fromEntries(c.sections.map((s) => [s.id, s]));
-const amenities = byId.amenities;
+const rights = byId.rights;
 const recitations = byId.recitations;
 const competition = byId.competition;
 const journey = byId.journey;
@@ -32,8 +32,8 @@ const journey = byId.journey;
   <Showcase locale={locale} />
 
   <ContentSection
-    eyebrow={amenities.eyebrow} title={amenities.title} body={amenities.body}
-    icon="medical" image={SCREENS.amenities} alt={c.alt.amenitiesPhone}
+    eyebrow={rights.eyebrow} title={rights.title} body={rights.body}
+    icon="scroll" image={SCREENS.rights} alt={c.alt.rightsPhone}
   />
   <ContentSection
     eyebrow={recitations.eyebrow} title={recitations.title} body={recitations.body}
