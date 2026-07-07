@@ -1,0 +1,60 @@
+---
+/**
+ * The two store download badges. Both are always in the DOM for SEO; a tiny head
+ * script tags <html> with is-ios / is-android / is-desktop and CSS then
+ * highlights the badge that matches the visitor's device.
+ *
+ * PRE-LAUNCH: while `SITE.launch.live` is false (or a store URL is missing), the
+ * badge renders as a non-interactive "coming soon" chip instead of a dead link —
+ * so nothing 404s. On launch day, flip `SITE.launch.live` (and fill the iOS URL)
+ * and the same badges become real links automatically.
+ */
+import { SITE, type Locale } from '@/site.config';
+import Icon from './Icon.astro';
+
+interface Props {
+  locale: Locale;
+  onDark?: boolean;
+}
+const { locale } = Astro.props;
+
+const RECO: Record<Locale, string> = {
+  ar: 'موصى به لجهازك',
+  en: 'Recommended',
+  fa: 'پیشنهاد برای شما',
+};
+const SOON: Record<Locale, string> = { ar: 'قريباً', en: 'Coming soon', fa: 'به‌زودی' };
+const LABELS: Record<Locale, { ios1: string; android1: string }> = {
+  ar: { ios1: 'حمّله من', android1: 'احصل عليه من' },
+  en: { ios1: 'Download on the', android1: 'Get it on' },
+  fa: { ios1: 'دریافت از', android1: 'دریافت از' },
+};
+const reco = RECO[locale];
+const soon = SOON[locale];
+const l = LABELS[locale];
+
+const badges = [
+  { key: 'ios', url: SITE.stores.ios, glyph: 'apple', glyphSize: 26, name: 'App Store', small: l.ios1 },
+  { key: 'android', url: SITE.stores.android, glyph: 'google-play', glyphSize: 24, name: 'Google Play', small: l.android1 },
+] as const;
+
+/** A badge is a real link only once launched AND that store has a URL. */
+const isLive = (url: string | null) => SITE.launch.live && typeof url === 'string' && url.length > 0;
+---
+<div class="stores">
+  {badges.map((b) =>
+    isLive(b.url) ? (
+      <a class="store-badge" data-store={b.key} href={b.url} target="_blank" rel="noopener noreferrer" aria-label={b.name}>
+        <span class="store-badge__reco"><Icon name="check" size={12} /> {reco}</span>
+        <Icon name={b.glyph} class="store-badge__glyph" size={b.glyphSize} />
+        <span class="store-badge__text"><small>{b.small}</small><strong>{b.name}</strong></span>
+      </a>
+    ) : (
+      <span class="store-badge store-badge--soon" data-store={b.key} role="link" aria-disabled="true" aria-label={`${b.name} — ${soon}`}>
+        <span class="store-badge__soon">{soon}</span>
+        <Icon name={b.glyph} class="store-badge__glyph" size={b.glyphSize} />
+        <span class="store-badge__text"><small>{b.small}</small><strong>{b.name}</strong></span>
+      </span>
+    ),
+  )}
+</div>
