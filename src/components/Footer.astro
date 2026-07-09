@@ -12,6 +12,11 @@ const c = CONTENT[locale];
 const year = 1447; // Hijri year of publication; kept static (no build-time clock)
 /** Pre-launch: render store links as muted "coming soon" chips, not dead links. */
 const isLive = (url: string | null) => SITE.launch.live && typeof url === 'string' && url.length > 0;
+const PRIVACY: Record<Locale, string> = {
+  ar: 'سياسة الخصوصية',
+  en: 'Privacy Policy',
+  fa: 'سیاست حریم خصوصی',
+};
 ---
 <footer class="site-footer">
   <div class="wrap">
@@ -39,6 +44,7 @@ const isLive = (url: string | null) => SITE.launch.live && typeof url === 'strin
     </div>
     <div class="site-footer__bottom">
       <span>© {year} · {c.footer.rights}</span>
+      <a href="/privacy-policy">{PRIVACY[locale]}</a>
       <LangSwitch locale={locale} />
     </div>
   </div>
