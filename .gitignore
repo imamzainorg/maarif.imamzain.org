@@ -24,3 +24,6 @@ Thumbs.db
 
 # raw app screenshots kept as design reference (not shipped)
 app-screenshots/
+
+# local editor / tooling config
+.claude/
