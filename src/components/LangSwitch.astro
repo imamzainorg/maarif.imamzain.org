@@ -1,20 +1,36 @@
 ---
-/** Language switcher — plain anchor links, zero JS. Marks the active locale. */
+/** Language switcher — marks the active locale.
+ *  By default links between the locale home pages; pass `paths` to switch
+ *  between localized variants of another page (e.g. the privacy policy).
+ *  Preserves scroll position when changing language. */
 import { SITE, type Locale } from '@/site.config';
 import { localePath, LOCALE_LABEL, HTML_LANG } from '@/i18n';
 
 interface Props {
   locale: Locale;
+  paths?: Record<Locale, string>;
 }
-const { locale } = Astro.props;
+const { locale, paths } = Astro.props;
 ---
 <nav class="lang" aria-label="Language">
   {SITE.locales.map((l) => (
     <a
-      href={localePath(l)}
+      href={paths ? paths[l] : localePath(l)}
       lang={HTML_LANG[l]}
       hreflang={HTML_LANG[l]}
       aria-current={l === locale ? 'true' : undefined}
+      onclick="sessionStorage.setItem('_scroll', window.scrollY)"
     >{LOCALE_LABEL[l]}</a>
   ))}
 </nav>
+
+<script>
+  // Restore scroll position on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollPos = sessionStorage.getItem('_scroll');
+    if (scrollPos) {
+      window.scrollTo(0, parseInt(scrollPos, 10));
+      sessionStorage.removeItem('_scroll');
+    }
+  });
+</script>

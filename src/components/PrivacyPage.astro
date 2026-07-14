@@ -1,0 +1,393 @@
+---
+/**
+ * Privacy policy for the Maarif Sajjadiya app — one component, three locales
+ * (`/privacy-policy`, `/en/privacy-policy`, `/fa/privacy-policy`). The Arabic
+ * URL is the stable one the App Store / Google Play listings point at. Each
+ * variant carries canonical + hreflang and a language switcher that navigates
+ * between the privacy pages (not the home pages), so the selected language is
+ * preserved.
+ */
+import "@fontsource-variable/vazirmatn/index.css"
+import "@/styles/global.css"
+import { SITE, type Locale } from "@/site.config"
+import {
+	DIR,
+	HTML_LANG,
+	localePath,
+	privacyPath,
+	privacyAlternates,
+} from "@/i18n"
+import { PRIVACY_CONTENT } from "@/i18n/privacy"
+import { ogLocale } from "@/lib/jsonld"
+import Logo from "@/components/Logo.astro"
+import LangSwitch from "@/components/LangSwitch.astro"
+import Footer from "@/components/Footer.astro"
+import Icon from "@/components/Icon.astro"
+
+interface Props {
+	locale: Locale
+}
+const { locale } = Astro.props
+const c = PRIVACY_CONTENT[locale]
+
+const canonical = `${SITE.origin}${privacyPath(locale)}`
+const homeHref = localePath(locale)
+const alts = privacyAlternates()
+const langPaths = Object.fromEntries(
+	SITE.locales.map((l) => [l, privacyPath(l)]),
+) as Record<Locale, string>
+const brandName =
+	locale === "en"
+		? "Maarif Sajjadiya"
+		: locale === "fa"
+			? "معارف سجادیه"
+			: "معارف سجادية"
+const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadiya"
+---
+
+<!doctype html>
+<html lang={HTML_LANG[locale]} dir={DIR[locale]}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<title>{c.seo.title}</title>
+		<meta name="description" content={c.seo.description} />
+		<link rel="canonical" href={canonical} />
+		{
+			alts.map((a) => (
+				<link rel="alternate" hreflang={a.hreflang} href={a.href} />
+			))
+		}
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="theme-color" content={SITE.brand.primary} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={c.seo.title} />
+		<meta property="og:description" content={c.seo.description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:locale" content={ogLocale(locale)} />
+	</head>
+	<body class="pp">
+		<a href="#main" class="skip-link">{c.skip}</a>
+		<span id="top"></span>
+
+		<header class="site-header">
+			<div class="wrap site-header__row">
+				<a class="brand" href={homeHref} aria-label={brandName}>
+					<Logo class="brand__mark" size={38} title={brandName} />
+					<span class="brand__name"
+						>{brandName}<small>{brandLatin}</small></span
+					>
+				</a>
+				<div class="header-actions">
+					<LangSwitch locale={locale} paths={langPaths} />
+					<a class="btn btn--ghost btn--sm pp-back" href={homeHref}>
+						<Icon name="arrow-right" size={16} />
+						{c.back}
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<main id="main" tabindex="-1">
+			<section class="wrap pp-hero">
+				<span class="pp-badge"
+					><Icon name="shield-check" size={16} /> {c.badge}</span
+				>
+				<h1 class="pp-title">{c.heading}</h1>
+				<div class="pp-rule"><span></span><i></i><span></span></div>
+				<p class="pp-lead">{c.lead}</p>
+				<div class="pp-chips">
+					{
+						c.guarantees.map((g) => (
+							<span class="pp-chip">
+								<Icon name={g.icon} size={17} /> {g.label}
+							</span>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="wrap">
+				<div class="pp-sections">
+					{
+						c.sections.map((s) => (
+							<article id={s.id} class="pp-card">
+								<header class="pp-card__head">
+									<span class="pp-ic">
+										<Icon name={s.icon} size={22} />
+									</span>
+									<div>
+										<span class="pp-order">{s.order}</span>
+										<h2>{s.title}</h2>
+									</div>
+								</header>
+								<ul class="pp-points">
+									{s.points.map((p) => (
+										<li>{p}</li>
+									))}
+								</ul>
+							</article>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="wrap">
+				<div class="pp-band">
+					<Icon name="shield-check" size={40} class="pp-band__ic" />
+					<h2>{c.band.title}</h2>
+					<p>{c.band.body}</p>
+					<div class="pp-actions">
+						<a class="btn btn--primary" href={homeHref}
+							>{c.band.home}</a
+						>
+						<a
+							class="btn btn--on-dark btn--ghost"
+							href={SITE.org.url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{c.band.org}
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="wrap pp-foot">
+				<span class="pp-foot__name"
+					><Icon name="sparkle" size={16} /> {c.foot.name}</span
+				>
+				<p>{c.foot.note}</p>
+			</section>
+		</main>
+
+		<Footer locale={locale} />
+
+		<style>
+			.pp {
+				background: var(--paper);
+			}
+			.pp-hero {
+				text-align: center;
+				padding-block: clamp(2rem, 5vw, 3.5rem)
+					clamp(1.4rem, 4vw, 2.2rem);
+			}
+			.pp-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.4rem 1rem;
+				border-radius: 999px;
+				border: 1px solid
+					color-mix(in srgb, var(--gold) 40%, transparent);
+				background: color-mix(in srgb, var(--gold) 12%, transparent);
+				color: var(--gold-600);
+				font-weight: 700;
+				font-size: var(--step--1);
+			}
+			.pp-badge svg {
+				inline-size: 1rem;
+				block-size: 1rem;
+			}
+			.pp-title {
+				font-size: var(--step-3);
+				margin-block: 1rem 0.8rem;
+				color: var(--teal-900);
+			}
+			@media (prefers-color-scheme: dark) {
+				.pp-title {
+					color: var(--ink);
+				}
+			}
+			.pp-rule {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.6rem;
+				margin-block: 0.4rem 1.2rem;
+			}
+			.pp-rule span {
+				inline-size: 3rem;
+				block-size: 1px;
+				background: color-mix(in srgb, var(--gold) 55%, transparent);
+			}
+			.pp-rule i {
+				inline-size: 0.4rem;
+				block-size: 0.4rem;
+				border-radius: 999px;
+				background: var(--gold);
+			}
+			.pp-lead {
+				color: var(--muted);
+				font-size: var(--step-1);
+				max-inline-size: 40rem;
+				margin-inline: auto;
+				font-weight: 500;
+			}
+			.pp-chips {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				justify-content: center;
+				margin-block-start: 1.5rem;
+			}
+			.pp-chip {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.5rem 1rem;
+				border-radius: 999px;
+				border: 1px solid var(--line-strong);
+				background: var(--card);
+				color: var(--ink);
+				font-weight: 600;
+				font-size: var(--step--1);
+				box-shadow: var(--shadow-sm);
+			}
+			.pp-chip svg {
+				inline-size: 1.1rem;
+				block-size: 1.1rem;
+				color: var(--teal-600);
+			}
+			@media (prefers-color-scheme: dark) {
+				.pp-chip svg {
+					color: var(--mint-300);
+				}
+			}
+
+			.pp-sections {
+				max-inline-size: 48rem;
+				margin-inline: auto;
+				display: grid;
+				gap: 1.2rem;
+			}
+			.pp-card {
+				background: var(--card);
+				border: 1px solid var(--line);
+				border-radius: var(--radius-lg);
+				padding: clamp(1.4rem, 4vw, 2.4rem);
+				box-shadow: var(--shadow-sm);
+			}
+			.pp-card__head {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				padding-block-end: 1.1rem;
+				border-block-end: 1px solid var(--line);
+				margin-block-end: 1.2rem;
+			}
+			.pp-ic {
+				flex: none;
+				inline-size: 3rem;
+				block-size: 3rem;
+				display: grid;
+				place-items: center;
+				border-radius: 999px;
+				background: var(--mint);
+				color: var(--teal-800);
+			}
+			@media (prefers-color-scheme: dark) {
+				.pp-ic {
+					color: var(--mint);
+					background: rgba(200, 224, 224, 0.14);
+				}
+			}
+			.pp-order {
+				display: block;
+				font-size: var(--step--1);
+				font-weight: 700;
+				color: var(--gold-600);
+			}
+			.pp-card h2 {
+				font-size: var(--step-1);
+				color: var(--ink);
+				margin-block-start: 0.15rem;
+			}
+			.pp-points {
+				list-style: none;
+				padding: 0;
+				display: grid;
+				gap: 0.95rem;
+			}
+			.pp-points li {
+				display: flex;
+				gap: 0.7rem;
+				align-items: flex-start;
+				color: var(--muted);
+				line-height: 1.75;
+			}
+			.pp-points li::before {
+				content: "";
+				flex: none;
+				inline-size: 0.5rem;
+				block-size: 0.5rem;
+				border-radius: 999px;
+				background: var(--gold);
+				margin-block-start: 0.65rem;
+			}
+
+			.pp-band {
+				position: relative;
+				overflow: hidden;
+				text-align: center;
+				color: #f2f8f6;
+				background: linear-gradient(
+					160deg,
+					var(--teal-700),
+					var(--teal-900)
+				);
+				border-radius: var(--radius-lg);
+				padding: clamp(2rem, 5vw, 3.5rem);
+				margin-block: clamp(2rem, 5vw, 3rem);
+				box-shadow: var(--shadow-md);
+			}
+			.pp-band__ic {
+				color: var(--gold-200);
+				margin-inline: auto;
+			}
+			.pp-band h2 {
+				font-size: var(--step-2);
+				margin-block-start: 0.6rem;
+			}
+			.pp-band p {
+				color: rgba(240, 248, 246, 0.9);
+				max-inline-size: 36rem;
+				margin: 1rem auto 1.6rem;
+			}
+			.pp-actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.8rem;
+				justify-content: center;
+			}
+
+			.pp-foot {
+				text-align: center;
+				padding-block: 1rem 3rem;
+			}
+			.pp-foot__name {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4rem;
+				color: var(--gold-600);
+				font-weight: 700;
+			}
+			.pp-foot p {
+				color: var(--muted);
+				font-size: var(--step--1);
+				margin-block-start: 0.5rem;
+				max-inline-size: 30rem;
+				margin-inline: auto;
+			}
+
+			/* Keep the compact header usable on phones: the back button yields first. */
+			@media (max-width: 560px) {
+				.pp-back {
+					display: none;
+				}
+			}
+		</style>
+	</body>
+</html>

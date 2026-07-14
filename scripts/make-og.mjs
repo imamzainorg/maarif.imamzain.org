@@ -28,7 +28,12 @@ const GOLD_A = '#d6ab70';
 const GOLD_B = '#a9835a';
 
 const LOGO = P('src/assets/logo.png');
-const HOME = P('src/assets/screens/home.png');
+/** Per-locale phone screenshot for the OG cover (fa has no captures → Arabic). */
+const HOME = {
+  ar: P('src/assets/screens/home.png'),
+  en: P('src/assets/screens/en/home.png'),
+  fa: P('src/assets/screens/home.png'),
+};
 
 const roundedRectSvg = (w, h, r, fill) =>
   Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${r}" ry="${r}" fill="${fill}"/></svg>`);
@@ -90,26 +95,26 @@ function ogBackground() {
 async function buildOg() {
   await mkdir(P('public/og'), { recursive: true });
   const bg = await sharp(ogBackground()).png().toBuffer();
-
   const logo = await sharp(LOGO).resize({ height: 96 }).png().toBuffer();
-  const phone = await roundedImage(HOME, 566, 42);
-  const bezel = roundedRectSvg(phone.width + 16, phone.height + 16, 50, TEAL_900);
-  const phoneLeft = 1200 - phone.width - 96;
-  const phoneTop = Math.round((630 - phone.height) / 2);
-
-  const cover = await sharp(bg)
-    .composite([
-      { input: bezel, top: phoneTop - 8, left: phoneLeft - 8 },
-      { input: phone.buffer, top: phoneTop, left: phoneLeft },
-      { input: logo, top: 66, left: 92 },
-    ])
-    .jpeg({ quality: 82, mozjpeg: true })
-    .toBuffer();
 
   for (const locale of ['ar', 'en', 'fa']) {
+    const phone = await roundedImage(HOME[locale], 566, 42);
+    const bezel = roundedRectSvg(phone.width + 16, phone.height + 16, 50, TEAL_900);
+    const phoneLeft = 1200 - phone.width - 96;
+    const phoneTop = Math.round((630 - phone.height) / 2);
+
+    const cover = await sharp(bg)
+      .composite([
+        { input: bezel, top: phoneTop - 8, left: phoneLeft - 8 },
+        { input: phone.buffer, top: phoneTop, left: phoneLeft },
+        { input: logo, top: 66, left: 92 },
+      ])
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toBuffer();
+
     await writeFile(P(`public/og/${locale}.jpg`), cover);
+    console.log(`public/og/${locale}.jpg written (${(cover.length / 1024).toFixed(0)} kB)`);
   }
-  console.log(`OG cover written (${(cover.length / 1024).toFixed(0)} kB) → public/og/{ar,en,fa}.jpg`);
 }
 
 async function buildIcon(size, out) {
