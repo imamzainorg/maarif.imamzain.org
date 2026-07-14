@@ -19,15 +19,21 @@ import { dirname, resolve } from 'node:path';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const P = (p) => resolve(root, p);
 
-const GREEN = '#006654';
-const GREEN_HI = '#0a7c6a';
-const GREEN_900 = '#04352d';
-const SAND = '#f4f0e7';
-const GOLD_A = '#d8b878';
-const GOLD_B = '#a97f45';
+// Sampled from the app: teal UI (#148480 on #10504e), tan/gold accent.
+const TEAL = '#0f6660';
+const TEAL_HI = '#1d938d';
+const TEAL_900 = '#0a3a38';
+const SURFACE = '#f3f4f2';
+const GOLD_A = '#d6ab70';
+const GOLD_B = '#a9835a';
 
 const LOGO = P('src/assets/logo.png');
-const HOME = P('src/assets/screens/home.png');
+/** Per-locale phone screenshot for the OG cover (fa has no captures → Arabic). */
+const HOME = {
+  ar: P('src/assets/screens/home.png'),
+  en: P('src/assets/screens/en/home.png'),
+  fa: P('src/assets/screens/home.png'),
+};
 
 const roundedRectSvg = (w, h, r, fill) =>
   Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${r}" ry="${r}" fill="${fill}"/></svg>`);
@@ -51,9 +57,9 @@ function ogBackground() {
   <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
     <defs>
       <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="${GREEN_HI}"/>
-        <stop offset="0.55" stop-color="${GREEN}"/>
-        <stop offset="1" stop-color="${GREEN_900}"/>
+        <stop offset="0" stop-color="${TEAL_HI}"/>
+        <stop offset="0.55" stop-color="${TEAL}"/>
+        <stop offset="1" stop-color="${TEAL_900}"/>
       </linearGradient>
       <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="${GOLD_A}"/>
@@ -89,32 +95,32 @@ function ogBackground() {
 async function buildOg() {
   await mkdir(P('public/og'), { recursive: true });
   const bg = await sharp(ogBackground()).png().toBuffer();
-
   const logo = await sharp(LOGO).resize({ height: 96 }).png().toBuffer();
-  const phone = await roundedImage(HOME, 566, 42);
-  const bezel = roundedRectSvg(phone.width + 16, phone.height + 16, 50, GREEN_900);
-  const phoneLeft = 1200 - phone.width - 96;
-  const phoneTop = Math.round((630 - phone.height) / 2);
-
-  const cover = await sharp(bg)
-    .composite([
-      { input: bezel, top: phoneTop - 8, left: phoneLeft - 8 },
-      { input: phone.buffer, top: phoneTop, left: phoneLeft },
-      { input: logo, top: 66, left: 92 },
-    ])
-    .jpeg({ quality: 82, mozjpeg: true })
-    .toBuffer();
 
   for (const locale of ['ar', 'en', 'fa']) {
+    const phone = await roundedImage(HOME[locale], 566, 42);
+    const bezel = roundedRectSvg(phone.width + 16, phone.height + 16, 50, TEAL_900);
+    const phoneLeft = 1200 - phone.width - 96;
+    const phoneTop = Math.round((630 - phone.height) / 2);
+
+    const cover = await sharp(bg)
+      .composite([
+        { input: bezel, top: phoneTop - 8, left: phoneLeft - 8 },
+        { input: phone.buffer, top: phoneTop, left: phoneLeft },
+        { input: logo, top: 66, left: 92 },
+      ])
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toBuffer();
+
     await writeFile(P(`public/og/${locale}.jpg`), cover);
+    console.log(`public/og/${locale}.jpg written (${(cover.length / 1024).toFixed(0)} kB)`);
   }
-  console.log(`OG cover written (${(cover.length / 1024).toFixed(0)} kB) → public/og/{ar,en,fa}.jpg`);
 }
 
 async function buildIcon(size, out) {
   const logoH = Math.round(size * 0.66);
   const logo = await sharp(LOGO).resize({ height: logoH }).png().toBuffer();
-  const tile = sharp({ create: { width: size, height: size, channels: 4, background: SAND } })
+  const tile = sharp({ create: { width: size, height: size, channels: 4, background: SURFACE } })
     .composite([{ input: logo, gravity: 'center' }])
     .png();
   await writeFile(P(out), await tile.toBuffer());

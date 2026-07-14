@@ -23,8 +23,10 @@ Foundation**.
   (+ x-default), Open Graph + Twitter, i18n sitemap, JSON-LD
   (SoftwareApplication / MobileApplication, Organization, WebSite,
   BreadcrumbList, FAQPage). No fabricated rating.
-- **Brand**: the app's own palette — green `#006654` (logo / hero), gold
-  `#bb9661` (accent), over warm sand surfaces, with charcoal for the CTA/footer.
+- **Brand**: the app's own palette, sampled from its screenshots — teal leads
+  (logo `#0c747c`, buttons `#148480`, deep background `#10504e`), tan `#c0a281`
+  is the accent, mint `#c8e0e0` for round icon chips, over neutral off-white
+  surfaces. Dark scheme = the app's own deep-teal look.
 
 ## Develop
 

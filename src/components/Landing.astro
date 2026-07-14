@@ -2,7 +2,7 @@
 /** Full single-page composition, shared by all three locale routes. */
 import { type Locale } from '@/site.config';
 import { CONTENT } from '@/i18n/content';
-import { SCREENS } from '@/lib/screens';
+import { screensFor } from '@/lib/screens';
 import Header from './Header.astro';
 import Hero from './Hero.astro';
 import TrustBar from './TrustBar.astro';
@@ -19,6 +19,7 @@ interface Props {
 }
 const { locale } = Astro.props;
 const c = CONTENT[locale];
+const screens = screensFor(locale);
 const byId = Object.fromEntries(c.sections.map((s) => [s.id, s]));
 const rights = byId.rights;
 const recitations = byId.recitations;
@@ -33,16 +34,16 @@ const journey = byId.journey;
 
   <ContentSection
     eyebrow={rights.eyebrow} title={rights.title} body={rights.body}
-    icon="scroll" image={SCREENS.rights} alt={c.alt.rightsPhone}
+    icon="scroll" image={screens.rights} alt={c.alt.rightsPhone}
   />
   <ContentSection
     eyebrow={recitations.eyebrow} title={recitations.title} body={recitations.body}
-    icon="headphones" image={SCREENS.recitations} alt={c.alt.recitationsPhone}
+    icon="headphones" image={screens.recitations} alt={c.alt.recitationsPhone}
     reversed tint
   />
   <ContentSection
     eyebrow={competition.eyebrow} title={competition.title} body={competition.body}
-    icon="trophy" image={SCREENS.competition} alt={c.alt.competitionPhone}
+    icon="trophy" image={screens.competition} alt={c.alt.competitionPhone}
     warm
   />
 

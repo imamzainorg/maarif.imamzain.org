@@ -45,6 +45,21 @@ export function canonicalUrl(locale: Locale): string {
 }
 
 /**
+ * Root-relative path of a locale's privacy-policy page. The Arabic page keeps
+ * the unprefixed `/privacy-policy` — it predates the localized variants and is
+ * the stable URL the store listings point at.
+ */
+export function privacyPath(locale: Locale): string {
+  return locale === DEFAULT_LOCALE ? '/privacy-policy' : `/${locale}/privacy-policy`;
+}
+
+/** hreflang alternates for the privacy pages (+ x-default → Arabic). */
+export function privacyAlternates(): { hreflang: string; href: string }[] {
+  const list = LOCALES.map((l) => ({ hreflang: HTML_LANG[l], href: `${SITE.origin}${privacyPath(l)}` }));
+  return [...list, { hreflang: 'x-default', href: `${SITE.origin}${privacyPath(DEFAULT_LOCALE)}` }];
+}
+
+/**
  * hreflang alternates for every locale plus x-default (points at Arabic root).
  * Emitted in <head> and consumed by the sitemap for maximal SEO coverage.
  */

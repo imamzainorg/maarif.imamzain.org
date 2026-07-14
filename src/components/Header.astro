@@ -10,8 +10,11 @@ interface Props {
 }
 const { locale } = Astro.props;
 const c = CONTENT[locale];
+
+/** Accessible name for the mobile menu disclosure. */
+const MENU_LABEL: Record<Locale, string> = { ar: 'القائمة', en: 'Menu', fa: 'منو' };
 ---
-<header class="site-header">
+<header class="site-header site-header--landing">
   <div class="wrap site-header__row">
     <a class="brand" href="#top" aria-label={c.brand.name}>
       <Logo class="brand__mark" size={38} title={c.brand.name} />
@@ -26,10 +29,47 @@ const c = CONTENT[locale];
 
     <div class="header-actions">
       <LangSwitch locale={locale} />
-      <a class="btn btn--primary btn--sm" href="#download">
+      <a class="btn btn--primary btn--sm header-cta" href="#download">
         <Icon name="download" size={17} />
         <span>{c.nav.download}</span>
       </a>
+
+      {/* Mobile menu — native <details> disclosure, works without JS (a tiny
+          inline script closes it after a link is chosen / on outside click). */}
+      <details class="mnav">
+        <summary aria-label={MENU_LABEL[locale]}>
+          <Icon name="menu" class="mnav__open" size={22} />
+          <Icon name="x" class="mnav__close" size={22} />
+        </summary>
+        <nav class="mnav__panel" aria-label={MENU_LABEL[locale]}>
+          <a href="#features">{c.nav.features}</a>
+          <a href="#content">{c.nav.content}</a>
+          <a href="#faq">{c.nav.faq}</a>
+          <a class="btn btn--primary mnav__cta" href="#download">
+            <Icon name="download" size={17} />
+            <span>{c.nav.download}</span>
+          </a>
+          <div class="mnav__lang"><LangSwitch locale={locale} /></div>
+        </nav>
+      </details>
     </div>
   </div>
 </header>
+
+<script is:inline>
+  // Close the mobile menu after choosing a link, on outside click, and on Esc.
+  document.addEventListener('click', function (e) {
+    var open = document.querySelector('.mnav[open]');
+    if (!open || !(e.target instanceof Element)) return;
+    if (e.target.closest('.mnav__panel a') || !e.target.closest('.mnav')) open.removeAttribute('open');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var open = document.querySelector('.mnav[open]');
+    if (open) {
+      open.removeAttribute('open');
+      var s = open.querySelector('summary');
+      if (s) s.focus();
+    }
+  });
+</script>

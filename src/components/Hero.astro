@@ -1,7 +1,7 @@
 ---
 import { SITE, type Locale } from '@/site.config';
 import { CONTENT } from '@/i18n/content';
-import { SCREENS } from '@/lib/screens';
+import { screensFor } from '@/lib/screens';
 import StoreButtons from './StoreButtons.astro';
 import PhoneFrame from './PhoneFrame.astro';
 import Qr from './Qr.astro';
@@ -12,6 +12,7 @@ interface Props {
 }
 const { locale } = Astro.props;
 const c = CONTENT[locale];
+const screens = screensFor(locale);
 ---
 <section class="hero" id="download">
   <div class="pattern"></div>
@@ -36,7 +37,7 @@ const c = CONTENT[locale];
 
     <div class="hero__media">
       <PhoneFrame
-        image={SCREENS.hero}
+        image={screens.hero}
         alt={c.alt.heroPhone}
         class="device--hero device--floaty"
         widths={[280, 420, 560]}
