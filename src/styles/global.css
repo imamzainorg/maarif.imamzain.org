@@ -71,8 +71,12 @@
 /* ------------------------------- reset ---------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* overflow-x: clip (NOT hidden) — hidden would force overflow-y:auto and turn
+   the body into the scroll container, silently breaking every #anchor link and
+   scroll-padding. clip cuts sideways bleed without creating a scroller.
+   No scroll-behavior:smooth — Chrome cancels smooth fragment scrolls in enough
+   environments that anchors silently die; instant jumps always land. */
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; overflow-x: clip; }
 
 body {
   font-family: 'Vazirmatn Variable', system-ui, -apple-system, 'Segoe UI',
@@ -83,7 +87,7 @@ body {
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img, svg, picture { display: block; max-width: 100%; }
@@ -231,6 +235,46 @@ html.is-android .store-badge[data-store="android"] {
 .lang a { display: inline-flex; align-items: center; min-block-size: 38px; padding: 0.4rem 0.7rem; border-radius: 999px; font-size: var(--step--1); font-weight: 700; color: var(--muted); line-height: 1; }
 .lang a[aria-current="true"] { background: var(--teal-600); color: #fff; }
 .lang a:hover:not([aria-current="true"]) { color: var(--gold-600); }
+
+/* ------------------------- mobile menu (no-JS core) ---------------------- */
+/* A native <details> disclosure shown below the desktop-nav breakpoint. The
+   inline header script only adds close-on-select / outside-click / Esc. */
+.mnav { position: relative; display: none; }
+.mnav summary {
+  list-style: none; cursor: pointer;
+  display: grid; place-items: center;
+  inline-size: 44px; block-size: 44px; border-radius: 999px;
+  border: 1px solid var(--line-strong); color: var(--ink); background: transparent;
+}
+.mnav summary::-webkit-details-marker { display: none; }
+.mnav summary:hover { background: color-mix(in srgb, var(--mint) 35%, transparent); }
+.mnav[open] summary { background: var(--mint); color: var(--teal-800); border-color: transparent; }
+.mnav__close, .mnav[open] .mnav__open { display: none; }
+.mnav[open] .mnav__close { display: block; }
+.mnav__panel {
+  position: absolute; inset-inline-end: 0; inset-block-start: calc(100% + 0.65rem);
+  z-index: 60; min-inline-size: 16rem;
+  display: grid; gap: 0.2rem; padding: 0.65rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.mnav__panel > a:not(.mnav__cta) {
+  display: flex; align-items: center; min-block-size: 46px;
+  padding-inline: 0.9rem; border-radius: 14px; font-weight: 600; color: var(--ink);
+}
+.mnav__panel > a:not(.mnav__cta):hover { background: color-mix(in srgb, var(--mint) 40%, transparent); }
+.mnav__cta { margin-block-start: 0.4rem; }
+.mnav__lang { margin-block-start: 0.55rem; padding-block-start: 0.65rem; border-block-start: 1px solid var(--line); display: flex; justify-content: center; }
+@media (max-width: 899.98px) { .mnav { display: block; } }
+/* Small screens: the hero CTA is one scroll away and the landing menu carries
+   both the download link and the language switcher — slim the bar down to
+   brand + menu. Pages without the menu (privacy) keep their switcher, compact. */
+@media (max-width: 719.98px) {
+  .header-cta { display: none; }
+  .site-header--landing .header-actions > .lang { display: none; }
+  .site-header .lang a { padding-inline: 0.55rem; min-block-size: 34px; }
+  .site-header__row { gap: 0.75rem; }
+}
 
 /* ------------------------------- hero ----------------------------------- */
 /* The app's own canvas: bright teal light falling onto the deep #10504e. */

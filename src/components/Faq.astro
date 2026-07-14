@@ -18,8 +18,10 @@ const c = CONTENT[locale];
       <h2 class="section-title">{c.faqHeading}</h2>
     </div>
     <div class="faq">
+      {/* name="faq" = native exclusive accordion (opening one closes the rest);
+          older browsers simply allow multiple open — graceful degradation. */}
       {c.faq.map((item, i) => (
-        <details open={i === 0}>
+        <details name="faq" open={i === 0}>
           <summary>
             <span>{item.q}</span>
             <Icon name="plus" class="faq__plus" size={20} />

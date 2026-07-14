@@ -3,7 +3,7 @@
  *  ordered stations along numbered poles, each with its own adhkar/du'as. */
 import { type Locale } from '@/site.config';
 import { CONTENT } from '@/i18n/content';
-import { SCREENS } from '@/lib/screens';
+import { screensFor } from '@/lib/screens';
 import PhoneFrame from './PhoneFrame.astro';
 import Icon from './Icon.astro';
 
@@ -12,13 +12,14 @@ interface Props {
 }
 const { locale } = Astro.props;
 const c = CONTENT[locale];
+const screens = screensFor(locale);
 ---
 <section class="section" id="content">
   <div class="wrap split">
     <div class="split__media reveal">
       <div class="media-card">
         <div class="pattern"></div>
-        <PhoneFrame image={SCREENS.stations} alt={c.alt.stationsPhone} sizes="(max-width: 900px) 58vw, 250px" />
+        <PhoneFrame image={screens.stations} alt={c.alt.stationsPhone} sizes="(max-width: 900px) 58vw, 250px" />
       </div>
     </div>
     <div class="split__copy reveal">

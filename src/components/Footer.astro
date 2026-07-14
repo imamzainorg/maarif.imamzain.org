@@ -1,6 +1,7 @@
 ---
 import { SITE, type Locale } from '@/site.config';
 import { CONTENT } from '@/i18n/content';
+import { privacyPath } from '@/i18n';
 import Logo from './Logo.astro';
 import LangSwitch from './LangSwitch.astro';
 
@@ -44,7 +45,7 @@ const PRIVACY: Record<Locale, string> = {
     </div>
     <div class="site-footer__bottom">
       <span>© {year} · {c.footer.rights}</span>
-      <a href="/privacy-policy">{PRIVACY[locale]}</a>
+      <a href={privacyPath(locale)}>{PRIVACY[locale]}</a>
       <LangSwitch locale={locale} />
     </div>
   </div>
