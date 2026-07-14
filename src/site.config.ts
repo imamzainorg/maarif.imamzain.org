@@ -44,18 +44,19 @@ export const SITE = {
   },
 
   /**
-   * Brand palette derived from the app's visual identity: the logo's deep green
-   * leads (green-forward hero — the colour of Karbala and the ziyarat), gold is
-   * the primary accent (wayfinding / stations), over warm sand surfaces, with
-   * charcoal for the night-march CTA + footer. `primary` drives the QR colour
-   * and theme-color.
+   * Brand palette sampled from the app itself: the logo glyph is teal #0c747c,
+   * the app's screens sit on deep teal #10504e with #148480 pill buttons, tan
+   * #c0a281 is the accent (selected chips / prize bands) over neutral off-white
+   * surfaces. `primary` drives the QR colour and theme-color. Mirrors
+   * src/styles/global.css.
    */
   brand: {
-    primary: '#006654', // logo green — QR + theme-color
-    green: '#006654',
-    gold: '#bb9661', // primary accent
-    charcoal: '#241f1a', // night bars / CTA / footer
-    sand: '#f4f0e7', // surfaces
+    primary: '#0c747c', // logo teal — QR + theme-color
+    teal: '#148480', // app buttons / headers
+    tealDeep: '#10504e', // the app's page background
+    gold: '#c0a281', // tan accent
+    mint: '#c8e0e0', // round icon chips
+    surface: '#f3f4f2', // off-white surfaces
   },
 
   /** Ordered locales; `ar` is the default (served at "/"). */

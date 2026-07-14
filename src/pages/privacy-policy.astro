@@ -161,7 +161,7 @@ const sections = [
         color: var(--gold-600); font-weight: 700; font-size: var(--step--1);
       }
       .pp-badge svg { inline-size: 1rem; block-size: 1rem; }
-      .pp-title { font-size: var(--step-3); margin-block: 1rem 0.8rem; color: var(--green-900); }
+      .pp-title { font-size: var(--step-3); margin-block: 1rem 0.8rem; color: var(--teal-900); }
       @media (prefers-color-scheme: dark) { .pp-title { color: var(--ink); } }
       .pp-rule { display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-block: 0.4rem 1.2rem; }
       .pp-rule span { inline-size: 3rem; block-size: 1px; background: color-mix(in srgb, var(--gold) 55%, transparent); }
@@ -174,8 +174,8 @@ const sections = [
         border: 1px solid var(--line-strong); background: var(--card); color: var(--ink);
         font-weight: 600; font-size: var(--step--1); box-shadow: var(--shadow-sm);
       }
-      .pp-chip svg { inline-size: 1.1rem; block-size: 1.1rem; color: var(--green); }
-      @media (prefers-color-scheme: dark) { .pp-chip svg { color: var(--gold); } }
+      .pp-chip svg { inline-size: 1.1rem; block-size: 1.1rem; color: var(--teal-600); }
+      @media (prefers-color-scheme: dark) { .pp-chip svg { color: var(--mint-300); } }
 
       .pp-sections { max-inline-size: 48rem; margin-inline: auto; display: grid; gap: 1.2rem; }
       .pp-card {
@@ -185,9 +185,9 @@ const sections = [
       .pp-card__head { display: flex; align-items: center; gap: 1rem; padding-block-end: 1.1rem; border-block-end: 1px solid var(--line); margin-block-end: 1.2rem; }
       .pp-ic {
         flex: none; inline-size: 3rem; block-size: 3rem; display: grid; place-items: center;
-        border-radius: 14px; background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green);
+        border-radius: 999px; background: var(--mint); color: var(--teal-800);
       }
-      @media (prefers-color-scheme: dark) { .pp-ic { color: var(--gold); background: color-mix(in srgb, var(--gold) 15%, transparent); } }
+      @media (prefers-color-scheme: dark) { .pp-ic { color: var(--mint); background: rgba(200, 224, 224, 0.14); } }
       .pp-order { display: block; font-size: var(--step--1); font-weight: 700; color: var(--gold-600); }
       .pp-card h2 { font-size: var(--step-1); color: var(--ink); margin-block-start: 0.15rem; }
       .pp-points { list-style: none; padding: 0; display: grid; gap: 0.95rem; }
@@ -195,14 +195,14 @@ const sections = [
       .pp-points li::before { content: ""; flex: none; inline-size: 0.5rem; block-size: 0.5rem; border-radius: 999px; background: var(--gold); margin-block-start: 0.65rem; }
 
       .pp-band {
-        position: relative; overflow: hidden; text-align: center; color: #f5f2ea;
-        background: linear-gradient(160deg, var(--green-700), var(--green-900));
+        position: relative; overflow: hidden; text-align: center; color: #f2f8f6;
+        background: linear-gradient(160deg, var(--teal-700), var(--teal-900));
         border-radius: var(--radius-lg); padding: clamp(2rem, 5vw, 3.5rem);
         margin-block: clamp(2rem, 5vw, 3rem); box-shadow: var(--shadow-md);
       }
       .pp-band__ic { color: var(--gold-200); margin-inline: auto; }
       .pp-band h2 { font-size: var(--step-2); margin-block-start: 0.6rem; }
-      .pp-band p { color: rgba(245, 242, 234, 0.9); max-inline-size: 36rem; margin: 1rem auto 1.6rem; }
+      .pp-band p { color: rgba(240, 248, 246, 0.9); max-inline-size: 36rem; margin: 1rem auto 1.6rem; }
       .pp-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
 
       .pp-foot { text-align: center; padding-block: 1rem 3rem; }

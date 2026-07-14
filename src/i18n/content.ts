@@ -186,7 +186,7 @@ const ar: Content = {
     rightsPhone: 'شاشة قراءة حقوق المحطة من رسالة الحقوق للإمام زين العابدين (عليه السلام) مع مشغّل صوتي',
     recitationsPhone: 'شاشة المكتبة الصوتية تعرض تلاوات القرآن والصحيفة ولطميات الأربعين مع مشغّل صوتي',
     competitionPhone: 'شاشة الاختبار تعرض سؤالاً مرتبطاً بحقوق إحدى المحطات مع خيارات الإجابة',
-    appIcon: 'أيقونة تطبيق معارف سجادية باللونين الأخضر والذهبي',
+    appIcon: 'أيقونة تطبيق معارف سجادية باللون الأخضر الفيروزي',
   },
 };
 
@@ -321,7 +321,7 @@ const en: Content = {
     rightsPhone: 'The screen for reading a station’s rights from Imam Zayn al-Abidin’s Treatise on Rights, with an audio player',
     recitationsPhone: 'The audio library screen showing recitations of the Qur’an, the Sahifa and Arbaeen elegies with a player',
     competitionPhone: 'The quiz screen showing a question tied to one station’s rights, with answer choices',
-    appIcon: 'The Maarif Sajjadiya app icon in green and gold',
+    appIcon: 'The Maarif Sajjadiya app icon in deep teal',
   },
 };
 
@@ -456,7 +456,7 @@ const fa: Content = {
     rightsPhone: 'صفحهٔ خواندن حقوق یک ایستگاه از رساله حقوق امام زین‌العابدین (علیه‌السلام) همراه با پخش‌کنندهٔ صوتی',
     recitationsPhone: 'صفحهٔ کتابخانهٔ صوتی که تلاوت‌های قرآن، صحیفه و لطمیات اربعین را همراه با پخش‌کننده نمایش می‌دهد',
     competitionPhone: 'صفحهٔ آزمون که پرسشی مرتبط با حقوق یکی از ایستگاه‌ها را همراه با گزینه‌های پاسخ نمایش می‌دهد',
-    appIcon: 'آیکون اپلیکیشن معارف سجادیه به رنگ سبز و طلایی',
+    appIcon: 'آیکون اپلیکیشن معارف سجادیه به رنگ سبز فیروزه‌ای',
   },
 };
 
