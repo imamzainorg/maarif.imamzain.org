@@ -1,21 +1,22 @@
 ---
 /**
- * The closing "journey" band — an ornamental centered band (no screenshot) that
+ * The closing "journey" band - an ornamental centered band (no screenshot) that
  * varies the page rhythm and keeps the payload light. All styling lives in
  * global.css (.lit*).
  */
 interface Props {
-  eyebrow: string;
-  title: string;
-  body: string;
+	eyebrow: string
+	title: string
+	body: string
 }
-const { eyebrow, title, body } = Astro.props;
+const { eyebrow, title, body } = Astro.props
 ---
+
 <section class="section lit">
-  <div class="pattern"></div>
-  <div class="wrap lit__inner reveal">
-    <span class="eyebrow lit__eyebrow">{eyebrow}</span>
-    <h2 class="section-title">{title}</h2>
-    <p class="lead">{body}</p>
-  </div>
+	<div class="pattern"></div>
+	<div class="wrap lit__inner reveal">
+		<span class="eyebrow lit__eyebrow">{eyebrow}</span>
+		<h2 class="section-title">{title}</h2>
+		<p class="lead">{body}</p>
+	</div>
 </section>

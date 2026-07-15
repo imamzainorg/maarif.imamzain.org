@@ -1,10 +1,10 @@
 ---
 /**
- * Account & data deletion request page — one component, three locales
+ * Account & data deletion request page - one component, three locales
  * (`/delete-account`, `/en/delete-account`, `/fa/delete-account`).
  *
  * The Arabic URL is the one submitted to Google Play's Data safety form, which
- * requires a page a user can reach — and act on — without installing the app or
+ * requires a page a user can reach - and act on - without installing the app or
  * signing in. Hence: no auth, indexable, and a prefilled mailto to
  * `SITE.contact.email` as the request mechanism. The address is also printed as
  * selectable text, so the page still works where `mailto:` has no handler.
@@ -277,7 +277,7 @@ const mailto = `mailto:${SITE.contact.email}?subject=${encodeURIComponent(
 				padding: clamp(1.4rem, 4vw, 2.4rem);
 				box-shadow: var(--shadow-sm);
 			}
-			/* The email route is the one Google Play's reviewers follow — give it
+			/* The email route is the one Google Play's reviewers follow - give it
 			   the accent border so it reads as the page's primary action. */
 			.da-card--mail {
 				border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
@@ -311,7 +311,11 @@ const mailto = `mailto:${SITE.contact.email}?subject=${encodeURIComponent(
 				}
 				.da-ic--gold {
 					color: var(--gold-200);
-					background: color-mix(in srgb, var(--gold) 26%, transparent);
+					background: color-mix(
+						in srgb,
+						var(--gold) 26%,
+						transparent
+					);
 				}
 			}
 			.da-order {
