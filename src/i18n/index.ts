@@ -53,10 +53,29 @@ export function privacyPath(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? '/privacy-policy' : `/${locale}/privacy-policy`;
 }
 
+/**
+ * Root-relative path of a locale's account-deletion request page. The Arabic
+ * one is the URL submitted to Google Play's Data safety form, so — like the
+ * privacy policy — it stays unprefixed and stable.
+ */
+export function deleteAccountPath(locale: Locale): string {
+  return locale === DEFAULT_LOCALE ? '/delete-account' : `/${locale}/delete-account`;
+}
+
+/** hreflang alternates for one localized route (+ x-default → its Arabic URL). */
+function alternatesFor(path: (locale: Locale) => string): { hreflang: string; href: string }[] {
+  const list = LOCALES.map((l) => ({ hreflang: HTML_LANG[l], href: `${SITE.origin}${path(l)}` }));
+  return [...list, { hreflang: 'x-default', href: `${SITE.origin}${path(DEFAULT_LOCALE)}` }];
+}
+
 /** hreflang alternates for the privacy pages (+ x-default → Arabic). */
 export function privacyAlternates(): { hreflang: string; href: string }[] {
-  const list = LOCALES.map((l) => ({ hreflang: HTML_LANG[l], href: `${SITE.origin}${privacyPath(l)}` }));
-  return [...list, { hreflang: 'x-default', href: `${SITE.origin}${privacyPath(DEFAULT_LOCALE)}` }];
+  return alternatesFor(privacyPath);
+}
+
+/** hreflang alternates for the account-deletion pages (+ x-default → Arabic). */
+export function deleteAccountAlternates(): { hreflang: string; href: string }[] {
+  return alternatesFor(deleteAccountPath);
 }
 
 /**
@@ -64,6 +83,5 @@ export function privacyAlternates(): { hreflang: string; href: string }[] {
  * Emitted in <head> and consumed by the sitemap for maximal SEO coverage.
  */
 export function alternates(): { hreflang: string; href: string }[] {
-  const list = LOCALES.map((l) => ({ hreflang: HTML_LANG[l], href: canonicalUrl(l) }));
-  return [...list, { hreflang: 'x-default', href: canonicalUrl(DEFAULT_LOCALE) }];
+  return alternatesFor(localePath);
 }

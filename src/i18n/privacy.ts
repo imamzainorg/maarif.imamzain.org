@@ -19,6 +19,8 @@ export interface PrivacyContent {
 		icon: string
 		title: string
 		points: string[]
+		/** Optional label for a link out to the account-deletion page. */
+		cta?: string
 	}[]
 	band: { title: string; body: string; home: string; org: string }
 	foot: { name: string; note: string }
@@ -63,6 +65,7 @@ const ar: PrivacyContent = {
 				'الضغط على "بطاقة الزائر" من القائمة اعلى الشاشة',
 				'الضغط على "حذف الحساب نهائيا" في اسفل الشاشة',
 			],
+			cta: "أو اطلب الحذف بالبريد الإلكتروني",
 		},
 		{
 			id: "location-permissions",
@@ -137,6 +140,7 @@ const en: PrivacyContent = {
 				'Click "Visitor Card" from the top menu',
 				'Click "Delete Account Permanently" at the bottom of the screen',
 			],
+			cta: "Or request deletion by email",
 		},
 		{
 			id: "location-permissions",
@@ -211,6 +215,7 @@ const fa: PrivacyContent = {
 				'از منوی بالای صفحه روی "کارت زائر" کلیک کنید',
 				'در پایین صفحه روی "حذف حساب به‌طور کامل" کلیک کنید',
 			],
+			cta: "یا حذف را با ایمیل درخواست کنید",
 		},
 		{
 			id: "location-permissions",

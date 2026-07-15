@@ -44,6 +44,15 @@ export const SITE = {
   },
 
   /**
+   * The app's own inbox. Google Play's Data safety form requires a public URL
+   * where users can *request* account/data deletion without installing the app,
+   * so `/delete-account` turns this into a prefilled mailto.
+   */
+  contact: {
+    email: 'maarif@imamzain.org',
+  },
+
+  /**
    * Brand palette sampled from the app itself: the logo glyph is teal #0c747c,
    * the app's screens sit on deep teal #10504e with #148480 pill buttons, tan
    * #c0a281 is the accent (selected chips / prize bands) over neutral off-white
