@@ -1,9 +1,9 @@
 /**
  * Generate static social/share assets with sharp (run once, committed to
- * /public — NOT part of the Vercel build, so no font/runtime fragility there):
- *   - public/og/{ar,en,fa}.jpg    — 1200x630 Open Graph cover
- *   - public/apple-touch-icon.png — 180x180 iOS home-screen icon
- *   - public/favicon.png          — 64x64 browser tab icon
+ * /public - NOT part of the Vercel build, so no font/runtime fragility there):
+ *   - public/og/{ar,en,fa}.jpg    - 1200x630 Open Graph cover
+ *   - public/apple-touch-icon.png - 180x180 iOS home-screen icon
+ *   - public/favicon.png          - 64x64 browser tab icon
  *
  *   node scripts/make-og.mjs
  *
@@ -11,37 +11,37 @@
  * screenshot (src/assets/screens/home.png). Re-run after dropping in the real
  * screenshots to refresh the OG cover.
  */
-import sharp from 'sharp';
-import { mkdir, writeFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
+import sharp from 'sharp'
+import { mkdir, writeFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const P = (p) => resolve(root, p);
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const P = (p) => resolve(root, p)
 
 // Sampled from the app: teal UI (#148480 on #10504e), tan/gold accent.
-const TEAL = '#0f6660';
-const TEAL_HI = '#1d938d';
-const TEAL_900 = '#0a3a38';
-const SURFACE = '#f3f4f2';
-const GOLD_A = '#d6ab70';
-const GOLD_B = '#a9835a';
+const TEAL = '#0f6660'
+const TEAL_HI = '#1d938d'
+const TEAL_900 = '#0a3a38'
+const SURFACE = '#f3f4f2'
+const GOLD_A = '#d6ab70'
+const GOLD_B = '#a9835a'
 
-const LOGO = P('src/assets/logo.png');
+const LOGO = P('src/assets/logo.png')
 /** Per-locale phone screenshot for the OG cover (fa has no captures → Arabic). */
 const HOME = {
   ar: P('src/assets/screens/home.png'),
   en: P('src/assets/screens/en/home.png'),
   fa: P('src/assets/screens/home.png'),
-};
+}
 
 const roundedRectSvg = (w, h, r, fill) =>
-  Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${r}" ry="${r}" fill="${fill}"/></svg>`);
+  Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" rx="${r}" ry="${r}" fill="${fill}"/></svg>`)
 
 /** Screenshot with rounded corners (via a dest-in mask). */
 async function roundedImage(src, targetH, radius) {
-  const img = await sharp(src).resize({ height: targetH }).png().toBuffer();
-  const { width, height } = await sharp(img).metadata();
+  const img = await sharp(src).resize({ height: targetH }).png().toBuffer()
+  const { width, height } = await sharp(img).metadata()
   return {
     buffer: await sharp(img)
       .composite([{ input: roundedRectSvg(width, height, radius, '#fff'), blend: 'dest-in' }])
@@ -49,7 +49,7 @@ async function roundedImage(src, targetH, radius) {
       .toBuffer(),
     width,
     height,
-  };
+  }
 }
 
 function ogBackground() {
@@ -89,19 +89,19 @@ function ogBackground() {
       <circle cx="34" cy="30" r="9" fill="url(#gold)"/>
       <text x="60" y="39" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#f5f2ea">Coming soon · App Store &amp; Google Play</text>
     </g>
-  </svg>`);
+  </svg>`)
 }
 
 async function buildOg() {
-  await mkdir(P('public/og'), { recursive: true });
-  const bg = await sharp(ogBackground()).png().toBuffer();
-  const logo = await sharp(LOGO).resize({ height: 96 }).png().toBuffer();
+  await mkdir(P('public/og'), { recursive: true })
+  const bg = await sharp(ogBackground()).png().toBuffer()
+  const logo = await sharp(LOGO).resize({ height: 96 }).png().toBuffer()
 
   for (const locale of ['ar', 'en', 'fa']) {
-    const phone = await roundedImage(HOME[locale], 566, 42);
-    const bezel = roundedRectSvg(phone.width + 16, phone.height + 16, 50, TEAL_900);
-    const phoneLeft = 1200 - phone.width - 96;
-    const phoneTop = Math.round((630 - phone.height) / 2);
+    const phone = await roundedImage(HOME[locale], 566, 42)
+    const bezel = roundedRectSvg(phone.width + 16, phone.height + 16, 50, TEAL_900)
+    const phoneLeft = 1200 - phone.width - 96
+    const phoneTop = Math.round((630 - phone.height) / 2)
 
     const cover = await sharp(bg)
       .composite([
@@ -110,23 +110,23 @@ async function buildOg() {
         { input: logo, top: 66, left: 92 },
       ])
       .jpeg({ quality: 82, mozjpeg: true })
-      .toBuffer();
+      .toBuffer()
 
-    await writeFile(P(`public/og/${locale}.jpg`), cover);
-    console.log(`public/og/${locale}.jpg written (${(cover.length / 1024).toFixed(0)} kB)`);
+    await writeFile(P(`public/og/${locale}.jpg`), cover)
+    console.log(`public/og/${locale}.jpg written (${(cover.length / 1024).toFixed(0)} kB)`)
   }
 }
 
 async function buildIcon(size, out) {
-  const logoH = Math.round(size * 0.66);
-  const logo = await sharp(LOGO).resize({ height: logoH }).png().toBuffer();
+  const logoH = Math.round(size * 0.66)
+  const logo = await sharp(LOGO).resize({ height: logoH }).png().toBuffer()
   const tile = sharp({ create: { width: size, height: size, channels: 4, background: SURFACE } })
     .composite([{ input: logo, gravity: 'center' }])
-    .png();
-  await writeFile(P(out), await tile.toBuffer());
-  console.log(`${out} written (${size}x${size})`);
+    .png()
+  await writeFile(P(out), await tile.toBuffer())
+  console.log(`${out} written (${size}x${size})`)
 }
 
-await buildOg();
-await buildIcon(180, 'public/apple-touch-icon.png');
-await buildIcon(64, 'public/favicon.png');
+await buildOg()
+await buildIcon(180, 'public/apple-touch-icon.png')
+await buildIcon(64, 'public/favicon.png')

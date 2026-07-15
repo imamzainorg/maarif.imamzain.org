@@ -1,26 +1,27 @@
 ---
 /**
- * Brand mark — the official Maarif Sajjadiya logo (the teal arch/teardrop
+ * Brand mark - the official Maarif Sajjadiya logo (the teal arch/teardrop
  * glyph, #0c747c), with a transparent background so it sits on light surfaces
  * and on the teal hero alike. Served optimized via astro:assets.
  */
-import { Image } from 'astro:assets';
-import logo from '@/assets/logo.png';
+import { Image } from "astro:assets"
+import logo from "@/assets/logo.png"
 
 interface Props {
-  size?: number; // rendered height in px
-  class?: string;
-  title?: string;
+	size?: number // rendered height in px
+	class?: string
+	title?: string
 }
-const { size = 40, class: klass, title } = Astro.props;
-const width = Math.round(size * (logo.width / logo.height));
+const { size = 40, class: klass, title } = Astro.props
+const width = Math.round(size * (logo.width / logo.height))
 ---
+
 <Image
-  src={logo}
-  alt={title ?? ''}
-  width={width}
-  height={size}
-  class={klass}
-  loading="eager"
-  densities={[1, 2]}
+	src={logo}
+	alt={title ?? ""}
+	width={width}
+	height={size}
+	class={klass}
+	loading="eager"
+	densities={[1, 2]}
 />

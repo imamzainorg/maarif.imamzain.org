@@ -1,7 +1,7 @@
 ---
 import { SITE, type Locale } from "@/site.config"
 import { CONTENT } from "@/i18n/content"
-import { privacyPath } from "@/i18n"
+import { deleteAccountPath, privacyPath } from "@/i18n"
 import Logo from "./Logo.astro"
 import LangSwitch from "./LangSwitch.astro"
 
@@ -23,6 +23,12 @@ const PRIVACY: Record<Locale, string> = {
 	ar: "سياسة الخصوصية",
 	en: "Privacy Policy",
 	fa: "سیاست حریم خصوصی",
+}
+/** Google Play expects the deletion route to be reachable from the site. */
+const DELETE: Record<Locale, string> = {
+	ar: "حذف الحساب",
+	en: "Delete account",
+	fa: "حذف حساب",
 }
 ---
 
@@ -87,7 +93,10 @@ const PRIVACY: Record<Locale, string> = {
 		</div>
 		<div class="site-footer__bottom">
 			<span>© {year} · {c.footer.rights}</span>
-			<a href={privacyPath(locale)}>{PRIVACY[locale]}</a>
+			<nav class="site-footer__legal">
+				<a href={privacyPath(locale)}>{PRIVACY[locale]}</a>
+				<a href={deleteAccountPath(locale)}>{DELETE[locale]}</a>
+			</nav>
 			<LangSwitch locale={locale} />
 		</div>
 	</div>

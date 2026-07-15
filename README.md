@@ -1,7 +1,7 @@
-# Maarif Sajjadiya — landing page
+# Maarif Sajjadiya - landing page
 
 Standalone, conversion-focused landing page for the **معارف سجادية / Maarif
-Sajjadiya** mobile app — a companion for the **ziyarat walk**: an ordered route
+Sajjadiya** mobile app - a companion for the **ziyarat walk**: an ordered route
 of stations (pinned to the numbered poles + GPS), each with its own adhkar and
 du'as (read and recited), roadside services, an audio recitations library, and a
 points-based knowledge competition. Published by the **Imam Zayn al-Abidin (as)
@@ -9,7 +9,7 @@ Foundation**.
 
 - **Live (intended):** https://maarif.imamzain.org
 - **Trilingual:** Arabic at `/` · English at `/en` · Persian at `/fa`
-- **Status:** the app is **pre-launch** — the store CTAs render as
+- **Status:** the app is **pre-launch** - the store CTAs render as
   "coming soon" (no dead links). See _Launch checklist_ below.
 
 ## Stack
@@ -18,12 +18,12 @@ Foundation**.
 - **i18n**: Arabic (default, RTL), English (LTR), Persian (RTL). One stylesheet
   serves RTL + LTR via CSS logical properties.
 - **Fonts**: self-hosted `@fontsource-variable/vazirmatn` (Arabic + Latin
-  subsets) — covers all three scripts.
+  subsets) - covers all three scripts.
 - **SEO**: per-locale `<title>`/description/keywords, canonical, hreflang
   (+ x-default), Open Graph + Twitter, i18n sitemap, JSON-LD
   (SoftwareApplication / MobileApplication, Organization, WebSite,
   BreadcrumbList, FAQPage). No fabricated rating.
-- **Brand**: the app's own palette, sampled from its screenshots — teal leads
+- **Brand**: the app's own palette, sampled from its screenshots - teal leads
   (logo `#0c747c`, buttons `#148480`, deep background `#10504e`), tan `#c0a281`
   is the accent, mint `#c8e0e0` for round icon chips, over neutral off-white
   surfaces. Dark scheme = the app's own deep-teal look.
@@ -49,14 +49,14 @@ node scripts/make-placeholders.mjs # branded PLACEHOLDER screenshots in src/asse
 **Screenshots:** `src/assets/screens/{home,stations,amenities,recitations,competition}.png`
 are branded placeholders. When the real captures are ready, **overwrite those
 PNGs (same filenames)** with frameless full-screen shots and run `npm run og` to
-refresh the cover — `<PhoneFrame>` wraps them in a CSS device bezel. Optimized to
+refresh the cover - `<PhoneFrame>` wraps them in a CSS device bezel. Optimized to
 AVIF/WebP at build time.
 
 ## Launch checklist (when the app goes live)
 
 Everything is wired behind one flag in [`src/site.config.ts`](src/site.config.ts):
 
-1. Set `launch.live = true` — the store badges become real links, the QR
+1. Set `launch.live = true` - the store badges become real links, the QR
    auto-forward activates, and JSON-LD flips `PreOrder` → `InStock`.
 2. Fill `stores.ios` with the App Store URL and `app.iosAppId` once the iOS build
    is approved (Android package `org.imamzain.maarif_sajjadyia` is already set).

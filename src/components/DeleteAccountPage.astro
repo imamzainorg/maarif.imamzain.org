@@ -1,11 +1,13 @@
 ---
 /**
- * Privacy policy for the Maarif Sajjadiya app - one component, three locales
- * (`/privacy-policy`, `/en/privacy-policy`, `/fa/privacy-policy`). The Arabic
- * URL is the stable one the App Store / Google Play listings point at. Each
- * variant carries canonical + hreflang and a language switcher that navigates
- * between the privacy pages (not the home pages), so the selected language is
- * preserved.
+ * Account & data deletion request page - one component, three locales
+ * (`/delete-account`, `/en/delete-account`, `/fa/delete-account`).
+ *
+ * The Arabic URL is the one submitted to Google Play's Data safety form, which
+ * requires a page a user can reach - and act on - without installing the app or
+ * signing in. Hence: no auth, indexable, and a prefilled mailto to
+ * `SITE.contact.email` as the request mechanism. The address is also printed as
+ * selectable text, so the page still works where `mailto:` has no handler.
  */
 import "@fontsource-variable/vazirmatn/index.css"
 import "@/styles/global.css"
@@ -15,10 +17,10 @@ import {
 	HTML_LANG,
 	localePath,
 	privacyPath,
-	privacyAlternates,
 	deleteAccountPath,
+	deleteAccountAlternates,
 } from "@/i18n"
-import { PRIVACY_CONTENT } from "@/i18n/privacy"
+import { DELETE_ACCOUNT_CONTENT } from "@/i18n/delete-account"
 import { ogLocale } from "@/lib/jsonld"
 import Logo from "@/components/Logo.astro"
 import LangSwitch from "@/components/LangSwitch.astro"
@@ -29,13 +31,13 @@ interface Props {
 	locale: Locale
 }
 const { locale } = Astro.props
-const c = PRIVACY_CONTENT[locale]
+const c = DELETE_ACCOUNT_CONTENT[locale]
 
-const canonical = `${SITE.origin}${privacyPath(locale)}`
+const canonical = `${SITE.origin}${deleteAccountPath(locale)}`
 const homeHref = localePath(locale)
-const alts = privacyAlternates()
+const alts = deleteAccountAlternates()
 const langPaths = Object.fromEntries(
-	SITE.locales.map((l) => [l, privacyPath(l)]),
+	SITE.locales.map((l) => [l, deleteAccountPath(l)]),
 ) as Record<Locale, string>
 const brandName =
 	locale === "en"
@@ -44,6 +46,12 @@ const brandName =
 			? "معارف سجادیه"
 			: "معارف سجادية"
 const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadiya"
+
+/** The request itself: opens the user's mail app with everything already
+ *  written except the name and phone number that identify their account. */
+const mailto = `mailto:${SITE.contact.email}?subject=${encodeURIComponent(
+	c.byEmail.subject,
+)}&body=${encodeURIComponent(c.byEmail.body)}`
 ---
 
 <!doctype html>
@@ -69,7 +77,7 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 		<meta property="og:url" content={canonical} />
 		<meta property="og:locale" content={ogLocale(locale)} />
 	</head>
-	<body class="pp">
+	<body class="da">
 		<a href="#main" class="skip-link">{c.skip}</a>
 		<span id="top"></span>
 
@@ -83,7 +91,7 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				</a>
 				<div class="header-actions">
 					<LangSwitch locale={locale} paths={langPaths} />
-					<a class="btn btn--ghost btn--sm pp-back" href={homeHref}>
+					<a class="btn btn--ghost btn--sm da-back" href={homeHref}>
 						<Icon name="arrow-right" size={16} />
 						{c.back}
 					</a>
@@ -92,81 +100,100 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 		</header>
 
 		<main id="main" tabindex="-1">
-			<section class="wrap pp-hero">
-				<span class="pp-badge"
-					><Icon name="shield-check" size={16} /> {c.badge}</span
+			<section class="wrap da-hero">
+				<span class="da-badge"
+					><Icon name="delete" size={16} /> {c.badge}</span
 				>
-				<h1 class="pp-title">{c.heading}</h1>
-				<div class="pp-rule"><span></span><i></i><span></span></div>
-				<p class="pp-lead">{c.lead}</p>
-				<div class="pp-chips">
-					{
-						c.guarantees.map((g) => (
-							<span class="pp-chip">
-								<Icon name={g.icon} size={17} /> {g.label}
+				<h1 class="da-title">{c.heading}</h1>
+				<div class="da-rule"><span></span><i></i><span></span></div>
+				<p class="da-lead">{c.lead}</p>
+			</section>
+
+			<section class="wrap">
+				<div class="da-cards">
+					<article class="da-card">
+						<header class="da-card__head">
+							<span class="da-ic">
+								<Icon name="smartphone" size={22} />
 							</span>
-						))
-					}
+							<div>
+								<span class="da-order">{c.inApp.order}</span>
+								<h2>{c.inApp.title}</h2>
+							</div>
+						</header>
+						<p class="da-note">{c.inApp.note}</p>
+						<ol class="da-steps">
+							{c.inApp.steps.map((s) => <li>{s}</li>)}
+						</ol>
+					</article>
+
+					<article class="da-card da-card--mail" id="email">
+						<header class="da-card__head">
+							<span class="da-ic da-ic--gold">
+								<Icon name="mail" size={22} />
+							</span>
+							<div>
+								<span class="da-order">{c.byEmail.order}</span>
+								<h2>{c.byEmail.title}</h2>
+							</div>
+						</header>
+						<p class="da-note">{c.byEmail.note}</p>
+						<a class="btn btn--primary da-mail" href={mailto}>
+							<Icon name="mail" size={18} />
+							{c.byEmail.cta}
+						</a>
+						<p class="da-fallback">
+							{c.byEmail.fallback}{" "}
+							<a href={`mailto:${SITE.contact.email}`}
+								>{SITE.contact.email}</a
+							>
+						</p>
+					</article>
+
+					<article class="da-card">
+						<header class="da-card__head">
+							<span class="da-ic">
+								<Icon name="list-checks" size={22} />
+							</span>
+							<div><h2>{c.scope.title}</h2></div>
+						</header>
+						<ul class="da-points">
+							{c.scope.items.map((p) => <li>{p}</li>)}
+						</ul>
+					</article>
+
+					<article class="da-card">
+						<header class="da-card__head">
+							<span class="da-ic">
+								<Icon name="clock" size={22} />
+							</span>
+							<div><h2>{c.timing.title}</h2></div>
+						</header>
+						<ul class="da-points">
+							{c.timing.items.map((p) => <li>{p}</li>)}
+						</ul>
+					</article>
 				</div>
 			</section>
 
 			<section class="wrap">
-				<div class="pp-sections">
-					{
-						c.sections.map((s) => (
-							<article id={s.id} class="pp-card">
-								<header class="pp-card__head">
-									<span class="pp-ic">
-										<Icon name={s.icon} size={22} />
-									</span>
-									<div>
-										<span class="pp-order">{s.order}</span>
-										<h2>{s.title}</h2>
-									</div>
-								</header>
-								<ul class="pp-points">
-									{s.points.map((p) => (
-										<li>{p}</li>
-									))}
-								</ul>
-								{s.cta && (
-									<a
-										class="btn btn--ghost btn--sm pp-cta"
-										href={deleteAccountPath(locale)}
-									>
-										<Icon name="mail" size={16} />
-										{s.cta}
-									</a>
-								)}
-							</article>
-						))
-					}
-				</div>
-			</section>
-
-			<section class="wrap">
-				<div class="pp-band">
-					<Icon name="shield-check" size={40} class="pp-band__ic" />
+				<div class="da-band">
+					<Icon name="shield-check" size={40} class="da-band__ic" />
 					<h2>{c.band.title}</h2>
 					<p>{c.band.body}</p>
-					<div class="pp-actions">
-						<a class="btn btn--primary" href={homeHref}
+					<div class="da-actions">
+						<a class="btn btn--primary" href={privacyPath(locale)}
+							>{c.band.privacy}</a
+						>
+						<a class="btn btn--on-dark btn--ghost" href={homeHref}
 							>{c.band.home}</a
 						>
-						<a
-							class="btn btn--on-dark btn--ghost"
-							href={SITE.org.url}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{c.band.org}
-						</a>
 					</div>
 				</div>
 			</section>
 
-			<section class="wrap pp-foot">
-				<span class="pp-foot__name"
+			<section class="wrap da-foot">
+				<span class="da-foot__name"
 					><Icon name="sparkle" size={16} /> {c.foot.name}</span
 				>
 				<p>{c.foot.note}</p>
@@ -176,15 +203,15 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 		<Footer locale={locale} />
 
 		<style>
-			.pp {
+			.da {
 				background: var(--paper);
 			}
-			.pp-hero {
+			.da-hero {
 				text-align: center;
 				padding-block: clamp(2rem, 5vw, 3.5rem)
 					clamp(1.4rem, 4vw, 2.2rem);
 			}
-			.pp-badge {
+			.da-badge {
 				display: inline-flex;
 				align-items: center;
 				gap: 0.5rem;
@@ -197,90 +224,65 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				font-weight: 700;
 				font-size: var(--step--1);
 			}
-			.pp-badge svg {
+			.da-badge svg {
 				inline-size: 1rem;
 				block-size: 1rem;
 			}
-			.pp-title {
+			.da-title {
 				font-size: var(--step-3);
 				margin-block: 1rem 0.8rem;
 				color: var(--teal-900);
 			}
 			@media (prefers-color-scheme: dark) {
-				.pp-title {
+				.da-title {
 					color: var(--ink);
 				}
 			}
-			.pp-rule {
+			.da-rule {
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				gap: 0.6rem;
 				margin-block: 0.4rem 1.2rem;
 			}
-			.pp-rule span {
+			.da-rule span {
 				inline-size: 3rem;
 				block-size: 1px;
 				background: color-mix(in srgb, var(--gold) 55%, transparent);
 			}
-			.pp-rule i {
+			.da-rule i {
 				inline-size: 0.4rem;
 				block-size: 0.4rem;
 				border-radius: 999px;
 				background: var(--gold);
 			}
-			.pp-lead {
+			.da-lead {
 				color: var(--muted);
 				font-size: var(--step-1);
-				max-inline-size: 40rem;
+				max-inline-size: 42rem;
 				margin-inline: auto;
 				font-weight: 500;
 			}
-			.pp-chips {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.6rem;
-				justify-content: center;
-				margin-block-start: 1.5rem;
-			}
-			.pp-chip {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				padding: 0.5rem 1rem;
-				border-radius: 999px;
-				border: 1px solid var(--line-strong);
-				background: var(--card);
-				color: var(--ink);
-				font-weight: 600;
-				font-size: var(--step--1);
-				box-shadow: var(--shadow-sm);
-			}
-			.pp-chip svg {
-				inline-size: 1.1rem;
-				block-size: 1.1rem;
-				color: var(--teal-600);
-			}
-			@media (prefers-color-scheme: dark) {
-				.pp-chip svg {
-					color: var(--mint-300);
-				}
-			}
 
-			.pp-sections {
+			.da-cards {
 				max-inline-size: 48rem;
 				margin-inline: auto;
 				display: grid;
 				gap: 1.2rem;
 			}
-			.pp-card {
+			.da-card {
 				background: var(--card);
 				border: 1px solid var(--line);
 				border-radius: var(--radius-lg);
 				padding: clamp(1.4rem, 4vw, 2.4rem);
 				box-shadow: var(--shadow-sm);
 			}
-			.pp-card__head {
+			/* The email route is the one Google Play's reviewers follow - give it
+			   the accent border so it reads as the page's primary action. */
+			.da-card--mail {
+				border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
+			}
+			.da-card__head {
 				display: flex;
 				align-items: center;
 				gap: 1rem;
@@ -288,7 +290,7 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				border-block-end: 1px solid var(--line);
 				margin-block-end: 1.2rem;
 			}
-			.pp-ic {
+			.da-ic {
 				flex: none;
 				inline-size: 3rem;
 				block-size: 3rem;
@@ -298,37 +300,112 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				background: var(--mint);
 				color: var(--teal-800);
 			}
+			.da-ic--gold {
+				background: color-mix(in srgb, var(--gold) 22%, transparent);
+				color: var(--gold-600);
+			}
 			@media (prefers-color-scheme: dark) {
-				.pp-ic {
+				.da-ic {
 					color: var(--mint);
 					background: rgba(200, 224, 224, 0.14);
 				}
+				.da-ic--gold {
+					color: var(--gold-200);
+					background: color-mix(
+						in srgb,
+						var(--gold) 26%,
+						transparent
+					);
+				}
 			}
-			.pp-order {
+			.da-order {
 				display: block;
 				font-size: var(--step--1);
 				font-weight: 700;
 				color: var(--gold-600);
 			}
-			.pp-card h2 {
+			.da-card h2 {
 				font-size: var(--step-1);
 				color: var(--ink);
 				margin-block-start: 0.15rem;
 			}
-			.pp-points {
+			.da-note {
+				color: var(--muted);
+				line-height: 1.75;
+			}
+
+			.da-steps {
+				list-style: none;
+				counter-reset: step;
+				padding: 0;
+				display: grid;
+				gap: 0.9rem;
+				margin-block-start: 1.3rem;
+			}
+			.da-steps li {
+				counter-increment: step;
+				display: flex;
+				gap: 0.8rem;
+				align-items: center;
+				color: var(--ink);
+				font-weight: 500;
+			}
+			.da-steps li::before {
+				content: counter(step);
+				flex: none;
+				inline-size: 1.8rem;
+				block-size: 1.8rem;
+				display: grid;
+				place-items: center;
+				border-radius: 999px;
+				background: var(--mint);
+				color: var(--teal-800);
+				font-size: var(--step--1);
+				font-weight: 800;
+			}
+			@media (prefers-color-scheme: dark) {
+				.da-steps li::before {
+					background: rgba(200, 224, 224, 0.14);
+					color: var(--mint);
+				}
+			}
+
+			.da-mail {
+				margin-block-start: 1.5rem;
+				white-space: normal;
+			}
+			.da-fallback {
+				margin-block-start: 1rem;
+				color: var(--muted);
+				font-size: var(--step--1);
+			}
+			.da-fallback a {
+				color: var(--teal-600);
+				font-weight: 700;
+				text-decoration: underline;
+				text-underline-offset: 3px;
+				word-break: break-word;
+			}
+			@media (prefers-color-scheme: dark) {
+				.da-fallback a {
+					color: var(--mint-300);
+				}
+			}
+
+			.da-points {
 				list-style: none;
 				padding: 0;
 				display: grid;
 				gap: 0.95rem;
 			}
-			.pp-points li {
+			.da-points li {
 				display: flex;
 				gap: 0.7rem;
 				align-items: flex-start;
 				color: var(--muted);
 				line-height: 1.75;
 			}
-			.pp-points li::before {
+			.da-points li::before {
 				content: "";
 				flex: none;
 				inline-size: 0.5rem;
@@ -338,15 +415,7 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				margin-block-start: 0.65rem;
 			}
 
-			/* Link out to /delete-account, centred under the section's points. */
-			.pp-cta {
-				display: flex;
-				inline-size: fit-content;
-				margin-block-start: 1.4rem;
-				margin-inline: auto;
-			}
-
-			.pp-band {
+			.da-band {
 				position: relative;
 				overflow: hidden;
 				text-align: center;
@@ -361,38 +430,38 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				margin-block: clamp(2rem, 5vw, 3rem);
 				box-shadow: var(--shadow-md);
 			}
-			.pp-band__ic {
+			.da-band__ic {
 				color: var(--gold-200);
 				margin-inline: auto;
 			}
-			.pp-band h2 {
+			.da-band h2 {
 				font-size: var(--step-2);
 				margin-block-start: 0.6rem;
 			}
-			.pp-band p {
+			.da-band p {
 				color: rgba(240, 248, 246, 0.9);
 				max-inline-size: 36rem;
 				margin: 1rem auto 1.6rem;
 			}
-			.pp-actions {
+			.da-actions {
 				display: flex;
 				flex-wrap: wrap;
 				gap: 0.8rem;
 				justify-content: center;
 			}
 
-			.pp-foot {
+			.da-foot {
 				text-align: center;
 				padding-block: 1rem 3rem;
 			}
-			.pp-foot__name {
+			.da-foot__name {
 				display: inline-flex;
 				align-items: center;
 				gap: 0.4rem;
 				color: var(--gold-600);
 				font-weight: 700;
 			}
-			.pp-foot p {
+			.da-foot p {
 				color: var(--muted);
 				font-size: var(--step--1);
 				margin-block-start: 0.5rem;
@@ -402,7 +471,7 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 
 			/* Keep the compact header usable on phones: the back button yields first. */
 			@media (max-width: 560px) {
-				.pp-back {
+				.da-back {
 					display: none;
 				}
 			}

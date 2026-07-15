@@ -1,34 +1,39 @@
 ---
-/** FAQ as native <details> — zero JS, keyboard-accessible, and mirrored in the
+/** FAQ as native <details> - zero JS, keyboard-accessible, and mirrored in the
  *  FAQPage JSON-LD for rich results. */
-import { type Locale } from '@/site.config';
-import { CONTENT } from '@/i18n/content';
-import Icon from './Icon.astro';
+import { type Locale } from "@/site.config"
+import { CONTENT } from "@/i18n/content"
+import Icon from "./Icon.astro"
 
 interface Props {
-  locale: Locale;
+	locale: Locale
 }
-const { locale } = Astro.props;
-const c = CONTENT[locale];
+const { locale } = Astro.props
+const c = CONTENT[locale]
 ---
+
 <section class="section content-band content-band--tint" id="faq">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="section-title">{c.faqHeading}</h2>
-    </div>
-    <div class="faq">
-      {/* name="faq" = native exclusive accordion (opening one closes the rest);
-          older browsers simply allow multiple open — graceful degradation. */}
-      {c.faq.map((item, i) => (
-        <details name="faq" open={i === 0}>
-          <summary>
-            <span>{item.q}</span>
-            <Icon name="plus" class="faq__plus" size={20} />
-          </summary>
-          <p>{item.a}</p>
-        </details>
-      ))}
-    </div>
-  </div>
+	<div class="wrap">
+		<div class="section-head reveal">
+			<span class="eyebrow">FAQ</span>
+			<h2 class="section-title">{c.faqHeading}</h2>
+		</div>
+		<div class="faq">
+			{
+				/* name="faq" = native exclusive accordion (opening one closes the rest);
+          older browsers simply allow multiple open - graceful degradation. */
+			}
+			{
+				c.faq.map((item, i) => (
+					<details name="faq" open={i === 0}>
+						<summary>
+							<span>{item.q}</span>
+							<Icon name="plus" class="faq__plus" size={20} />
+						</summary>
+						<p>{item.a}</p>
+					</details>
+				))
+			}
+		</div>
+	</div>
 </section>

@@ -19,6 +19,8 @@ export interface PrivacyContent {
 		icon: string
 		title: string
 		points: string[]
+		/** Optional label for a link out to the account-deletion page. */
+		cta?: string
 	}[]
 	band: { title: string; body: string; home: string; org: string }
 	foot: { name: string; note: string }
@@ -27,9 +29,9 @@ export interface PrivacyContent {
 
 const ar: PrivacyContent = {
 	seo: {
-		title: "سياسة الخصوصية — معارف سجادية",
+		title: "سياسة الخصوصية - معارف سجادية",
 		description:
-			"سياسة حماية البيانات الشخصية والخصوصية لتطبيق معارف سجادية: البيانات المطلوبة والغرض منها، صلاحية الموقع والجدار الجغرافي، والإشعارات — بمعالجةٍ محليةٍ على جهازك وبلا مشاركةٍ مع أطرافٍ ثالثة، تماشياً مع سياسات متجري Google وApple.",
+			"سياسة حماية البيانات الشخصية والخصوصية لتطبيق معارف سجادية: البيانات المطلوبة والغرض منها، صلاحية الموقع والجدار الجغرافي، والإشعارات - بمعالجةٍ محليةٍ على جهازك وبلا مشاركةٍ مع أطرافٍ ثالثة، تماشياً مع سياسات متجري Google وApple.",
 	},
 	back: "العودة إلى الموقع",
 	badge: "الخصوصية وحماية البيانات",
@@ -48,25 +50,15 @@ const ar: PrivacyContent = {
 			title: "البيانات الشخصية والغرض منها",
 			points: [
 				"الاسم الكامل ورقم الهاتف يتم طلبهما بشكل اختياري لغرض تمكينك من المشاركة في مسابقة حفظ رسالة الحقوق للإمام زين العابدين (عليه السلام).",
+				"يمكنك إنشاء حسابك برقم هاتفك أو عبر حسابك في Google؛ وإن اخترت Google فإننا نستلم منه عنوان بريدك الإلكتروني لتعريف حسابك، ولا نطّلع على كلمة مرورك.",
 				"الغرض الوحيد من تسجيل هذه البيانات هو التواصل معك لتنسيق إرسال الجوائز لك في حال الفوز.",
 				"بياناتك مشفرة بالكامل ولا يتم الاطلاع عليها من قبل أي أطراف ثالثة أو مشاركتها أو بيعها لأي جهات إعلانية أو تجارية.",
 			],
-		},
-		{
-			id: "personal-data-deletion",
-			order: "ثانياً",
-			icon: "delete",
-			title: "لحذف جميع بياناتك الشخصية من التطبيق",
-			points: [
-				"افتح التطبيق",
-				'الضغط على "أبدأ رحلتك الان" في الشاشة الرئيسية',
-				'الضغط على "بطاقة الزائر" من القائمة اعلى الشاشة',
-				'الضغط على "حذف الحساب نهائيا" في اسفل الشاشة',
-			],
+			cta: "اطلب حذف بياناتك الشخصية",
 		},
 		{
 			id: "location-permissions",
-			order: "ثالثاً",
+			order: "ثانياً",
 			icon: "map-pin",
 			title: "الصلاحيات وتتبع الموقع الجغرافي",
 			points: [
@@ -77,7 +69,7 @@ const ar: PrivacyContent = {
 		},
 		{
 			id: "notifications",
-			order: "رابعاً",
+			order: "ثالثاً",
 			icon: "bell",
 			title: "الإشعارات والتنبيهات العامة",
 			points: [
@@ -88,7 +80,7 @@ const ar: PrivacyContent = {
 	],
 	band: {
 		title: "خصوصيتُك أمانةٌ عندنا",
-		body: "نجمعُ أقلَّ ما يلزم، ونعالجُ موقعك على جهازك، ولا نشاركُ بياناتك مع أحد — تماشياً مع سياسات متجري Google وApple.",
+		body: "نجمعُ أقلَّ ما يلزم، ونعالجُ موقعك على جهازك، ولا نشاركُ بياناتك مع أحد - تماشياً مع سياسات متجري Google وApple.",
 		home: "الصفحة الرئيسية",
 		org: "مؤسسة الإمام زين العابدين (ع)",
 	},
@@ -101,9 +93,9 @@ const ar: PrivacyContent = {
 
 const en: PrivacyContent = {
 	seo: {
-		title: "Privacy Policy — Maarif Sajjadiya",
+		title: "Privacy Policy - Maarif Sajjadiya",
 		description:
-			"The personal-data protection and privacy policy of the Maarif Sajjadiya app: what data is requested and why, the location permission and geofencing, and notifications — processed locally on your device and never shared with third parties, in line with the Google and Apple store policies.",
+			"The personal-data protection and privacy policy of the Maarif Sajjadiya app: what data is requested and why, the location permission and geofencing, and notifications - processed locally on your device and never shared with third parties, in line with the Google and Apple store policies.",
 	},
 	back: "Back to the site",
 	badge: "Privacy & Data Protection",
@@ -122,25 +114,15 @@ const en: PrivacyContent = {
 			title: "Personal Data and Its Purpose",
 			points: [
 				"Your full name and phone number are requested optionally, to let you take part in the competition for memorizing the Treatise on Rights of Imam Zayn al-Abidin (peace be upon him).",
+				"You can create your account with your phone number or through your Google account; if you choose Google, we receive your email address from it to identify your account, and we never see your password.",
 				"The sole purpose of recording this data is to contact you and coordinate delivering your prize should you win.",
 				"Your data is fully encrypted and is never viewed by, shared with, or sold to any third parties or any advertising or commercial entities.",
 			],
-		},
-		{
-			id: "personal-data-deletion",
-			order: "Second",
-			icon: "delete",
-			title: "Deletion of Personal Data",
-			points: [
-				"Open the app",
-				'Click "Start Your Journey Now" on the home screen',
-				'Click "Visitor Card" from the top menu',
-				'Click "Delete Account Permanently" at the bottom of the screen',
-			],
+			cta: "Request deletion of your personal data",
 		},
 		{
 			id: "location-permissions",
-			order: "Third",
+			order: "Second",
 			icon: "map-pin",
 			title: "Permissions and Location Tracking",
 			points: [
@@ -151,7 +133,7 @@ const en: PrivacyContent = {
 		},
 		{
 			id: "notifications",
-			order: "Fourth",
+			order: "Third",
 			icon: "bell",
 			title: "Notifications and General Alerts",
 			points: [
@@ -162,7 +144,7 @@ const en: PrivacyContent = {
 	],
 	band: {
 		title: "Your Privacy Is a Trust We Keep",
-		body: "We collect the minimum, process your location on your device, and share your data with no one — in line with the Google and Apple store policies.",
+		body: "We collect the minimum, process your location on your device, and share your data with no one - in line with the Google and Apple store policies.",
 		home: "Home page",
 		org: "Imam Zayn al-Abidin (as) Foundation",
 	},
@@ -175,9 +157,9 @@ const en: PrivacyContent = {
 
 const fa: PrivacyContent = {
 	seo: {
-		title: "سیاست حریم خصوصی — معارف سجادیه",
+		title: "سیاست حریم خصوصی - معارف سجادیه",
 		description:
-			"سیاست حفاظت از داده‌های شخصی و حریم خصوصی اپلیکیشن معارف سجادیه: داده‌های درخواستی و هدف از آنها، مجوز موقعیت و حصار جغرافیایی، و اعلان‌ها — با پردازش محلی روی دستگاه شما و بدون اشتراک‌گذاری با اشخاص ثالث، مطابق با سیاست‌های فروشگاه‌های Google و Apple.",
+			"سیاست حفاظت از داده‌های شخصی و حریم خصوصی اپلیکیشن معارف سجادیه: داده‌های درخواستی و هدف از آنها، مجوز موقعیت و حصار جغرافیایی، و اعلان‌ها - با پردازش محلی روی دستگاه شما و بدون اشتراک‌گذاری با اشخاص ثالث، مطابق با سیاست‌های فروشگاه‌های Google و Apple.",
 	},
 	back: "بازگشت به سایت",
 	badge: "حریم خصوصی و حفاظت از داده‌ها",
@@ -196,21 +178,11 @@ const fa: PrivacyContent = {
 			title: "داده‌های شخصی و هدف از آنها",
 			points: [
 				"نام کامل و شمارهٔ تلفن به‌صورت اختیاری درخواست می‌شود تا بتوانید در مسابقهٔ حفظ رسالهٔ حقوق امام زین‌العابدین (علیه‌السلام) شرکت کنید.",
+				"می‌توانید حساب خود را با شمارهٔ تلفن یا از راه حساب Google خود بسازید؛ اگر Google را انتخاب کنید، نشانی ایمیل شما را برای شناسایی حسابتان از آن دریافت می‌کنیم و هرگز رمز عبور شما را نمی‌بینیم.",
 				"تنها هدف از ثبت این داده‌ها، تماس با شما برای هماهنگی ارسال جایزه در صورت برنده شدن است.",
 				"داده‌های شما به‌طور کامل رمزگذاری شده و هرگز توسط هیچ شخص ثالثی دیده نمی‌شود و با هیچ نهاد تبلیغاتی یا تجاری به اشتراک گذاشته یا به آنها فروخته نمی‌شود.",
 			],
-		},
-		{
-			id: "personal-data-deletion",
-			order: "دوم",
-			icon: "delete",
-			title: "حذف داده‌های شخصی",
-			points: [
-				"اپلیکیشن را باز کنید",
-				'روی "همین حالا سفر خود را آغاز کنید" در صفحهٔ اصلی کلیک کنید',
-				'از منوی بالای صفحه روی "کارت زائر" کلیک کنید',
-				'در پایین صفحه روی "حذف حساب به‌طور کامل" کلیک کنید',
-			],
+			cta: "درخواست حذف داده‌های شخصی خود",
 		},
 		{
 			id: "location-permissions",
@@ -236,7 +208,7 @@ const fa: PrivacyContent = {
 	],
 	band: {
 		title: "حریم خصوصی شما امانتی نزد ماست",
-		body: "کمترین دادهٔ لازم را می‌گیریم، موقعیت شما را روی دستگاهتان پردازش می‌کنیم و داده‌هایتان را با هیچ‌کس به اشتراک نمی‌گذاریم — مطابق با سیاست‌های فروشگاه‌های Google و Apple.",
+		body: "کمترین دادهٔ لازم را می‌گیریم، موقعیت شما را روی دستگاهتان پردازش می‌کنیم و داده‌هایتان را با هیچ‌کس به اشتراک نمی‌گذاریم - مطابق با سیاست‌های فروشگاه‌های Google و Apple.",
 		home: "صفحهٔ اصلی",
 		org: "مؤسسهٔ امام زین‌العابدین (ع)",
 	},
