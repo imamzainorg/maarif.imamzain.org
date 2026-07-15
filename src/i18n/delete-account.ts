@@ -2,13 +2,13 @@
  * Copy for the account-deletion request page in the three locales.
  *
  * Google Play's Data safety form asks for a URL where a user can *request*
- * account and data deletion without installing the app or signing in — the
+ * account and data deletion without installing the app or signing in - the
  * in-app steps documented in the privacy policy do not satisfy it on their own.
- * This page is that URL: the instant in-app route stays first, and the prefilled
- * mailto below it serves anyone who has already uninstalled the app.
+ * This page is that URL and the only place the steps live: the instant in-app
+ * route stays first, and the prefilled mailto below it serves anyone who has
  *
- * The two policy numbers here — the 30-day ceiling and "the account cannot be
- * restored" — describe what the foundation commits to; keep them in step with
+ * The two policy numbers here - the 30-day ceiling and "the account cannot be
+ * restored" - describe what the foundation commits to; keep them in step with
  * `@/i18n/privacy`.
  */
 import type { Locale } from "@/site.config"
@@ -20,9 +20,9 @@ export interface DeleteAccountContent {
 	badge: string
 	heading: string
 	lead: string
-	/** Route 1 — self-serve and instant, from inside the app. */
+	/** Route 1 - self-serve and instant, from inside the app. */
 	inApp: { order: string; title: string; note: string; steps: string[] }
-	/** Route 2 — email request, for users who no longer have the app. */
+	/** Route 2 - email request, for users who no longer have the app. */
 	byEmail: {
 		order: string
 		title: string
@@ -43,7 +43,7 @@ export interface DeleteAccountContent {
 
 const ar: DeleteAccountContent = {
 	seo: {
-		title: "طلب حذف الحساب والبيانات — معارف سجادية",
+		title: "طلب حذف الحساب والبيانات - معارف سجادية",
 		description:
 			"اطلب حذف حسابك وجميع بياناتك الشخصية من تطبيق معارف سجادية: خطوات الحذف الفوري من داخل التطبيق، أو أرسل طلباً بالبريد الإلكتروني إلى maarif@imamzain.org.",
 	},
@@ -51,11 +51,11 @@ const ar: DeleteAccountContent = {
 	back: "العودة إلى الموقع",
 	badge: "حذف الحساب والبيانات",
 	heading: "طلب حذف الحساب وجميع بياناتك",
-	lead: "يمكنك حذف حسابك في «معارف سجادية» وكلَّ ما يرتبط به من بيانات متى شئت — فوراً من داخل التطبيق، أو بطلبٍ تُرسله إلينا بالبريد الإلكتروني.",
+	lead: "يمكنك حذف حسابك في «معارف سجادية» وكلَّ ما يرتبط به من بيانات متى شئت، فوراً من داخل التطبيق، أو بطلبٍ تُرسله إلينا بالبريد الإلكتروني.",
 	inApp: {
 		order: "الطريقة الأولى",
 		title: "الحذف الفوري من داخل التطبيق",
-		note: "الأسرع، ويُنفَّذ في حينه بلا انتظار — ما دام التطبيق مثبَّتاً على جهازك.",
+		note: "الأسرع، ويُنفَّذ في حينه بلا انتظار - ما دام التطبيق مثبَّتاً على جهازك.",
 		steps: [
 			"افتح التطبيق",
 			'اضغط "أبدأ رحلتك الان" في الشاشة الرئيسية',
@@ -69,24 +69,24 @@ const ar: DeleteAccountContent = {
 		note: "إن كنت قد أزلت التطبيق من جهازك أو تعذَّر عليك الوصول إلى حسابك، اضغط الزر أدناه: يفتح تطبيق البريد لديك برسالةٍ جاهزة، تكتب فيها اسمك ورقم هاتفك المسجَّلين ثم ترسلها إلينا.",
 		cta: "أرسل طلب حذف الحساب",
 		fallback: "أو راسلنا مباشرةً على:",
-		subject: "طلب حذف الحساب — معارف سجادية",
-		body: "السلام عليكم،\n\nأطلبُ حذف حسابي وجميع بياناتي الشخصية من تطبيق «معارف سجادية» نهائياً.\n\nالاسم الكامل المسجَّل في التطبيق: \nرقم الهاتف المسجَّل في التطبيق: \n\nوشكراً لكم.",
+		subject: "طلب حذف الحساب - معارف سجادية",
+		body: "السلام عليكم،\n\nأطلبُ حذف حسابي وجميع بياناتي الشخصية من تطبيق «معارف سجادية» نهائياً.\n\nالاسم الكامل المسجَّل في التطبيق: \nرقم الهاتف أو البريد الإلكتروني المسجَّل في التطبيق: \n\nوشكراً لكم.",
 	},
 	scope: {
-		title: "ما الذي يُحذف؟",
+		title: "المعلومات المحذوفة",
 		items: [
-			"اسمك الكامل ورقم هاتفك.",
+			"اسمك الكامل، ورقم هاتفك أو بريدك الإلكتروني بحسب طريقة تسجيلك.",
 			"سجلُّ مشاركتك في مسابقة حفظ رسالة الحقوق.",
-			"موقعك الجغرافي لا يُخزَّن على خوادمنا أصلاً — فلا شيء منه ليُحذف.",
+			"موقعك الجغرافي لا يُخزَّن على خوادمنا على الاطلاق.",
 			"البيانات المحفوظة محلياً على جهازك تزول بإلغاء تثبيت التطبيق.",
 		],
 	},
 	timing: {
-		title: "متى يُنفَّذ الطلب؟",
+		title: "مدة تنفيذ الطلب",
 		items: [
 			"الحذف من داخل التطبيق: فوريٌّ في حينه.",
-			"الطلب بالبريد: يُنفَّذ خلال مدةٍ أقصاها 30 يوماً من استلامه، وغالباً أسرع من ذلك.",
-			"بعد التنفيذ لا يبقى لدينا اسمك ولا رقم هاتفك ولا سجلُّ مشاركتك، ولا يمكن استرجاع الحساب.",
+			"الطلب بالبريد: يُنفَّذ خلال مدةٍ أقصاها 30 يوماً من استلامه.",
+			"بعد التنفيذ لا يبقى لدينا اسمك ولا بيانات تواصلك ولا سجلُّ مشاركتك، ولا يمكن استرجاع الحساب.",
 		],
 	},
 	band: {
@@ -103,7 +103,7 @@ const ar: DeleteAccountContent = {
 
 const en: DeleteAccountContent = {
 	seo: {
-		title: "Request Account & Data Deletion — Maarif Sajjadiya",
+		title: "Request Account & Data Deletion - Maarif Sajjadiya",
 		description:
 			"Request deletion of your account and all of your personal data from the Maarif Sajjadiya app: delete it instantly from inside the app, or send a request by email to maarif@imamzain.org.",
 	},
@@ -111,11 +111,11 @@ const en: DeleteAccountContent = {
 	back: "Back to the site",
 	badge: "Account & Data Deletion",
 	heading: "Request Deletion of Your Account and Data",
-	lead: "You can delete your Maarif Sajjadiya account and everything tied to it whenever you want — instantly from inside the app, or by sending us a request by email.",
+	lead: "You can delete your Maarif Sajjadiya account and everything tied to it whenever you want, instantly from inside the app, or by sending us a request by email.",
 	inApp: {
 		order: "Option one",
 		title: "Delete instantly from inside the app",
-		note: "The fastest route, and it takes effect on the spot — as long as the app is still installed on your device.",
+		note: "The fastest route, and it takes effect on the spot - as long as the app is still installed on your device.",
 		steps: [
 			"Open the app",
 			'Tap "Start Your Journey Now" on the home screen',
@@ -126,18 +126,18 @@ const en: DeleteAccountContent = {
 	byEmail: {
 		order: "Option two",
 		title: "Request deletion by email",
-		note: "If you have already uninstalled the app, or you cannot reach your account, tap the button below: your mail app opens with a ready-made message — write in the name and phone number you registered, then send it to us.",
+		note: "If you have already uninstalled the app, or you cannot reach your account, tap the button below: your mail app opens with a ready-made message - write in the name and phone number you registered, then send it to us.",
 		cta: "Send an account deletion request",
 		fallback: "Or write to us directly at:",
-		subject: "Account deletion request — Maarif Sajjadiya",
-		body: "Hello,\n\nI request the permanent deletion of my account and all of my personal data from the Maarif Sajjadiya app.\n\nFull name registered in the app: \nPhone number registered in the app: \n\nThank you.",
+		subject: "Account deletion request - Maarif Sajjadiya",
+		body: "Hello,\n\nI request the permanent deletion of my account and all of my personal data from the Maarif Sajjadiya app.\n\nFull name registered in the app: \nPhone number or email address registered in the app: \n\nThank you.",
 	},
 	scope: {
 		title: "What gets deleted?",
 		items: [
-			"Your full name and your phone number.",
+			"Your full name, and the phone number or email address you signed up with.",
 			"Your participation record in the Treatise on Rights memorization competition.",
-			"Your location is never stored on our servers in the first place — there is nothing of it to delete.",
+			"Your location is never stored on our servers at all.",
 			"Data held locally on your device goes away when you uninstall the app.",
 		],
 	},
@@ -145,8 +145,8 @@ const en: DeleteAccountContent = {
 		title: "When is the request carried out?",
 		items: [
 			"Deletion from inside the app: immediately, on the spot.",
-			"A request by email: carried out within 30 days of us receiving it at the latest, and usually sooner.",
-			"Once it is done we hold no name, no phone number and no participation record of yours, and the account cannot be restored.",
+			"A request by email: carried out within 30 days of us receiving it at the latest.",
+			"Once it is done we hold no name, no contact details and no participation record of yours, and the account cannot be restored.",
 		],
 	},
 	band: {
@@ -163,7 +163,7 @@ const en: DeleteAccountContent = {
 
 const fa: DeleteAccountContent = {
 	seo: {
-		title: "درخواست حذف حساب و داده‌ها — معارف سجادیه",
+		title: "درخواست حذف حساب و داده‌ها - معارف سجادیه",
 		description:
 			"حذف حساب و همهٔ داده‌های شخصی خود را از اپلیکیشن معارف سجادیه درخواست کنید: حذف فوری از درون اپلیکیشن، یا ارسال درخواست با ایمیل به maarif@imamzain.org.",
 	},
@@ -171,11 +171,11 @@ const fa: DeleteAccountContent = {
 	back: "بازگشت به سایت",
 	badge: "حذف حساب و داده‌ها",
 	heading: "درخواست حذف حساب و همهٔ داده‌های شما",
-	lead: "هر زمان که بخواهید می‌توانید حساب «معارف سجادیه» و هر آنچه به آن وابسته است را حذف کنید — به‌صورت فوری از درون اپلیکیشن، یا با ارسال درخواست از راه ایمیل.",
+	lead: "هر زمان که بخواهید می‌توانید حساب «معارف سجادیه» و هر آنچه به آن وابسته است را حذف کنید، به‌صورت فوری از درون اپلیکیشن، یا با ارسال درخواست از راه ایمیل.",
 	inApp: {
 		order: "روش نخست",
 		title: "حذف فوری از درون اپلیکیشن",
-		note: "سریع‌ترین راه و بی‌درنگ انجام می‌شود — تا زمانی که اپلیکیشن روی دستگاه شما نصب باشد.",
+		note: "سریع‌ترین راه و بی‌درنگ انجام می‌شود - تا زمانی که اپلیکیشن روی دستگاه شما نصب باشد.",
 		steps: [
 			"اپلیکیشن را باز کنید",
 			'در صفحهٔ اصلی روی "همین حالا سفر خود را آغاز کنید" بزنید',
@@ -189,15 +189,15 @@ const fa: DeleteAccountContent = {
 		note: "اگر اپلیکیشن را از دستگاهتان حذف کرده‌اید یا به حسابتان دسترسی ندارید، دکمهٔ زیر را بزنید: برنامهٔ ایمیل شما با پیامی آماده باز می‌شود؛ نام و شمارهٔ تلفن ثبت‌شدهٔ خود را در آن بنویسید و برای ما بفرستید.",
 		cta: "ارسال درخواست حذف حساب",
 		fallback: "یا مستقیماً به این نشانی بنویسید:",
-		subject: "درخواست حذف حساب — معارف سجادیه",
-		body: "سلام،\n\nدرخواست می‌کنم حساب و همهٔ داده‌های شخصی من از اپلیکیشن «معارف سجادیه» به‌طور کامل حذف شود.\n\nنام کامل ثبت‌شده در اپلیکیشن: \nشمارهٔ تلفن ثبت‌شده در اپلیکیشن: \n\nبا تشکر.",
+		subject: "درخواست حذف حساب - معارف سجادیه",
+		body: "سلام،\n\nدرخواست می‌کنم حساب و همهٔ داده‌های شخصی من از اپلیکیشن «معارف سجادیه» به‌طور کامل حذف شود.\n\nنام کامل ثبت‌شده در اپلیکیشن: \nشمارهٔ تلفن یا نشانی ایمیل ثبت‌شده در اپلیکیشن: \n\nبا تشکر.",
 	},
 	scope: {
 		title: "چه چیزی حذف می‌شود؟",
 		items: [
-			"نام کامل و شمارهٔ تلفن شما.",
+			"نام کامل، و شمارهٔ تلفن یا نشانی ایمیلی که با آن ثبت‌نام کرده‌اید.",
 			"سابقهٔ شرکت شما در مسابقهٔ حفظ رسالهٔ حقوق.",
-			"موقعیت جغرافیایی شما اصلاً روی سرورهای ما ذخیره نمی‌شود — پس چیزی از آن برای حذف وجود ندارد.",
+			"موقعیت جغرافیایی شما اصلاً روی سرورهای ما ذخیره نمی‌شود.",
 			"داده‌های ذخیره‌شده روی دستگاه شما با حذف اپلیکیشن از میان می‌رود.",
 		],
 	},
@@ -205,8 +205,8 @@ const fa: DeleteAccountContent = {
 		title: "درخواست چه زمانی انجام می‌شود؟",
 		items: [
 			"حذف از درون اپلیکیشن: بی‌درنگ و در همان لحظه.",
-			"درخواست با ایمیل: حداکثر تا ۳۰ روز پس از دریافت انجام می‌شود و معمولاً زودتر.",
-			"پس از آن، نام، شمارهٔ تلفن و سابقهٔ شرکت شما نزد ما نمی‌ماند و حساب قابل بازیابی نیست.",
+			"درخواست با ایمیل: حداکثر تا ۳۰ روز پس از دریافت انجام می‌شود.",
+			"پس از آن، نام، اطلاعات تماس و سابقهٔ شرکت شما نزد ما نمی‌ماند و حساب قابل بازیابی نیست.",
 		],
 	},
 	band: {

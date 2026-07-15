@@ -1,6 +1,6 @@
 ---
 /**
- * Privacy policy for the Maarif Sajjadiya app — one component, three locales
+ * Privacy policy for the Maarif Sajjadiya app - one component, three locales
  * (`/privacy-policy`, `/en/privacy-policy`, `/fa/privacy-policy`). The Arabic
  * URL is the stable one the App Store / Google Play listings point at. Each
  * variant carries canonical + hreflang and a language switcher that navigates
@@ -338,9 +338,12 @@ const brandLatin = locale === "en" ? "معارف سجادية" : "Maarif Sajjadi
 				margin-block-start: 0.65rem;
 			}
 
-			/* Link out to /delete-account from the in-app deletion steps. */
+			/* Link out to /delete-account, centred under the section's points. */
 			.pp-cta {
+				display: flex;
+				inline-size: fit-content;
 				margin-block-start: 1.4rem;
+				margin-inline: auto;
 			}
 
 			.pp-band {
