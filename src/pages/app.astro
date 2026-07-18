@@ -1,0 +1,63 @@
+---
+/** `/app` - device-aware store bouncer. One share/QR target that forwards
+ *  Android visitors to Google Play, iPhone/iPad visitors to the App Store, and
+ *  everyone on desktop back to the homepage. The site is static, so detection
+ *  runs in a pre-paint inline script (same UA rules as the Base head script).
+ *
+ *  Store forwarding is gated on `launch.live` exactly like that script, so we
+ *  never bounce anyone to a not-yet-published listing: while pre-launch, every
+ *  device lands on the homepage. On launch day (flip `launch.live`, fill the
+ *  iOS URL) this starts routing to the stores with no further edits. */
+import { SITE } from "@/site.config"
+
+// A store URL only when the app is actually live for that platform; otherwise
+// the bounce target is the homepage.
+const ios = SITE.launch.live ? SITE.stores.ios : null
+const android = SITE.launch.live ? SITE.stores.android : null
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex, nofollow" />
+		<title>Opening the app</title>
+		<link rel="canonical" href={SITE.origin + "/"} />
+		{
+			/* Runs before paint: pick a destination from the User-Agent and replace
+        the history entry so this bouncer never sits in the back stack. Mirrors
+        the platform rules in src/layouts/Base.astro (Windows Phone counts as
+        desktop; iPadOS masquerading as macOS is caught via maxTouchPoints). */
+		}
+		<script is:inline define:vars={{ ios, android }}>
+			;(function () {
+				var target = "/"
+				try {
+					var ua = navigator.userAgent || ""
+					if (/windows phone/i.test(ua)) target = "/"
+					else if (/android/i.test(ua))
+						target =
+							android ||
+							"https://play.google.com/store/apps/details?id=org.imamzain.maarif"
+					else if (/iphone|ipod|ipad/i.test(ua))
+						target =
+							ios || "https://apps.apple.com/app/[developer]/[id]"
+					else if (
+						/macintosh/i.test(ua) &&
+						navigator.maxTouchPoints > 1
+					)
+						target =
+							ios || "https://apps.apple.com/app/[developer]/[id]"
+				} catch (e) {}
+				location.replace(target)
+			})()
+		</script>
+		<noscript>
+			<meta http-equiv="refresh" content="0; url=/" />
+		</noscript>
+	</head>
+	<body>
+		<p>Redirecting...</p>
+	</body>
+</html>

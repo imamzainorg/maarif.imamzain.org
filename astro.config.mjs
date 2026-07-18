@@ -22,6 +22,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // `/app` is a noindex device bouncer, not a real page - keep it out.
+      filter: (page) => !/\/app\/?$/.test(page),
       i18n: {
         defaultLocale: 'ar',
         locales: { ar: 'ar', en: 'en', fa: 'fa' },
