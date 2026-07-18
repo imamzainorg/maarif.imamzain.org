@@ -36,19 +36,13 @@ const android = SITE.launch.live ? SITE.stores.android : null
 				try {
 					var ua = navigator.userAgent || ""
 					if (/windows phone/i.test(ua)) target = "/"
-					else if (/android/i.test(ua))
-						target =
-							android ||
-							"https://play.google.com/store/apps/details?id=org.imamzain.maarif"
-					else if (/iphone|ipod|ipad/i.test(ua))
-						target =
-							ios || "https://apps.apple.com/app/[developer]/[id]"
+					else if (/android/i.test(ua)) target = android || "/"
+					else if (/iphone|ipod|ipad/i.test(ua)) target = ios || "/"
 					else if (
 						/macintosh/i.test(ua) &&
 						navigator.maxTouchPoints > 1
 					)
-						target =
-							ios || "https://apps.apple.com/app/[developer]/[id]"
+						target = ios || "/"
 				} catch (e) {}
 				location.replace(target)
 			})()
