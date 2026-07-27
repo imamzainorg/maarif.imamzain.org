@@ -9,11 +9,10 @@ export const SITE = {
 	origin: "https://maarif.imamzain.org",
 
 	/**
-	 * App store destinations. The app is PRE-LAUNCH: neither store is live yet, so
-	 * `launch.live` is false and the CTAs render as "coming soon" (no dead links
-	 * ship). On launch day: set `launch.live = true`, and fill `stores.ios` with
-	 * the real App Store URL once the app is approved. The Android package is the
-	 * real, intended one (`org.imamzain.maarif_sajjadyia`).
+	 * App store destinations. Google Play is LIVE; iOS is still in review, so
+	 * `stores.ios` stays null and that badge alone keeps rendering as "coming
+	 * soon" (no dead link ships). Fill `stores.ios` + `app.iosAppId` when the iOS
+	 * build is approved and the second badge lights up with no other edits.
 	 */
 	stores: {
 		ios: null as string | null, // App Store URL - null until the iOS app is published
@@ -23,8 +22,8 @@ export const SITE = {
 				| null,
 	},
 	launch: {
-		/** Master switch: are the stores accepting downloads yet? Flip to true on launch. */
-		live: false,
+		/** Master switch: are the stores accepting downloads yet? */
+		live: true,
 	},
 
 	/** App identifiers used in structured data. */
@@ -77,13 +76,27 @@ export type Locale = (typeof SITE.locales)[number]
 
 /**
  * The store links that are actually downloadable right now: only when the app
- * has launched AND that platform has a real URL. Empty while pre-launch - used
- * by the CTAs (to pick "coming soon" vs real links), the head script (?go=1
- * forwarding), and the JSON-LD (downloadUrl/installUrl).
+ * has launched AND that platform has a real URL. Used by the CTAs (to pick
+ * "coming soon" vs real links) and the JSON-LD (downloadUrl/installUrl) - the
+ * latter deliberately gets the canonical, param-free URL so all three locale
+ * pages point at one identical entity.
  */
 export function activeStoreLinks(): string[] {
 	if (!SITE.launch.live) return []
 	return [SITE.stores.ios, SITE.stores.android].filter(
 		(u): u is string => typeof u === "string" && u.length > 0,
 	)
+}
+
+/**
+ * Google Play listing in the visitor's language. Play reads the `hl` query
+ * param, and our locale codes (ar/en/fa) are exactly the values it expects, so
+ * an Arabic reader lands on the Arabic listing instead of Play's own guess.
+ * Returns null while the Android URL is unset or pre-launch, which is what the
+ * "coming soon" chip checks for.
+ */
+export function androidStoreUrl(locale: Locale): string | null {
+	if (!SITE.launch.live || !SITE.stores.android) return null
+	const sep = SITE.stores.android.includes("?") ? "&" : "?"
+	return `${SITE.stores.android}${sep}hl=${locale}`
 }

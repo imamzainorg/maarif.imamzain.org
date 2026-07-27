@@ -27,7 +27,7 @@ export interface ScreenSet {
 	hero: ImageMetadata // home - "امشِ وتعلّم", the walk to Karbala + prizes
 	stations: ImageMetadata // journey map: the route to the shrine with numbered station pins
 	rights: ImageMetadata // reading a station's Rights (Risalat al-Huquq) + audio + self-test
-	recitations: ImageMetadata // audio library: Quran, Sahifa, Arbaeen latmiyat by reciters
+	recitations: ImageMetadata // audio library: religious lectures
 	competition: ImageMetadata // a per-station quiz question
 }
 

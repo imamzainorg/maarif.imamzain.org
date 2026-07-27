@@ -498,7 +498,18 @@ html.is-android .store-badge[data-store="android"] {
 	display: inline-flex;
 	align-items: center;
 	min-block-size: 38px;
-	padding: 0.4rem 0.7rem;
+	/* Vazirmatn's content box is lopsided - about two parts ascent to one part
+	   descent - so centring that box leaves the word riding high and the pill
+	   reads as if it had a gap underneath it. Trade top padding for bottom
+	   padding to centre what the eye actually reads (the letter bodies) instead
+	   of the descender tails. Purely optical: the pill's own size and position
+	   are unchanged, and this is the one number to nudge if it ever needs to sit
+	   lower or higher. Kept as padding-block so the narrow-screen padding-inline
+	   override below still applies cleanly. */
+	--lang-optical-shift: 0.24em;
+	padding-block: calc(0.4rem + var(--lang-optical-shift))
+		calc(0.4rem - var(--lang-optical-shift));
+	padding-inline: 0.7rem;
 	border-radius: 999px;
 	font-size: var(--step--1);
 	font-weight: 700;

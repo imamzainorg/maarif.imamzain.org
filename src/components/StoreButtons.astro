@@ -4,12 +4,11 @@
  * script tags <html> with is-ios / is-android / is-desktop and CSS then
  * highlights the badge that matches the visitor's device.
  *
- * PRE-LAUNCH: while `SITE.launch.live` is false (or a store URL is missing), the
- * badge renders as a non-interactive "coming soon" chip instead of a dead link -
- * so nothing 404s. On launch day, flip `SITE.launch.live` (and fill the iOS URL)
- * and the same badges become real links automatically.
+ * When a store URL is missing (iOS, still in review), that badge renders as a
+ * non-interactive "coming soon" chip instead of a dead link - so nothing 404s.
+ * Fill the iOS URL and the same badge becomes a real link automatically.
  */
-import { SITE, type Locale } from "@/site.config"
+import { SITE, androidStoreUrl, type Locale } from "@/site.config"
 import Icon from "./Icon.astro"
 
 interface Props {
@@ -48,7 +47,7 @@ const badges = [
 	},
 	{
 		key: "android",
-		url: SITE.stores.android,
+		url: androidStoreUrl(locale), // Play listing in this page's language
 		glyph: "google-play",
 		glyphSize: 24,
 		name: "Google Play",

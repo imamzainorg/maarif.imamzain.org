@@ -1,5 +1,5 @@
 ---
-import { SITE, type Locale } from "@/site.config"
+import { SITE, androidStoreUrl, type Locale } from "@/site.config"
 import { CONTENT } from "@/i18n/content"
 import { deleteAccountPath, privacyPath } from "@/i18n"
 import Logo from "./Logo.astro"
@@ -16,9 +16,10 @@ const year = new Date()
 	})
 	.replace("AH", "هجرية")
 
-/** Pre-launch: render store links as muted "coming soon" chips, not dead links. */
+/** A store with no URL yet (iOS) renders as a muted chip, not a dead link. */
 const isLive = (url: string | null) =>
 	SITE.launch.live && typeof url === "string" && url.length > 0
+const android = androidStoreUrl(locale)
 const PRIVACY: Record<Locale, string> = {
 	ar: "سياسة الخصوصية",
 	en: "Privacy Policy",
@@ -65,10 +66,10 @@ const DELETE: Record<Locale, string> = {
 					)
 				}
 				{
-					isLive(SITE.stores.android) ? (
+					isLive(android) ? (
 						<a
 							class="btn btn--on-dark btn--ghost btn--sm"
-							href={SITE.stores.android}
+							href={android}
 							target="_blank"
 							rel="noopener noreferrer"
 						>

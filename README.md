@@ -52,15 +52,19 @@ PNGs (same filenames)** with frameless full-screen shots and run `npm run og` to
 refresh the cover - `<PhoneFrame>` wraps them in a CSS device bezel. Optimized to
 AVIF/WebP at build time.
 
-## Launch checklist (when the app goes live)
+## Launch state
 
-Everything is wired behind one flag in [`src/site.config.ts`](src/site.config.ts):
+Everything is wired through [`src/site.config.ts`](src/site.config.ts):
 
-1. Set `launch.live = true` - the store badges become real links, the QR
-   auto-forward activates, and JSON-LD flips `PreOrder` → `InStock`.
-2. Fill `stores.ios` with the App Store URL and `app.iosAppId` once the iOS build
-   is approved (Android package `org.imamzain.maarif_sajjadyia` is already set).
-3. Rebuild and redeploy.
+- **Google Play: live.** `launch.live = true`, so the Play badge is a real link,
+  the QR auto-forward (`/app`, `?go=1`) routes Android visitors to the listing,
+  and JSON-LD reports `InStock`. Each locale links to its own listing language
+  via `androidStoreUrl(locale)` → `…&hl=ar|en|fa`; `/app` has no locale of its
+  own and reads `hl` from the browser instead.
+- **App Store: pending.** `stores.ios` is `null`, so that badge alone still
+  renders as a "coming soon" chip and iOS visitors bounce to the homepage. Fill
+  `stores.ios` and `app.iosAppId` when the build is approved, then rebuild and
+  redeploy - nothing else needs touching.
 
 ## Deploy (Vercel)
 

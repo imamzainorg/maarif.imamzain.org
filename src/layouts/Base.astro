@@ -1,7 +1,7 @@
 ---
 import "@fontsource-variable/vazirmatn/index.css"
 import "@/styles/global.css"
-import { SITE, type Locale } from "@/site.config"
+import { SITE, androidStoreUrl, type Locale } from "@/site.config"
 import { DIR, HTML_LANG } from "@/i18n"
 import Seo from "@/components/Seo.astro"
 
@@ -42,7 +42,7 @@ const SKIP: Record<Locale, string> = {
 			is:inline
 			define:vars={{
 				ios: SITE.launch.live ? SITE.stores.ios : null,
-				android: SITE.launch.live ? SITE.stores.android : null,
+				android: androidStoreUrl(locale),
 				reco: RECO[locale],
 			}}
 		>
