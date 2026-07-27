@@ -6,11 +6,11 @@
  *
  * Product: "معارف سجادية" (Maarif Sajjadiya) - "walk and learn". A companion for
  * the ziyarat walk to Karbala: an interactive route map divided into stations
- * pinned to the road's numbered poles; at each station a set of rights from
- * Imam Sajjad's Treatise on Rights (رسالة الحقوق) to read + hear + self-test;
- * an audio library (Qur'an, the Sahifa, Arbaeen elegies by named reciters); a
- * per-station quiz competition with prizes; progress tracking; offline; push +
- * inbox. Published by the Imam Zayn al-Abidin (as) Foundation. PRE-LAUNCH.
+ * pinned to the road's numbered poles; the rights of Imam Sajjad's Treatise on
+ * Rights (رسالة الحقوق) split into graded memorization stages to read + hear +
+ * self-test as you walk, with prizes for the competition; an audio library of
+ * religious lectures; progress tracking; offline; push + inbox. Published by
+ * the Imam Zayn al-Abidin (as) Foundation. Live on Google Play; iOS pending.
  */
 import type { Locale } from "@/site.config"
 
@@ -81,7 +81,7 @@ const ar: Content = {
 	seo: {
 		title: "معارف سجادية | امشِ إلى كربلاء وتعلّم رسالة الحقوق، محطةً محطة",
 		description:
-			"تطبيق معارف سجادية يرافقك في طريقك إلى كربلاء محطةً محطة على أعمدة الطريق: رسالة الحقوق للإمام السجّاد (ع) مقروءةً ومسموعة عند كل محطة، ومكتبة صوتية من القرآن والصحيفة ولطميات الأربعين، ومسابقة بجوائز. يعمل دون إنترنت، بثلاث لغات، ومجاناً.",
+			"تطبيق معارف سجادية يرافقك في طريقك إلى كربلاء محطةً محطة على أعمدة الطريق: احفظ رسالة الحقوق للإمام السجّاد (ع) مرحلةً بعد مرحلة واربح جوائز قيّمة، مع مكتبة صوتية من المحاضرات الدينية. يعمل دون إنترنت، بثلاث لغات، ومجاناً.",
 		keywords: [
 			"معارف سجادية",
 			"امشِ وتعلّم",
@@ -92,15 +92,15 @@ const ar: Content = {
 			"زيارة الأربعين",
 			"محطات الطريق",
 			"أعمدة الطريق",
-			"الصحيفة السجادية",
-			"لطميات الأربعين",
+			"حفظ رسالة الحقوق",
+			"محاضرات دينية",
 			"مسابقة حسينية",
 			"تطبيق الزيارة",
 			"مؤسسة الإمام زين العابدين",
 		],
 		ogTitle: "معارف سجادية | رفيقك إلى كربلاء: رسالة الحقوق محطةً محطة",
 		ogDescription:
-			"خارطة الطريق إلى الحرم الحسيني ومحطاته على الأعمدة، ورسالة الحقوق مقروءةً ومسموعة عند كل محطة، ومكتبة صوتية من القرآن والصحيفة واللطميات، ومسابقة بجوائز - في تطبيق واحد يعمل دون إنترنت، بثلاث لغات، ومجاناً. من مؤسسة الإمام زين العابدين (عليه السلام).",
+			"خارطة الطريق إلى الحرم الحسيني ومحطاته على الأعمدة، ورسالة الحقوق تحفظها مرحلةً بعد مرحلة وتربح بها جوائز قيّمة، ومكتبة صوتية من المحاضرات الدينية - في تطبيق واحد يعمل دون إنترنت، بثلاث لغات، ومجاناً. من مؤسسة الإمام زين العابدين (عليه السلام).",
 	},
 	brand: {
 		name: "معارف سجادية",
@@ -115,9 +115,9 @@ const ar: Content = {
 	},
 	hero: {
 		eyebrow: "امشِ… وتعلّم",
-		title: "في طريقك إلى كربلاء، لا تمشِ وحدك",
+		title: "احفظ رسالة الحقوق واربح جوائز",
 		subtitle:
-			"معارف سجادية يرافقك على خارطة الطريق محطةً محطة عند كل عمود: يفتح لك في كل محطة باباً من رسالة الحقوق للإمام السجّاد (عليه السلام) مقروءاً ومسموعاً، ويختبر حفظك، ويصحبك بمكتبة صوتية من القرآن والصحيفة ولطميات الأربعين - يعمل دون إنترنت، بثلاث لغات، ومجاناً.",
+			"يمنحك تطبيق معارف سجادية فرصة مميزة لربح جوائز قيّمة من خلال حفظ رسالة الحقوق للإمام السجاد (ع) أثناء مسيرتك الأربعينية إلى كربلاء. يُقسَّم الطريق إلى مراحل حفظية متدرجة، لتتقدم في حفظ حقوق هذه الرسالة العظيمة مع كل مسافة تقطعها. يعمل دون اتصال بالإنترنت، ويدعم ثلاث لغات... وكل ذلك مجانًا!",
 		ctaHint: "حمّل التطبيق مجاناً الآن",
 		soonHint: "يصل قريباً بإذن الله إلى App Store وGoogle Play",
 		scanHint: "امسح الرمز لتحميل التطبيق على جهازك",
@@ -143,13 +143,13 @@ const ar: Content = {
 	},
 	showcase: {
 		eyebrow: "خارطة الرحلة",
-		title: "طريقك إلى كربلاء، محطةً محطة على الأعمدة",
+		title: "خارطة المحطات إلى كربلاء",
 		lead: "خارطة تفاعلية ترسم لك الطريق إلى مولانا الحسين (عليه السلام)، مقسوماً إلى محطات مثبّتة على أعمدة الطريق المرقّمة؛ تعرف عند أي عمود أنت، وكم حقّاً في محطتك، وكم بقي من الطريق.",
 		bullets: [
 			"طريقك إلى الحرم الحسيني مرسومٌ على الخارطة محطةً محطة",
 			"كل محطة مثبّتة على أعمدة الطريق المرقّمة ومحدّدة بالكيلومترات",
-			"لكل محطة عددٌ من حقوق «رسالة الحقوق» تقرؤها وتستمع إليها",
-			"يحدّد التطبيق موقعك ليعرف المحطة التي بلغتها",
+			"ثماني محطات تضمّ الحقوق الخمسين كاملة، تقرؤها وتستمع إليها",
+			"ينبّهك التطبيق عند بلوغك كل محطة على الطريق",
 			"يسجّل تقدّمك محطةً محطة، ويعمل دون إنترنت في الطريق",
 		],
 	},
@@ -157,20 +157,20 @@ const ar: Content = {
 		{
 			id: "rights",
 			eyebrow: "رسالة الحقوق",
-			title: "رسالة الحقوق للإمام السجّاد (عليه السلام)، محطةً محطة",
-			body: "خمسون حقّاً من رسالة الحقوق موزّعة على محطات طريقك - تقرأ حقوق كل محطة وتستمع إليها بصوتٍ واضح، ثم تختبر حفظك قبل أن تمضي إلى المحطة التالية، فتصل ومعك زادٌ من المعرفة.",
+			title: "رسالة الحقوق للإمام السجّاد (عليه السلام)",
+			body: "خمسون حقّاً من رسالة الحقوق موزّعة على ثماني محطات في طريقك - تقرأ حقوق كل محطة وتستمع إليها بصوتٍ واضح، ثم تختبر حفظك قبل أن تمضي إلى المحطة التالية، فتصل ومعك زادٌ من المعرفة.",
 		},
 		{
 			id: "recitations",
 			eyebrow: "مكتبة صوتية",
-			title: "القرآن والصحيفة ولطميات الأربعين، بين سمعك",
-			body: "مكتبة صوتية تصحبك في الطريق: تلاوات من القرآن الكريم، والصحيفة السجادية، ولطميات الأربعين بكلمات شعرائها وأصوات قرّائها، مع مشغّلٍ كامل يعمل دون إنترنت.",
+			title: "محاضرات دينية بين سمعك",
+			body: "مكتبة صوتية من المحاضرات الدينية تصحبك في الطريق، تستمع إليها وأنت تمشي، مع مشغّلٍ كامل يعمل دون إنترنت.",
 		},
 		{
 			id: "competition",
 			eyebrow: "المسابقة والجوائز",
-			title: "اختبر نفسك في كل محطة، وتنافس على الجوائز",
-			body: "أسئلة مرتبطة بحقوق كل محطة تجيب عنها فتُحسب درجتك وتجمع نقاطك، مع دليلٍ واضح للمسابقة وجوائز قيّمة للمتقدّمين - لتكون خطواتك علماً يُثاب ويُكافأ.",
+			title: "أتمِم الحفظ، وأدِّ الاختبار، وادخل السحب على الجوائز",
+			body: "بعد إكمال المحطات الثماني وحفظ الحقوق الخمسين، توجّه إلى إحدى محطتي الاختبار المعتمدتين - مدينة الإمام الحسن (عليه السلام) للزائرين عند العمود 1066، أو العتبة الحسينية المقدسة - ليُجرى لك اختبار شفهي فيما حفظت. المشاركة مجانية ومفتوحة لكل الأعمار، ولك ثلاث محاولات، والجوائز: لابتوب، وهاتف ذكي، وآيباد، وإقامة مجانية بضيافة العتبة الحسينية المقدسة.",
 		},
 		{
 			id: "journey",
@@ -180,7 +180,7 @@ const ar: Content = {
 		},
 	],
 	featuresHeading: {
-		title: "مزايا تجعله رفيقك في كل خطوة",
+		title: "مزايا تجعله دليلك في كل خطوة",
 		subtitle:
 			"أدواتٌ صُمّمت لطريقٍ طويل قد ينقطع فيه الاتصال ويطول فيه المسير.",
 	},
@@ -195,7 +195,7 @@ const ar: Content = {
 			id: "gps",
 			title: "يرشدك إلى محطتك",
 			description:
-				"يحدّد موقعك على الخارطة والعمود الذي بلغته، ليدلّك على محطتك وما حولها من الطريق.",
+				"يحدّد موقعك على الخارطة والعمود الذي بلغته، وينبّهك حين تصل إلى محطةٍ من محطات الطريق.",
 		},
 		{
 			id: "progress",
@@ -222,37 +222,93 @@ const ar: Content = {
 				"بالعربية والإنجليزية والفارسية، ليرافق الزائر بأيّ لسانٍ جاء.",
 		},
 	],
-	faqHeading: "أسئلة يتكرر طرحها قبل التحميل",
+	faqHeading: "أسئلة شائعة عن التطبيق والمسابقة",
 	faq: [
 		{
 			q: "ما هو تطبيق معارف سجادية؟",
-			a: "هو رفيقك في طريقك إلى كربلاء: خارطة تقسّم المسير إلى محطات على أعمدة الطريق، وعند كل محطة حقوقٌ من «رسالة الحقوق» للإمام السجّاد (عليه السلام) مقروءةً ومسموعة، مع مكتبة صوتية ومسابقة بجوائز. شعاره: امشِ وتعلّم. من مؤسسة الإمام زين العابدين (عليه السلام).",
+			a: "هو رفيقك في طريقك إلى كربلاء: خارطة تقسّم المسير إلى محطات مثبّتة على أعمدة الطريق ينبّهك التطبيق عند بلوغ كل واحدة منها، وثماني محطات تعليمية قُسّمت عليها حقوق «رسالة الحقوق» الخمسون لتقرأها وتستمع إليها وتحفظها، مع مكتبة صوتية من المحاضرات الدينية. شعاره: امشِ وتعلّم. من مؤسسة الإمام زين العابدين (عليه السلام).",
 		},
 		{
-			q: "هل التطبيق مجاني؟",
-			a: "نعم، معارف سجادية مجاني بالكامل بلا رسوم ولا اشتراكات ولا إعلانات.",
+			q: "ما هي مسابقة معارف سجادية؟",
+			a: "مسابقة تشجّع الزائرين على حفظ رسالة الحقوق للإمام زين العابدين (عليه السلام) من خلال التطبيق أو الكتيب الخاص بالمسابقة، ثم أداء الاختبار للدخول في السحب على الجوائز.",
+		},
+		{
+			q: "كيف أشارك في المسابقة؟",
+			a: "لا تحتاج المشاركة إلى تسجيل مسبق ولا إلى تعبئة استمارة. احفظ رسالة الحقوق من خلال التطبيق أو الكتيب، وأكمل المحطات الثماني التي تضمّ الحقوق الخمسين كاملة، وسجّل الدخول إلى التطبيق، ثم توجّه إلى إحدى محطتي الاختبار المعتمدتين لأداء الاختبار.",
+		},
+		{
+			q: "هل التسجيل في التطبيق إلزامي؟",
+			a: "نعم، يشترط تسجيل الدخول إلى تطبيق معارف سجادية قبل أداء الاختبار، فهو متطلب أساسي لإتمام المشاركة في المسابقة.",
+		},
+		{
+			q: "من يستطيع المشاركة؟",
+			a: "المسابقة مفتوحة للجميع - رجالاً ونساءً وأطفالاً - ولا توجد فئات عمرية محددة ولا شروط خاصة للمشاركة.",
+		},
+		{
+			q: "هل المشاركة مجانية؟",
+			a: "نعم، المشاركة مجانية بالكامل، والتطبيق نفسه مجاني بلا رسوم ولا اشتراكات ولا إعلانات.",
+		},
+		{
+			q: "أين أجد رسالة الحقوق؟",
+			a: "يمكن الحصول عليها عبر تطبيق معارف سجادية، أو من خلال الكتيب الخاص بالمسابقة.",
+		},
+		{
+			q: "ما هي المحطات الموجودة داخل التطبيق؟",
+			a: "ثماني محطات تعليمية قُسّمت عليها حقوق الرسالة الخمسون لتسهيل الحفظ والمراجعة، وهي مثبّتة على خارطة الطريق عند أعمدته؛ فحين تبلغ موضع محطةٍ منها ينبّهك التطبيق إلى أنك وصلتها.",
+		},
+		{
+			q: "هل يجب حفظ رسالة الحقوق كاملة قبل الاختبار؟",
+			a: "نعم، يشترط إكمال المحطات الثماني في التطبيق - وهي تضمّ الحقوق الخمسين كاملة - قبل أداء الاختبار.",
+		},
+		{
+			q: "أين تقع محطات الاختبار؟",
+			a: "توجد محطتان معتمدتان: مدينة الإمام الحسن (عليه السلام) للزائرين على طريق كربلاء - النجف عند العمود 1066، والعتبة الحسينية المقدسة في كربلاء. ويمكنك أداء الاختبار في أيٍّ منهما.",
+		},
+		{
+			q: "ما هي أوقات الاختبار؟",
+			a: "الاختبار متاح 24 ساعة يومياً طوال فترة زيارة الأربعين، وآخر موعد له نهاية يوم 20 صفر. راجِع أي محطة من محطتي الاختبار في الوقت الذي يناسبك خلال هذه المدة.",
+		},
+		{
+			q: "ماذا يحدث أثناء الاختبار وكم يستغرق؟",
+			a: "يُجرى الاختبار شفهياً في الحقوق التي حفظتها، مع أسئلة عن معانيها والتأكد من صحة القراءة. ومدّته تتبع مستوى حفظك وسرعة إجابتك. ولأنه شفهي فلا يحتاج إلى اتصال بالإنترنت.",
+		},
+		{
+			q: "كم عدد المحاولات، وماذا أفعل إن لم أجتز الاختبار؟",
+			a: "يُسمح بثلاث محاولات لكل متسابق، ويمكنك إعادة الاختبار خلال مدة المسابقة - كما يمكنك إعادته بعد النجاح إن رغبت، ضمن العدد المسموح به.",
+		},
+		{
+			q: "كيف أعرف أنني اجتزت الاختبار؟",
+			a: "يصلك إشعار عبر تطبيق معارف سجادية بعد اعتماد نتيجة الاختبار. ويُعلَن الفائزون بعد انتهاء المسابقة ويُشعَرون عبر الوسائل المعتمدة.",
+		},
+		{
+			q: "ما هي جوائز المسابقة؟",
+			a: "أربع جوائز لهذا الموسم: الأولى لابتوب بمواصفات تقنية متقدمة وأداء فائق، والثانية هاتف ذكي بكاميرا احترافية وإمكانات مدعومة بالذكاء الاصطناعي، والثالثة جهاز آيباد حديث، والرابعة إقامة مجانية بضيافة العتبة الحسينية المقدسة.",
+		},
+		{
+			q: "متى وأين تُسلَّم الجوائز، وماذا أُحضر معي؟",
+			a: "تُسلَّم بعد انتهاء المسابقة، ويجري التواصل مع الفائزين لتحديد الموعد وآلية الاستلام. والاستلام من مقر المؤسسة الرئيسي في النجف الأشرف - ملحق شارع الروان، ولا يلزمك سوى الهوية الوطنية. وإن أردت أن يستلمها غيرك نيابةً عنك فراجِع اللجنة المنظمة لمعرفة الإجراءات.",
+		},
+		{
+			q: "ماذا أفعل إذا فقدت رقم الاشتراك؟",
+			a: "تواصل مع اللجنة المنظمة وزوّدهم باسمك لاستعادة بياناتك.",
 		},
 		{
 			q: "هل يعمل التطبيق دون إنترنت؟",
 			a: "نعم، بعد تحميل محتواه تعمل الخارطة والحقوق والصوتيات دون حاجة إلى اتصال، وهو ما يعينك حين ينقطع الإنترنت في الطريق، ويزامن الجديد في الخلفية متى توفّر الاتصال.",
 		},
 		{
-			q: "ما علاقة المحطات برسالة الحقوق؟",
-			a: "قُسّمت رسالة الحقوق (خمسون حقّاً) على محطات الطريق المثبّتة على الأعمدة؛ تقرأ حقوق كل محطة وتستمع إليها وتختبر حفظك، فتصل ومعك زادٌ من المعرفة.",
-		},
-		{
-			q: "متى يتوفّر التطبيق للتحميل؟",
-			a: "التطبيق قيد الإطلاق، وسيتوفّر قريباً بإذن الله على App Store وGoogle Play. تابِع هذه الصفحة لتكون أوّل من يحمّله فور صدوره.",
-		},
-		{
 			q: "على أي الأجهزة يعمل؟",
-			a: "يُطلَق التطبيق لأجهزة iOS من App Store ولأجهزة Android من Google Play، بواجهة كاملة بالعربية والإنجليزية والفارسية.",
+			a: "التطبيق متاح الآن لأجهزة Android على Google Play، ويصل قريباً بإذن الله لأجهزة iOS على App Store، بواجهة كاملة بالعربية والإنجليزية والفارسية.",
+		},
+		{
+			q: "كيف أتواصل مع اللجنة المنظمة؟",
+			a: "عبر حساب تيليجرام المخصص للتواصل مع المشرفين @MaarifSajjadiya، أو على الرقم ‎+964 786 079 9721.",
 		},
 	],
 	finalCta: {
-		title: "كن أوّل من يبدأ الطريق مع معارف سجادية",
+		title: "ابدأ الطريق مع معارف سجادية",
 		subtitle:
-			"التطبيق يصل قريباً بإذن الله إلى App Store وGoogle Play - هيّئ جهازك، واجعل «معارف سجادية» رفيقك من أوّل عمود إلى الحرم الحسيني الشريف.",
+			"التطبيق متاح الآن على Google Play - حمّله مجاناً، واجعل «معارف سجادية» رفيقك من أوّل عمود إلى الحرم الحسيني الشريف. ويصل قريباً بإذن الله إلى App Store.",
 	},
 	footer: {
 		tagline:
@@ -268,7 +324,7 @@ const ar: Content = {
 		rightsPhone:
 			"شاشة قراءة حقوق المحطة من رسالة الحقوق للإمام زين العابدين (عليه السلام) مع مشغّل صوتي",
 		recitationsPhone:
-			"شاشة المكتبة الصوتية تعرض تلاوات القرآن والصحيفة ولطميات الأربعين مع مشغّل صوتي",
+			"شاشة المكتبة الصوتية تعرض المحاضرات الدينية مع مشغّل صوتي",
 		competitionPhone:
 			"شاشة الاختبار تعرض سؤالاً مرتبطاً بحقوق إحدى المحطات مع خيارات الإجابة",
 		appIcon: "أيقونة تطبيق معارف سجادية باللون الأخضر الفيروزي",
@@ -281,7 +337,7 @@ const en: Content = {
 	seo: {
 		title: "Maarif Sajjadiya | Walk to Karbala and Learn the Treatise on Rights, Station by Station",
 		description:
-			"The Maarif Sajjadiya app walks with you toward Karbala station by station along the route’s numbered poles: Imam Sajjad’s Treatise on Rights (Risalat al-Huquq) read and recited at each station, an audio library of Qur’an, the Sahifa and Arbaeen elegies, and a prize competition. Works offline, in three languages, free.",
+			"The Maarif Sajjadiya app walks with you toward Karbala station by station along the route’s numbered poles: memorize Imam Sajjad’s Treatise on Rights (Risalat al-Huquq) stage by stage and win valuable prizes, with an audio library of religious lectures. Works offline, in three languages, free.",
 		keywords: [
 			"Maarif Sajjadiya",
 			"walk and learn",
@@ -292,8 +348,8 @@ const en: Content = {
 			"walk to Karbala",
 			"Arbaeen walk",
 			"ziyarat route stations",
-			"Sahifa Sajjadiyya",
-			"Arbaeen elegies",
+			"memorize Risalat al-Huquq",
+			"religious lectures",
 			"Husayni competition",
 			"ziyarat companion app",
 			"Imam Zayn al-Abidin Foundation",
@@ -301,7 +357,7 @@ const en: Content = {
 		ogTitle:
 			"Maarif Sajjadiya | Your Companion to Karbala: the Treatise on Rights, Station by Station",
 		ogDescription:
-			"The route map to the Husayni shrine and its stations on the poles, the Treatise on Rights read and recited at each station, an audio library of Qur’an, the Sahifa and elegies, and a prize competition - in one app that works offline, in three languages, free. From the Imam Zayn al-Abidin (as) Foundation.",
+			"The route map to the Husayni shrine and its stations on the poles, the Treatise on Rights to memorize stage by stage and win valuable prizes, and an audio library of religious lectures - in one app that works offline, in three languages, free. From the Imam Zayn al-Abidin (as) Foundation.",
 	},
 	brand: {
 		name: "Maarif Sajjadiya",
@@ -316,9 +372,9 @@ const en: Content = {
 	},
 	hero: {
 		eyebrow: "Walk… and learn",
-		title: "On Your Way to Karbala, You Don’t Walk Alone",
+		title: "Memorize the Treatise on Rights and Win Prizes",
 		subtitle:
-			"Maarif Sajjadiya walks with you on the route map, station by station at every pole: at each station it opens a chapter of Imam Sajjad’s Treatise on Rights - read and recited - tests what you’ve learned, and keeps you company with an audio library of Qur’an, the Sahifa, and Arbaeen elegies. Works offline, in three languages, free.",
+			"Maarif Sajjadiya gives you a special chance to win valuable prizes by memorizing Imam Sajjad’s (peace be upon him) Treatise on Rights during your Arbaeen walk to Karbala. The road is divided into graded memorization stages, so you advance through the rights of this great treatise with every distance you cover. It works with no internet connection and supports three languages… and all of it is free!",
 		ctaHint: "Download the app for free now",
 		soonHint: "Coming soon, God willing, to the App Store and Google Play",
 		scanHint: "Scan the code to download the app to your device",
@@ -344,13 +400,13 @@ const en: Content = {
 	},
 	showcase: {
 		eyebrow: "The Route Map",
-		title: "Your Path to Karbala, Station by Station Along the Poles",
+		title: "The Map of Stations to Karbala",
 		lead: "An interactive map charts your path to our master al-Husayn (peace be upon him), divided into stations pinned to the route’s numbered poles; you always know which pole you’re at, how many rights are in your station, and how far remains.",
 		bullets: [
 			"Your path to the Husayni shrine is drawn on the map, station by station",
 			"Each station is pinned to the route’s numbered poles and marked in kilometers",
-			"Every station holds a set of rights from the Treatise on Rights to read and hear",
-			"The app uses your location to know which station you’ve reached",
+			"Eight stations hold all fifty rights of the Treatise, to read and to hear",
+			"The app alerts you as you reach each station on the route",
 			"Your progress is saved station by station, and it works offline on the road",
 		],
 	},
@@ -358,20 +414,20 @@ const en: Content = {
 		{
 			id: "rights",
 			eyebrow: "The Treatise on Rights",
-			title: "Imam Sajjad’s Treatise on Rights (peace be upon him), Station by Station",
-			body: "The fifty rights of Risalat al-Huquq are distributed across the stations of your route - you read each station’s rights and listen to them clearly, then test what you’ve learned before moving on to the next, arriving with knowledge as your provision.",
+			title: "Imam Sajjad’s Treatise on Rights (peace be upon him)",
+			body: "The fifty rights of Risalat al-Huquq are distributed across eight stations along your route - you read each station’s rights and listen to them clearly, then test what you’ve learned before moving on to the next, arriving with knowledge as your provision.",
 		},
 		{
 			id: "recitations",
 			eyebrow: "Audio Library",
-			title: "The Qur’an, the Sahifa, and Arbaeen Elegies, in Your Ears",
-			body: "An audio library to accompany you on the road: recitations from the Holy Qur’an, the Sahifa Sajjadiyya, and Arbaeen elegies in the words of their poets and the voices of their reciters, with a full player that works offline.",
+			title: "Religious Lectures, in Your Ears",
+			body: "An audio library of religious lectures to accompany you on the road - listen as you walk, with a full player that works offline.",
 		},
 		{
 			id: "competition",
 			eyebrow: "Competition & Prizes",
-			title: "Test Yourself at Every Station, and Compete for Prizes",
-			body: "Questions tied to each station’s rights are scored as you answer, gathering your points, with a clear competition guide and valuable prizes for the front-runners - so your steps become knowledge that is rewarded.",
+			title: "Finish Memorizing, Sit the Exam, Enter the Prize Draw",
+			body: "Once you’ve completed the eight stations and memorized all fifty rights, head to either of the two approved exam stations - Imam al-Hasan (peace be upon him) Pilgrims’ City at pole 1066, or the holy Husayni shrine - for an oral exam on what you’ve memorized. Entry is free and open to every age, you get three attempts, and the prizes are a laptop, a smartphone, an iPad, and a free stay hosted by the holy Husayni shrine.",
 		},
 		{
 			id: "journey",
@@ -381,7 +437,7 @@ const en: Content = {
 		},
 	],
 	featuresHeading: {
-		title: "Features That Make It Your Companion at Every Step",
+		title: "Features That Make It Your Guide at Every Step",
 		subtitle:
 			"Tools built for a long road where the signal may drop and the walk grows long.",
 	},
@@ -396,7 +452,7 @@ const en: Content = {
 			id: "gps",
 			title: "Guides You to Your Station",
 			description:
-				"Pinpoints your place on the map and the pole you’ve reached, to point you to your station and what’s around it.",
+				"Pinpoints your place on the map and the pole you’ve reached, and alerts you when you arrive at one of the route’s stations.",
 		},
 		{
 			id: "progress",
@@ -423,37 +479,93 @@ const en: Content = {
 				"In Arabic, English and Persian, to accompany the pilgrim in whatever tongue they come.",
 		},
 	],
-	faqHeading: "Questions People Often Ask Before Downloading",
+	faqHeading: "Common Questions About the App and the Competition",
 	faq: [
 		{
 			q: "What is the Maarif Sajjadiya app?",
-			a: "It’s your companion on the way to Karbala: a map that divides the route into stations along the numbered poles, and at each station rights from Imam Sajjad’s Treatise on Rights (read and recited), with an audio library and a prize competition. Its motto: walk and learn. From the Imam Zayn al-Abidin (peace be upon him) Foundation.",
+			a: "It’s your companion on the way to Karbala: a map that divides the route into stations pinned to the numbered poles, alerting you as you reach each one, and eight learning stations across which the fifty rights of the Treatise on Rights are divided for you to read, hear and memorize, with an audio library of religious lectures. Its motto: walk and learn. From the Imam Zayn al-Abidin (peace be upon him) Foundation.",
 		},
 		{
-			q: "Is the app free?",
-			a: "Yes, Maarif Sajjadiya is completely free - no fees, no subscriptions, and no ads.",
+			q: "What is the Maarif Sajjadiya competition?",
+			a: "A competition that encourages pilgrims to memorize Imam Zayn al-Abidin’s (peace be upon him) Treatise on Rights, through the app or the competition booklet, then sit the exam to enter the prize draw.",
+		},
+		{
+			q: "How do I take part?",
+			a: "No prior registration and no form to fill in. Memorize the Treatise on Rights through the app or the booklet, complete the eight stations that hold all fifty rights, sign in to the app, then go to either of the two approved exam stations to sit the exam.",
+		},
+		{
+			q: "Is signing in to the app required?",
+			a: "Yes. Signing in to the Maarif Sajjadiya app is required before sitting the exam - it is an essential step to complete your entry in the competition.",
+		},
+		{
+			q: "Who can take part?",
+			a: "The competition is open to everyone - men, women and children - with no set age brackets and no special conditions for entry.",
+		},
+		{
+			q: "Is entry free?",
+			a: "Yes, entry is completely free, and the app itself is free - no fees, no subscriptions, and no ads.",
+		},
+		{
+			q: "Where do I find the Treatise on Rights?",
+			a: "Through the Maarif Sajjadiya app, or in the competition booklet.",
+		},
+		{
+			q: "What are the stations inside the app?",
+			a: "Eight learning stations across which the treatise’s fifty rights are divided, to make memorizing and reviewing easier. They are pinned to the route map at its poles, so when you reach the place of one of them the app alerts you that you’ve arrived.",
+		},
+		{
+			q: "Do I have to memorize the whole treatise before the exam?",
+			a: "Yes. You must complete the eight stations in the app - which hold all fifty rights - before sitting the exam.",
+		},
+		{
+			q: "Where are the exam stations?",
+			a: "There are two approved stations: Imam al-Hasan (peace be upon him) Pilgrims’ City on the Karbala-Najaf road at pole 1066, and the holy Husayni shrine in Karbala. You may sit the exam at either one.",
+		},
+		{
+			q: "What are the exam hours?",
+			a: "The exam is available 24 hours a day throughout the Arbaeen ziyarat period, with the final deadline at the end of 20 Safar. Visit either exam station at whatever time suits you within that period.",
+		},
+		{
+			q: "What happens during the exam, and how long does it take?",
+			a: "The exam is oral, covering the rights you have memorized, with some questions on their meanings and a check that your recitation is correct. Its length depends on how well you’ve memorized and how quickly you answer. Being oral, it needs no internet connection.",
+		},
+		{
+			q: "How many attempts do I get, and what if I don’t pass?",
+			a: "Each entrant is allowed three attempts, and you may retake the exam during the competition period - you may also retake it after passing if you wish, within the allowed number.",
+		},
+		{
+			q: "How will I know that I passed?",
+			a: "You’ll receive a notification through the Maarif Sajjadiya app once your result is approved. Winners are announced after the competition ends and are notified through the approved channels.",
+		},
+		{
+			q: "What are the prizes?",
+			a: "Four prizes this season: first, a laptop with advanced specifications and high performance; second, a smartphone with a professional camera and AI-supported capabilities; third, a modern iPad; and fourth, a free stay hosted by the holy Husayni shrine.",
+		},
+		{
+			q: "When and where are prizes handed out, and what should I bring?",
+			a: "After the competition ends; winners are contacted to arrange the timing and the collection process. Collection is from the Foundation’s main premises in Najaf al-Ashraf - the Rawan Street annex - and all you need is your national ID. If you’d like someone to collect on your behalf, contact the organizing committee for the procedure.",
+		},
+		{
+			q: "What if I lose my entry number?",
+			a: "Contact the organizing committee and give them your name to recover your details.",
 		},
 		{
 			q: "Does the app work offline?",
 			a: "Yes. Once its content is downloaded, the map, the rights and the audio work with no connection needed, which helps when the internet drops on the road. New content also syncs in the background whenever a connection is available.",
 		},
 		{
-			q: "How do the stations relate to the Treatise on Rights?",
-			a: "The Treatise on Rights (fifty rights) is distributed across the route’s stations pinned to the poles; you read each station’s rights, hear them, and test yourself - arriving with knowledge as your provision.",
-		},
-		{
-			q: "When will the app be available to download?",
-			a: "The app is launching soon and will be available, God willing, on the App Store and Google Play. Follow this page to be among the first to download it the moment it’s released.",
-		},
-		{
 			q: "Which devices does it work on?",
-			a: "The app launches for iOS on the App Store and for Android on Google Play, with a full interface in Arabic, English and Persian.",
+			a: "The app is available now for Android on Google Play, and is coming soon, God willing, for iOS on the App Store, with a full interface in Arabic, English and Persian.",
+		},
+		{
+			q: "How do I contact the organizing committee?",
+			a: "Through the Telegram account set up for reaching the supervisors, @MaarifSajjadiya, or by phone on +964 786 079 9721.",
 		},
 	],
 	finalCta: {
-		title: "Be Among the First to Set Out With Maarif Sajjadiya",
+		title: "Set Out With Maarif Sajjadiya",
 		subtitle:
-			"The app is coming soon, God willing, to the App Store and Google Play - ready your device, and make Maarif Sajjadiya your companion from the first pole to the noble Husayni shrine.",
+			"The app is available now on Google Play - download it free, and make Maarif Sajjadiya your companion from the first pole to the noble Husayni shrine. Coming soon, God willing, to the App Store.",
 	},
 	footer: {
 		tagline:
@@ -469,7 +581,7 @@ const en: Content = {
 		rightsPhone:
 			"The screen for reading a station’s rights from Imam Zayn al-Abidin’s Treatise on Rights, with an audio player",
 		recitationsPhone:
-			"The audio library screen showing recitations of the Qur’an, the Sahifa and Arbaeen elegies with a player",
+			"The audio library screen showing religious lectures with a player",
 		competitionPhone:
 			"The quiz screen showing a question tied to one station’s rights, with answer choices",
 		appIcon: "The Maarif Sajjadiya app icon in deep teal",
@@ -482,7 +594,7 @@ const fa: Content = {
 	seo: {
 		title: "معارف سجادیه | به‌سوی کربلا گام بردار و رساله حقوق را بیاموز، ایستگاه به ایستگاه",
 		description:
-			"اپلیکیشن معارف سجادیه در مسیر شما به‌سوی کربلا، ایستگاه به ایستگاه در امتداد ستون‌های شماره‌دار همراهتان است: رساله حقوق امام سجاد (ع) در هر ایستگاه به‌صورت متنی و صوتی، کتابخانه‌ای صوتی از قرآن، صحیفه و لطمیات اربعین، و مسابقه‌ای با جوایز. بدون اینترنت، به سه زبان، و رایگان.",
+			"اپلیکیشن معارف سجادیه در مسیر شما به‌سوی کربلا، ایستگاه به ایستگاه در امتداد ستون‌های شماره‌دار همراهتان است: رساله حقوق امام سجاد (ع) را مرحله به مرحله حفظ کنید و جوایزی ارزشمند ببرید، همراه با کتابخانه‌ای صوتی از سخنرانی‌های مذهبی. بدون اینترنت، به سه زبان، و رایگان.",
 		keywords: [
 			"معارف سجادیه",
 			"گام بردار و بیاموز",
@@ -493,8 +605,8 @@ const fa: Content = {
 			"پیاده‌روی اربعین",
 			"ایستگاه‌های مسیر",
 			"ستون‌های مسیر",
-			"صحیفه سجادیه",
-			"لطمیات اربعین",
+			"حفظ رساله حقوق",
+			"سخنرانی‌های مذهبی",
 			"مسابقه حسینی",
 			"اپلیکیشن زیارت",
 			"مؤسسه امام زین‌العابدین",
@@ -502,7 +614,7 @@ const fa: Content = {
 		ogTitle:
 			"معارف سجادیه | همراه شما تا کربلا: رساله حقوق، ایستگاه به ایستگاه",
 		ogDescription:
-			"نقشهٔ مسیر تا حرم حسینی و ایستگاه‌های آن روی ستون‌ها، رساله حقوق به‌صورت متنی و صوتی در هر ایستگاه، کتابخانه‌ای صوتی از قرآن، صحیفه و لطمیات، و مسابقه‌ای با جوایز - در یک اپلیکیشن که بدون اینترنت، به سه زبان و رایگان کار می‌کند. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).",
+			"نقشهٔ مسیر تا حرم حسینی و ایستگاه‌های آن روی ستون‌ها، رساله حقوق که مرحله به مرحله حفظ می‌کنید و با آن جوایزی ارزشمند می‌برید، و کتابخانه‌ای صوتی از سخنرانی‌های مذهبی - در یک اپلیکیشن که بدون اینترنت، به سه زبان و رایگان کار می‌کند. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).",
 	},
 	brand: {
 		name: "معارف سجادیه",
@@ -517,9 +629,9 @@ const fa: Content = {
 	},
 	hero: {
 		eyebrow: "گام بردار… و بیاموز",
-		title: "در مسیرت به‌سوی کربلا، تنها گام برنمی‌داری",
+		title: "رساله حقوق را حفظ کن و جایزه ببر",
 		subtitle:
-			"معارف سجادیه روی نقشهٔ مسیر، ایستگاه به ایستگاه کنار هر ستون همراه شماست: در هر ایستگاه بابی از رساله حقوق امام سجاد (علیه‌السلام) را متنی و صوتی می‌گشاید، آموخته‌تان را می‌آزماید، و با کتابخانه‌ای صوتی از قرآن، صحیفه و لطمیات اربعین همراهی‌تان می‌کند - بدون اینترنت، به سه زبان، و رایگان.",
+			"اپلیکیشن معارف سجادیه فرصتی ویژه به شما می‌دهد تا با حفظ رساله حقوق امام سجاد (ع) در مسیر پیاده‌روی اربعین به‌سوی کربلا، جوایزی ارزشمند ببرید. مسیر به مرحله‌های حفظی پلکانی تقسیم می‌شود تا با هر مسافتی که می‌پیمایید، در حفظ حقوق این رسالهٔ بزرگ پیش بروید. بدون اتصال به اینترنت کار می‌کند و از سه زبان پشتیبانی می‌کند… و همهٔ اینها رایگان است!",
 		ctaHint: "همین حالا رایگان دانلود کنید",
 		soonHint: "به‌زودی ان‌شاءالله در App Store و Google Play",
 		scanHint: "برای دانلود روی دستگاه خود، کد را اسکن کنید",
@@ -542,13 +654,13 @@ const fa: Content = {
 	},
 	showcase: {
 		eyebrow: "نقشهٔ مسیر",
-		title: "راه شما به‌سوی کربلا، ایستگاه به ایستگاه در امتداد ستون‌ها",
+		title: "نقشهٔ ایستگاه‌ها تا کربلا",
 		lead: "نقشه‌ای تعاملی راه شما را به‌سوی مولا حسین (علیه‌السلام) ترسیم می‌کند، تقسیم‌شده به ایستگاه‌هایی که بر ستون‌های شماره‌دار مسیر نشانده شده‌اند؛ همیشه می‌دانید کنار کدام ستون هستید، ایستگاهتان چند حق دارد و چه مقدار از راه باقی است.",
 		bullets: [
 			"راه شما به‌سوی حرم حسینی روی نقشه، ایستگاه به ایستگاه ترسیم شده است",
 			"هر ایستگاه بر ستون‌های شماره‌دار مسیر نشانده و با کیلومتر مشخص شده است",
-			"هر ایستگاه چند حق از «رساله حقوق» دارد که می‌خوانید و می‌شنوید",
-			"اپلیکیشن با موقعیت شما ایستگاهی را که رسیده‌اید تشخیص می‌دهد",
+			"هشت ایستگاه دربردارندهٔ هر پنجاه حقِ رساله است که می‌خوانید و می‌شنوید",
+			"اپلیکیشن هنگام رسیدن به هر ایستگاه در مسیر به شما اطلاع می‌دهد",
 			"پیشرفت شما ایستگاه به ایستگاه ذخیره می‌شود و در مسیر بدون اینترنت کار می‌کند",
 		],
 	},
@@ -556,20 +668,20 @@ const fa: Content = {
 		{
 			id: "rights",
 			eyebrow: "رساله حقوق",
-			title: "رساله حقوق امام سجاد (علیه‌السلام)، ایستگاه به ایستگاه",
-			body: "پنجاه حق از رساله حقوق بر ایستگاه‌های مسیر شما تقسیم شده است - حقوق هر ایستگاه را می‌خوانید و با صدایی روشن می‌شنوید، سپس پیش از رفتن به ایستگاه بعد آموخته‌تان را می‌آزمایید، تا با توشه‌ای از معرفت برسید.",
+			title: "رساله حقوق امام سجاد (علیه‌السلام)",
+			body: "پنجاه حق از رساله حقوق بر هشت ایستگاه در مسیر شما تقسیم شده است - حقوق هر ایستگاه را می‌خوانید و با صدایی روشن می‌شنوید، سپس پیش از رفتن به ایستگاه بعد آموخته‌تان را می‌آزمایید، تا با توشه‌ای از معرفت برسید.",
 		},
 		{
 			id: "recitations",
 			eyebrow: "کتابخانهٔ صوتی",
-			title: "قرآن، صحیفه و لطمیات اربعین، در گوش شما",
-			body: "کتابخانه‌ای صوتی که در مسیر همراه شماست: تلاوت‌هایی از قرآن کریم، صحیفهٔ سجادیه، و لطمیات اربعین با کلام شاعران و صدای قاریانشان، همراه با پخش‌کننده‌ای کامل که بدون اینترنت کار می‌کند.",
+			title: "سخنرانی‌های مذهبی، در گوش شما",
+			body: "کتابخانه‌ای صوتی از سخنرانی‌های مذهبی که در مسیر همراه شماست - در حال راه‌رفتن به آنها گوش می‌دهید، همراه با پخش‌کننده‌ای کامل که بدون اینترنت کار می‌کند.",
 		},
 		{
 			id: "competition",
 			eyebrow: "مسابقه و جوایز",
-			title: "در هر ایستگاه خود را بیازما و برای جوایز رقابت کن",
-			body: "پرسش‌هایی مرتبط با حقوق هر ایستگاه که با پاسخ به آنها نمره و امتیاز می‌گیرید، همراه با راهنمایی روشن برای مسابقه و جوایزی ارزشمند برای پیشتازان - تا گام‌هایتان دانشی باشد که پاداش می‌گیرد.",
+			title: "حفظ را کامل کن، آزمون بده، و در قرعه‌کشی جوایز شرکت کن",
+			body: "پس از کامل‌کردن هشت ایستگاه و حفظ هر پنجاه حق، به یکی از دو ایستگاه آزمون معتبر بروید - شهرک امام حسن (علیه‌السلام) برای زائران کنار ستون ۱۰۶۶، یا حرم مطهر حسینی - تا آزمونی شفاهی از آنچه حفظ کرده‌اید گرفته شود. شرکت رایگان و برای همهٔ سنین آزاد است، سه فرصت دارید، و جوایز عبارت‌اند از لپ‌تاپ، گوشی هوشمند، آیپد، و اقامت رایگان به میزبانی حرم مطهر حسینی.",
 		},
 		{
 			id: "journey",
@@ -579,7 +691,7 @@ const fa: Content = {
 		},
 	],
 	featuresHeading: {
-		title: "ویژگی‌هایی که آن را همراه هر گام شما می‌کند",
+		title: "ویژگی‌هایی که آن را راهنمای هر گام شما می‌کند",
 		subtitle:
 			"ابزارهایی ساخته‌شده برای راهی طولانی که ممکن است اتصال در آن قطع و مسیر دراز شود.",
 	},
@@ -594,7 +706,7 @@ const fa: Content = {
 			id: "gps",
 			title: "راهنمایی به ایستگاهتان",
 			description:
-				"موقعیت شما را روی نقشه و ستونی را که رسیده‌اید مشخص می‌کند تا شما را به ایستگاهتان و پیرامون آن راه بنماید.",
+				"موقعیت شما را روی نقشه و ستونی را که رسیده‌اید مشخص می‌کند و هنگام رسیدن به یکی از ایستگاه‌های مسیر به شما اطلاع می‌دهد.",
 		},
 		{
 			id: "progress",
@@ -621,37 +733,93 @@ const fa: Content = {
 				"به عربی، انگلیسی و فارسی، تا با زائر به هر زبانی که آمده همراه شود.",
 		},
 	],
-	faqHeading: "پرسش‌هایی که پیش از دانلود بارها پرسیده می‌شود",
+	faqHeading: "پرسش‌های متداول دربارهٔ اپلیکیشن و مسابقه",
 	faq: [
 		{
 			q: "اپلیکیشن معارف سجادیه چیست؟",
-			a: "همراه شما در مسیر کربلا است: نقشه‌ای که راه را به ایستگاه‌هایی در امتداد ستون‌های شماره‌دار تقسیم می‌کند و در هر ایستگاه حقوقی از «رساله حقوق» امام سجاد (علیه‌السلام) به‌صورت متنی و صوتی، همراه با کتابخانهٔ صوتی و مسابقه‌ای با جوایز. شعارش: گام بردار و بیاموز. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).",
+			a: "همراه شما در مسیر کربلا است: نقشه‌ای که راه را به ایستگاه‌هایی نشانده بر ستون‌های شماره‌دار تقسیم می‌کند و هنگام رسیدن به هر یک به شما اطلاع می‌دهد، و هشت ایستگاه آموزشی که پنجاه حقِ «رساله حقوق» بر آنها تقسیم شده تا بخوانید، بشنوید و حفظ کنید، همراه با کتابخانه‌ای صوتی از سخنرانی‌های مذهبی. شعارش: گام بردار و بیاموز. از مؤسسهٔ امام زین‌العابدین (علیه‌السلام).",
 		},
 		{
-			q: "آیا اپلیکیشن رایگان است؟",
-			a: "بله، معارف سجادیه کاملاً رایگان است، بدون هیچ هزینه، اشتراک یا تبلیغات.",
+			q: "مسابقهٔ معارف سجادیه چیست؟",
+			a: "مسابقه‌ای که زائران را به حفظ رساله حقوق امام زین‌العابدین (علیه‌السلام) از راه اپلیکیشن یا کتابچهٔ ویژهٔ مسابقه تشویق می‌کند و سپس با دادن آزمون، در قرعه‌کشی جوایز شرکت می‌کنند.",
+		},
+		{
+			q: "چگونه در مسابقه شرکت کنم؟",
+			a: "شرکت نیازی به ثبت‌نام پیشین یا پرکردن فرم ندارد. رساله حقوق را از راه اپلیکیشن یا کتابچه حفظ کنید، هشت ایستگاه را که دربردارندهٔ هر پنجاه حق است کامل کنید، وارد حساب خود در اپلیکیشن شوید، سپس به یکی از دو ایستگاه آزمون معتبر بروید و آزمون بدهید.",
+		},
+		{
+			q: "آیا ورود به حساب در اپلیکیشن الزامی است؟",
+			a: "بله، ورود به حساب در اپلیکیشن معارف سجادیه پیش از دادن آزمون شرط است و برای کامل‌شدن شرکت در مسابقه ضروری است.",
+		},
+		{
+			q: "چه کسانی می‌توانند شرکت کنند؟",
+			a: "مسابقه برای همه آزاد است - مردان، زنان و کودکان - و هیچ ردهٔ سنی مشخص یا شرط ویژه‌ای برای شرکت وجود ندارد.",
+		},
+		{
+			q: "آیا شرکت رایگان است؟",
+			a: "بله، شرکت کاملاً رایگان است و خودِ اپلیکیشن نیز رایگان است، بدون هیچ هزینه، اشتراک یا تبلیغات.",
+		},
+		{
+			q: "رساله حقوق را از کجا پیدا کنم؟",
+			a: "از راه اپلیکیشن معارف سجادیه، یا از کتابچهٔ ویژهٔ مسابقه.",
+		},
+		{
+			q: "ایستگاه‌های داخل اپلیکیشن چیست؟",
+			a: "هشت ایستگاه آموزشی که پنجاه حقِ رساله بر آنها تقسیم شده تا حفظ و مرور آسان‌تر شود، و بر نقشهٔ مسیر کنار ستون‌های آن نشانده شده‌اند؛ چنانکه وقتی به جایگاه یکی از آنها می‌رسید، اپلیکیشن به شما اطلاع می‌دهد که رسیده‌اید.",
+		},
+		{
+			q: "آیا باید پیش از آزمون تمام رساله را حفظ کرد؟",
+			a: "بله، کامل‌کردن هشت ایستگاه در اپلیکیشن - که هر پنجاه حق را دربر دارد - پیش از دادن آزمون شرط است.",
+		},
+		{
+			q: "ایستگاه‌های آزمون کجا هستند؟",
+			a: "دو ایستگاه معتبر وجود دارد: شهرک امام حسن (علیه‌السلام) برای زائران در جادهٔ کربلا - نجف کنار ستون ۱۰۶۶، و حرم مطهر حسینی در کربلا. می‌توانید در هر کدام آزمون بدهید.",
+		},
+		{
+			q: "ساعات آزمون چگونه است؟",
+			a: "آزمون در تمام مدت زیارت اربعین، شبانه‌روز و ۲۴ ساعته در دسترس است و آخرین مهلت آن پایان روز ۲۰ صفر است. در هر زمانی که برایتان مناسب است به یکی از دو ایستگاه آزمون مراجعه کنید.",
+		},
+		{
+			q: "در آزمون چه می‌گذرد و چقدر طول می‌کشد؟",
+			a: "آزمون شفاهی است و از حقوقی که حفظ کرده‌اید گرفته می‌شود، همراه با پرسش‌هایی دربارهٔ معانی آنها و اطمینان از درستی قرائت. مدت آن به میزان حفظ و سرعت پاسخ شما بستگی دارد. و چون شفاهی است، به اتصال اینترنت نیازی ندارد.",
+		},
+		{
+			q: "چند بار می‌توانم آزمون بدهم و اگر قبول نشدم چه کنم؟",
+			a: "برای هر شرکت‌کننده سه فرصت در نظر گرفته شده و می‌توانید در مدت مسابقه دوباره آزمون بدهید - حتی پس از قبولی نیز اگر بخواهید، در همان تعداد مجاز.",
+		},
+		{
+			q: "از کجا بفهمم که قبول شده‌ام؟",
+			a: "پس از تأیید نتیجه، اعلانی از راه اپلیکیشن معارف سجادیه به شما می‌رسد. برندگان پس از پایان مسابقه اعلام و از راه‌های معتبر باخبر می‌شوند.",
+		},
+		{
+			q: "جوایز مسابقه چیست؟",
+			a: "چهار جایزه برای این فصل: نخست، لپ‌تاپی با مشخصات فنی پیشرفته و کارایی بالا؛ دوم، گوشی هوشمند با دوربین حرفه‌ای و توانمندی‌های مبتنی بر هوش مصنوعی؛ سوم، آیپدی امروزی؛ و چهارم، اقامت رایگان به میزبانی حرم مطهر حسینی.",
+		},
+		{
+			q: "جوایز چه زمانی و کجا تحویل می‌شود و چه همراه بیاورم؟",
+			a: "پس از پایان مسابقه؛ با برندگان برای تعیین زمان و شیوهٔ تحویل تماس گرفته می‌شود. تحویل از دفتر مرکزی مؤسسه در نجف اشرف - ملحق خیابان روان انجام می‌گیرد و تنها به کارت ملی نیاز دارید. اگر می‌خواهید کسی به‌نمایندگی از شما آن را بگیرد، برای آگاهی از روند کار با کمیتهٔ برگزاری تماس بگیرید.",
+		},
+		{
+			q: "اگر شمارهٔ اشتراکم را گم کنم چه کنم؟",
+			a: "با کمیتهٔ برگزاری تماس بگیرید و نامتان را به آنها بدهید تا اطلاعاتتان بازیابی شود.",
 		},
 		{
 			q: "آیا اپلیکیشن بدون اینترنت کار می‌کند؟",
 			a: "بله، پس از دانلود محتوا، نقشه، حقوق و صوتی‌ها بدون نیاز به اتصال کار می‌کنند که هنگام قطع اینترنت در مسیر کمک‌رسان است. محتوای تازه نیز هرگاه اتصال فراهم باشد در پس‌زمینه هماهنگ می‌شود.",
 		},
 		{
-			q: "ارتباط ایستگاه‌ها با رساله حقوق چیست؟",
-			a: "رساله حقوق (پنجاه حق) بر ایستگاه‌های مسیر که بر ستون‌ها نشانده شده‌اند تقسیم شده است؛ حقوق هر ایستگاه را می‌خوانید، می‌شنوید و خود را می‌آزمایید تا با توشه‌ای از معرفت برسید.",
-		},
-		{
-			q: "اپلیکیشن چه زمانی برای دانلود در دسترس است؟",
-			a: "اپلیکیشن در آستانهٔ انتشار است و به‌زودی ان‌شاءالله در App Store و Google Play در دسترس خواهد بود. این صفحه را دنبال کنید تا از نخستین کسانی باشید که آن را هنگام انتشار دانلود می‌کنند.",
-		},
-		{
 			q: "روی چه دستگاه‌هایی کار می‌کند؟",
-			a: "اپلیکیشن برای iOS از App Store و برای Android از Google Play منتشر می‌شود، با رابط کامل به عربی، انگلیسی و فارسی.",
+			a: "اپلیکیشن هم‌اکنون برای Android در Google Play در دسترس است و به‌زودی ان‌شاءالله برای iOS در App Store منتشر می‌شود، با رابط کامل به عربی، انگلیسی و فارسی.",
+		},
+		{
+			q: "چگونه با کمیتهٔ برگزاری تماس بگیرم؟",
+			a: "از راه حساب تلگرام ویژهٔ ارتباط با ناظران، ‎@MaarifSajjadiya، یا با شمارهٔ ‎+964 786 079 9721.",
 		},
 	],
 	finalCta: {
-		title: "از نخستین کسانی باشید که با معارف سجادیه راه می‌افتند",
+		title: "با معارف سجادیه راه بیفتید",
 		subtitle:
-			"اپلیکیشن به‌زودی ان‌شاءالله در App Store و Google Play می‌آید - دستگاهتان را آماده کنید و «معارف سجادیه» را از نخستین ستون تا حرم شریف حسینی همراه خود سازید.",
+			"اپلیکیشن هم‌اکنون در Google Play در دسترس است - رایگان دانلود کنید و «معارف سجادیه» را از نخستین ستون تا حرم شریف حسینی همراه خود سازید. به‌زودی ان‌شاءالله در App Store نیز منتشر می‌شود.",
 	},
 	footer: {
 		tagline:
@@ -667,7 +835,7 @@ const fa: Content = {
 		rightsPhone:
 			"صفحهٔ خواندن حقوق یک ایستگاه از رساله حقوق امام زین‌العابدین (علیه‌السلام) همراه با پخش‌کنندهٔ صوتی",
 		recitationsPhone:
-			"صفحهٔ کتابخانهٔ صوتی که تلاوت‌های قرآن، صحیفه و لطمیات اربعین را همراه با پخش‌کننده نمایش می‌دهد",
+			"صفحهٔ کتابخانهٔ صوتی که سخنرانی‌های مذهبی را همراه با پخش‌کننده نمایش می‌دهد",
 		competitionPhone:
 			"صفحهٔ آزمون که پرسشی مرتبط با حقوق یکی از ایستگاه‌ها را همراه با گزینه‌های پاسخ نمایش می‌دهد",
 		appIcon: "آیکون اپلیکیشن معارف سجادیه به رنگ سبز فیروزه‌ای",
