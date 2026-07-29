@@ -15,7 +15,7 @@ export const SITE = {
 	 * build is approved and the second badge lights up with no other edits.
 	 */
 	stores: {
-		ios: null as string | null, // App Store URL - null until the iOS app is published
+		ios: "https://maarif-web.imamzain.org" as string | null, // App Store URL - null until the iOS app is published
 		android:
 			"https://play.google.com/store/apps/details?id=org.imamzain.maarif_sajjadyia" as
 				| string
